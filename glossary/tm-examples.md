@@ -90,3 +90,34 @@
 - KO: 임왕태 감독의 장편영화 <이별식당>의 각본을 맡아 인도 차트라파티쉬바지영화제에서 최우수로맨스상을 수상했다. 이후 직접 각본과 감독을 맡은 영화 <시인들의 창>은 부산국제영화제에서 상영했다.
 - EN: He wrote the screenplay for the feature film Farewell Restaurant(Lim Wang-tae), which won the Best Romance Film award at the 2019 Chhatrapati Shivaji IFF. Subsequently, he wrote and directed the film Poets’ Window, which was screened at the 2021 Busan IFF.
 - *(보이는 규칙)* 규칙 22: 한국 영화 제목을 영문 번역 제목(이탤릭 대상)으로 <이별식당>→Farewell Restaurant · 현재완료 · 영화제 약칭(부산국제영화제→Busan IFF) — 길이 KO 105/110자, EN 256/260자·41/50단어
+
+
+## 섹션 서문 · 한 → 영
+
+길이 제한 없음. 수록 작품·감독명 정보를 모두 유지하면서 단락별로 번역한다.
+섹션명은 영문 큰따옴표: `’자연’` → `"Nature"`. 귀속은 `― 이름, Programmer`.
+
+**예시 (자연 Nature)**
+
+- KO: ‘자연’ 섹션에서는 산골 마을과 시골 등 자연 속에서 공동체, 환경, 전통, 그리고 변화에 대한 이야기를 담은 여섯 편의 영화가 상영됩니다.
+중국 후난성 시골 아이들이 직접 쓴 시를 통해 그들의 순수한 시선을 보여주는 다큐멘터리 <시인의 마음>, 튀르키예 시골을 배경으로 사냥당하는 토끼를 구하며 어른의 세계에 저항하는 소년 무사의 이야기 <토끼 제국>은 어린이의 눈을 통해 사회와 현실을 비춥니다.
+전통과 현대의 충돌을 대만 소수민족 사냥꾼 형제의 이야기로 풀어낸 <헌터 브라더스>, 전통 목축 환경이 현대화의 영향으로 변화하는 과정을 담은 <브레니의 목축 일기>는 정체성과 삶의 방식에 대해 다시금 생각하게 만듭니다. 나무에 깃발을 다는 전통으로 인해 위험에 처한 나무를 구하려는 부탄의 불교 신자 소남 푼초의 이야기를 그린 <버터플라이 부탄>, 기후 변화로 인한 빙하 감소와 그로인한 수질 오염 문제에 맞서 싸우는 사람들의 모습을 그린 <맑은 물을 찾아서!>는 우리가 살아가는 환경과 생존 그리고 지속가능성에 대한 깊은 고민을 던지는 영화들입니다.
+― 프로그래머 이정진
+- EN: The "Nature" section presents six films that explore themes of community, environment, tradition, and change in natural settings such as mountain villages and rural areas. Always is a documentary capturing the pure perspective of children from Hunan, China through poems they’ve written themselves. Empire of the Rabbits, set in the Turkish countryside, tells the story of Musa, a young boy who rescues a hunted rabbit and challenges the adult world, offering a child’s view on society and reality.
+Hunter Brothers depicts the clash between tradition and modernity through the story of two indigenous hunter brothers in Taiwan, while How to Lease a Cow captures the transformation of traditional herding practices under the pressure of modernization. Both films prompt reflections on identity and ways of life.
+Butterfly Bhutan follows Sonam Phuntsho, who tries to protect a tree threatened by the Bhutanese tradition of tying prayer flags, while Dream to Cure Water addresses the issue of glacier melt caused by climate change and the resulting water pollution, showing the efforts of people working to fix the crisis. These films offer a deep meditation on the environment, survival, and sustainability.
+― Jinna Lee, Programmer
+- *(보이는 규칙)* 도입: `’자연’ 섹션에서는` → `The "Nature" section presents` · 섹션명 큰따옴표 · 비슷한 작품 단락 묶기 · 귀속: `― 프로그래머 이정진` → `― Jinna Lee, Programmer`
+
+
+**예시 (투게더 Together)**
+
+- KO: 다양한 세대가 함께 즐기는 ‘투게더’ 섹션은 오늘날 우리가 마주한 복잡한 질문에 색다른 해답을 제시하는 15편의 영화와 함께합니다.
+산과 자연을 중심으로 풀어내는 도전과 스포츠 정신, 자연과 놀이, 동물권과 생태적 윤리, 환경과 기후 위기 소재들은 인간과 자연의 관계를 다층적으로 비추고, 존재를 향한 따뜻한 시선을 보여줍니다. 이는 산의 이야기가 이들 영화 속에서 단순한 배경이 아니라 관계가 형성되고 감정이 발화되는, 사유가 시작되는 공간으로 작용하고 있기 때문일 것입니다.
+울산광역시교육청 및 울산 울주 지역 학교가 함께하는 영화 읽기 프로그램은 올해도 계속됩니다. 어린이·청소년들이 각자의 시선으로 영화를 해석하고, 자신만의 언어로 세상과 소통할 수 있는 소중한 경험이 될 것입니다. 9월, 영남알프스에서 자연과 영화, 사람과 사람이 만나는 뜻깊은 자리에 함께해 주시길 기대합니다.
+― 프로그래머 장다나
+- EN: The "Together" section presents 15 films offering fresh perspectives on the complex questions we face today.
+Centered on themes of mountains and nature, these films explore the topics of challenge and sportsmanship, animal rights and ecological ethics, and environmental and climate crises to explore the relationship between humans and nature in deeply layered yet warm perspectives. This is probably possible because the mountains are not simple backdrops in these stories, but a space where relationships form, emotions are stirred, and reflection begins.
+The collaborative film reading program with the Ulsan Metropolitan Office of Education and local Ulju schools also returns this year. It will be a valuable opportunity for children and teens to interpret films from their own perspectives and connect with the world in their own voices. This September, we invite you to the Yeongnam Alps for a meaningful gathering where nature and film, people and people come together.
+― Jang Da-na, Programmer
+- *(보이는 규칙)* `’투게더’ 섹션은` → `The "Together" section presents` · 한국어 2개 연결 문장→영어 별도 문장 · 귀속: `― 프로그래머 장다나` → `― Jang Da-na, Programmer`

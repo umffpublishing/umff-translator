@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UMFF 번역기</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1b3a5c;
+      --blue-light: #2a5080;
+      --green: #2a7d5f;
+      --green-light: #38a87e;
+      --teal: #1a6676;
+      --teal-light: #237a8e;
+      --bg: #f2f4f6;
+      --surface: #ffffff;
+      --border: #dde2e8;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --error: #c0392b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── Header ─── */
+    header {
+      background: var(--teal);
+      color: #fff;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .header-title { font-size: 1.05rem; font-weight: 700; letter-spacing: -.02em; }
+    .header-sub   { font-size: .75rem; opacity: .65; margin-top: 2px; }
+    .btn-key {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: .82rem;
+      transition: background .15s;
+    }
+    .btn-key:hover { background: rgba(255,255,255,.25); }
+
+    /* ─── API Key Bar ─── */
+    .key-bar {
+      background: #e8eef4;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 32px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .key-bar.open { display: flex; }
+    .key-bar label { font-size: .8rem; color: #444; white-space: nowrap; }
+    .key-bar input {
+      flex: 1; min-width: 200px; max-width: 380px;
+      padding: 7px 11px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: monospace; font-size: .82rem;
+    }
+    .btn-save {
+      background: var(--teal); color: #fff;
+      border: none; padding: 7px 16px;
+      border-radius: 6px; cursor: pointer; font-size: .82rem;
+    }
+    .btn-save:hover { background: var(--teal-light); }
+    #key-status { font-size: .78rem; color: var(--muted); }
+
+    /* ─── Main ─── */
+    .main { max-width: 1000px; margin: 0 auto; padding: 28px 24px; }
+
+    .card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 22px 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+      margin-bottom: 20px;
+    }
+
+    .card-label {
+      font-size: .75rem; font-weight: 700;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: .06em; margin-bottom: 10px;
+    }
+
+    /* ─── Selector rows (direction / type) ─── */
+    .selector-row {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .selector-label {
+      font-size: .78rem; color: var(--muted);
+      white-space: nowrap; min-width: 68px;
+    }
+    .sel-btn {
+      padding: 6px 18px;
+      border: 1.5px solid var(--border); border-radius: 20px;
+      background: #fff; color: var(--muted);
+      font-size: .83rem; cursor: pointer; transition: all .15s;
+    }
+    .sel-btn:hover { border-color: #aaa; color: var(--text); }
+    .sel-dir.active  { border-color: var(--teal); color: var(--teal); background: #eef7f9; font-weight: 700; }
+    .sel-type.active { border-color: var(--blue); color: var(--blue); background: #eef3f9; font-weight: 700; }
+
+    .divider { width: 1px; height: 22px; background: var(--border); margin: 0 4px; }
+
+    textarea {
+      width: 100%; min-height: 180px;
+      padding: 14px 16px;
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: .93rem; line-height: 1.75;
+      resize: vertical; font-family: inherit; color: var(--text);
+      transition: border-color .15s;
+    }
+    textarea:focus { outline: none; border-color: var(--teal); }
+
+    .option-row {
+      margin-top: 10px;
+    }
+    .check-label {
+      font-size: .8rem; color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer;
+    }
+    .check-label input[type="checkbox"] { cursor: pointer; }
+    .check-hint { font-size: .74rem; color: #aaa; }
+
+    .input-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 14px;
+    }
+    .char-count { font-size: .78rem; color: var(--muted); }
+
+    .btn-run {
+      background: var(--teal); color: #fff;
+      border: none; padding: 11px 30px;
+      border-radius: 8px; font-size: .95rem; font-weight: 700;
+      cursor: pointer; transition: background .15s;
+      letter-spacing: -.01em;
+    }
+    .btn-run:hover:not(:disabled) { background: var(--teal-light); }
+    .btn-run:disabled { background: #b0b8c1; cursor: not-allowed; }
+
+    /* ─── Loading ─── */
+    .loading {
+      display: none; text-align: center;
+      padding: 48px 24px; color: var(--muted);
+    }
+    .loading.show { display: block; }
+    .spinner {
+      display: inline-block;
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin .75s linear infinite;
+      margin-bottom: 14px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-msg { font-size: .9rem; }
+    .loading-sub { font-size: .78rem; color: #aaa; margin-top: 6px; }
+
+    /* ─── Error ─── */
+    .error-box {
+      background: #fff0f0; border: 1px solid #f5c6c6;
+      border-radius: 8px; padding: 14px 18px;
+      color: var(--error); font-size: .88rem;
+      margin-bottom: 20px; display: none;
+    }
+    .error-box.show { display: block; }
+
+    /* ─── Stream preview ─── */
+    .stream-box {
+      display: none;
+      background: #f5faf8; border: 1px solid #b5ddd0;
+      border-radius: 8px; padding: 16px 18px;
+      font-size: .85rem; line-height: 1.7;
+      white-space: pre-wrap; max-height: 280px;
+      overflow-y: auto; color: #2a3a30;
+      margin-bottom: 20px;
+    }
+    .stream-box.show { display: block; }
+
+    /* ─── Results ─── */
+    .results { display: none; }
+    .results.show { display: block; }
+
+    .tabs {
+      display: flex; gap: 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .tab {
+      padding: 9px 18px;
+      cursor: pointer; font-size: .87rem; font-weight: 500;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color .15s;
+      white-space: nowrap;
+    }
+    .tab.active { color: var(--teal); border-bottom-color: var(--teal); font-weight: 700; }
+    .tab:hover:not(.active) { color: var(--text); }
+    .badge {
+      display: inline-block;
+      background: var(--teal); color: #fff;
+      border-radius: 10px; padding: 0 7px;
+      font-size: .72rem; font-weight: 700;
+      margin-left: 5px; vertical-align: middle;
+    }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .panel-content {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 22px 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+
+    .result-text {
+      font-size: .93rem; line-height: 1.9;
+      white-space: pre-wrap; color: var(--text);
+    }
+
+    /* translation output gets slightly larger text */
+    #content0 { font-size: .96rem; line-height: 2.0; }
+
+    .empty-msg {
+      font-size: .88rem; color: var(--muted);
+      text-align: center; padding: 32px;
+    }
+
+    .panel-footer {
+      margin-top: 14px; display: flex; justify-content: flex-end; gap: 8px;
+    }
+    .btn-copy {
+      background: none; border: 1px solid var(--border);
+      color: var(--muted); padding: 6px 14px;
+      border-radius: 6px; cursor: pointer; font-size: .8rem;
+      transition: all .15s;
+    }
+    .btn-copy:hover { background: var(--bg); color: var(--text); }
+    .btn-copy.copied { color: var(--teal); border-color: var(--teal); }
+
+    /* ─── Token counter ─── */
+    .token-bar {
+      display: none;
+      background: #f0faf7; border: 1px solid #a8dccb;
+      border-radius: 8px; padding: 10px 16px;
+      margin-bottom: 20px;
+      font-size: .8rem; color: #1a5040;
+      gap: 20px; flex-wrap: wrap; align-items: center;
+    }
+    .token-bar.show { display: flex; }
+    .token-item { display: flex; flex-direction: column; gap: 2px; }
+    .token-label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .token-value { font-weight: 700; font-size: .9rem; }
+    .token-cost  { margin-left: auto; font-size: .85rem; color: var(--teal); font-weight: 700; }
+
+    /* ─── Model selector ─── */
+    .model-row {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 14px; flex-wrap: wrap;
+    }
+    .model-row label { font-size: .8rem; color: var(--muted); white-space: nowrap; }
+    .model-btn {
+      padding: 6px 16px;
+      border: 1.5px solid var(--border); border-radius: 20px;
+      background: #fff; color: var(--muted);
+      font-size: .82rem; cursor: pointer; transition: all .15s;
+    }
+    .model-btn:hover { border-color: #aaa; color: var(--text); }
+    .model-btn.active-sonnet { border-color: var(--teal); color: var(--teal); background: #eef7f9; font-weight: 700; }
+    .model-btn.active-opus   { border-color: #7a4fa8; color: #7a4fa8; background: #f5f0ff; font-weight: 700; }
+
+    /* ─── Model guide ─── */
+    .model-guide {
+      display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .model-guide-card {
+      flex: 1; min-width: 220px;
+      border-radius: 10px; padding: 14px 16px;
+      font-size: .8rem; line-height: 1.7;
+    }
+    .model-guide-card.sonnet { background: #eef7f9; border: 1px solid #a8dccb; }
+    .model-guide-card.opus   { background: #f5f0ff; border: 1px solid #c9b8f5; }
+    .model-guide-title { font-weight: 700; font-size: .85rem; margin-bottom: 6px; }
+    .model-guide-card.sonnet .model-guide-title { color: var(--teal); }
+    .model-guide-card.opus   .model-guide-title { color: #5b2be0; }
+    .guide-good  { color: #2a7d5f; }
+    .guide-bad   { color: #b04030; }
+
+    /* ─── Glossary notice ─── */
+    .glossary-notice {
+      font-size: .75rem; color: var(--muted);
+      background: #f8f9fa; border: 1px solid var(--border);
+      border-radius: 6px; padding: 8px 14px;
+      margin-bottom: 20px;
+    }
+    .glossary-notice.warn { color: #8a6d00; background: #fffbe6; border-color: #ffe58f; }
+    .glossary-notice.ok   { color: #1a5040; background: #f0faf7; border-color: #a8dccb; }
+
+    /* ─── Length badge (in 길이 tab) ─── */
+    .len-ok   { color: #2a7d5f; font-weight: 700; }
+    .len-over { color: #c0392b; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-title">울산울주세계산악영화제 · 번역기</div>
+    <div class="header-sub">Ulsan Ulju Mountain Film Festival · Translation Tool</div>
+  </div>
+  <button class="btn-key" onclick="toggleKeyBar()">⚙ API Key</button>
+</header>
+
+<div class="key-bar" id="keyBar">
+  <label>Anthropic API Key</label>
+  <input type="password" id="keyInput" placeholder="sk-ant-..." />
+  <button class="btn-save" onclick="saveKey()">저장</button>
+  <span id="key-status"></span>
+</div>
+
+<div class="main">
+
+  <div id="glossaryNotice" class="glossary-notice">글로서리 로드 중...</div>
+
+  <div class="card">
+
+    <!-- Direction selector -->
+    <div class="selector-row">
+      <span class="selector-label">번역 방향</span>
+      <button class="sel-btn sel-dir active" id="btnKoEn" onclick="selectDirection('ko-en')">한 → 영</button>
+      <button class="sel-btn sel-dir"         id="btnEnKo" onclick="selectDirection('en-ko')">영 → 한</button>
+    </div>
+
+    <!-- Content type selector -->
+    <div class="selector-row">
+      <span class="selector-label">콘텐츠 유형</span>
+      <button class="sel-btn sel-type active" id="btnSynopsis" onclick="selectType('synopsis')">시놉시스</button>
+      <button class="sel-btn sel-type"        id="btnNote"     onclick="selectType('note')">프로그램 노트</button>
+      <button class="sel-btn sel-type"        id="btnBio"      onclick="selectType('bio')">바이오</button>
+    </div>
+
+    <div class="card-label">원문</div>
+    <textarea id="inputText"
+      placeholder="번역할 원문을 여기에 붙여 넣으세요..."
+      oninput="onInput()"></textarea>
+
+    <div class="option-row">
+      <label class="check-label">
+        <input type="checkbox" id="chkFestivals">
+        해외영화제·학교 명칭 포함
+        <span class="check-hint">(원문에 해외 영화제·학교명이 나올 때만 체크)</span>
+      </label>
+    </div>
+
+    <div class="model-row">
+      <label>모델</label>
+      <button class="model-btn active-sonnet" id="btnSonnet" onclick="selectModel('sonnet')">Sonnet 4.6</button>
+      <button class="model-btn"               id="btnOpus"   onclick="selectModel('opus')">Opus 4.8</button>
+    </div>
+
+    <div class="input-footer">
+      <span class="char-count" id="charCount">0자</span>
+      <button class="btn-run" id="runBtn" onclick="runTranslation()">번역 시작</button>
+    </div>
+  </div>
+
+  <!-- Model guide -->
+  <div class="model-guide">
+    <div class="model-guide-card sonnet">
+      <div class="model-guide-title">Sonnet 4.6 — 정확 · 기본값</div>
+      <span class="guide-good">✔ 유리한 경우</span><br>
+      시놉시스·노트·바이오 모든 유형<br>
+      고유명사가 적당히 있는 일반 번역<br>
+      빠른 초벌 확인이 필요할 때<br>
+      반복·대량 작업<br>
+      <br>
+      <span class="guide-bad">✘ 불리한 경우</span><br>
+      모호한 표현·판단 분기가 많을 때<br>
+      최종 인쇄 직전 고품질 검수
+    </div>
+    <div class="model-guide-card opus">
+      <div class="model-guide-title">Opus 4.8 — 최고품질 · A/B 비교용</div>
+      <span class="guide-good">✔ 유리한 경우</span><br>
+      고유명사가 밀집된 까다로운 원고<br>
+      모호한 표현이 많아 판단이 중요할 때<br>
+      최종 인쇄 직전 검수<br>
+      Sonnet 결과가 만족스럽지 않을 때<br>
+      <br>
+      <span class="guide-bad">✘ 불리한 경우</span><br>
+      빠른 피드백이 우선일 때<br>
+      비용 절약이 중요할 때 (약 1.67배)
+    </div>
+  </div>
+
+  <div class="token-bar" id="tokenBar">
+    <div class="token-item">
+      <span class="token-label">입력 토큰</span>
+      <span class="token-value" id="tokIn">—</span>
+    </div>
+    <div class="token-item">
+      <span class="token-label">캐시 쓰기</span>
+      <span class="token-value" id="tokCacheWrite">—</span>
+    </div>
+    <div class="token-item">
+      <span class="token-label">캐시 읽기</span>
+      <span class="token-value" id="tokCacheRead">—</span>
+    </div>
+    <div class="token-item">
+      <span class="token-label">출력 토큰</span>
+      <span class="token-value" id="tokOut">—</span>
+    </div>
+    <div class="token-cost" id="tokCost">—</div>
+  </div>
+
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-msg">번역 진행 중입니다…</div>
+    <div class="loading-sub">글로서리와 스타일 가이드를 참조하는 중입니다</div>
+  </div>
+
+  <div class="stream-box" id="streamBox"></div>
+
+  <div class="results" id="results">
+    <div class="tabs" id="tabs">
+      <div class="tab active" onclick="switchTab(0)">번역문</div>
+      <div class="tab"        onclick="switchTab(1)">확인 필요<span class="badge" id="badge1"></span></div>
+      <div class="tab"        onclick="switchTab(2)">적용 내역</div>
+      <div class="tab"        onclick="switchTab(3)">길이</div>
+    </div>
+
+    <div class="panel active" id="panel0">
+      <div class="panel-content">
+        <div class="result-text" id="content0"></div>
+        <div class="panel-footer">
+          <button class="btn-copy" id="copyBtn0" onclick="copyContent(0)">번역문 복사</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="panel1">
+      <div class="panel-content">
+        <div class="result-text" id="content1"></div>
+      </div>
+    </div>
+    <div class="panel" id="panel2">
+      <div class="panel-content">
+        <div class="result-text" id="content2"></div>
+      </div>
+    </div>
+    <div class="panel" id="panel3">
+      <div class="panel-content">
+        <div class="result-text" id="content3"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- .main -->
+
+<script>
+// ═══════════════════════════════════════════════
+//  Embedded Glossary fallbacks
+// ═══════════════════════════════════════════════
+const EMBEDDED_CSV = `구분,국문,영문,비고
+영화제명,제9회 울산울주세계산악영화제,9th Ulsan Ulju Mountain Film Festival,
+영화제명,2024 울산울주세계산악영화제,Ulsan Ulju Mountain Film Festival 2024,
+인명,이순걸,Lee Soon-geol,
+인명,엄홍길,Um Hong-gil,
+인명,스티븐 베너블스,Stephen Venables,
+인명,크리스 보닝턴,Chris Bonington,
+인명,라인홀트 메스너,Reinhold Messner,
+장소,영남알프스 복합웰컴센터,Yeongnam Alps Welcome Center,
+장소,울주 시네마,Ulju Cinema,
+장소,광장,Square,
+장소,식음료부스,Food Booth,
+장소,옥상,Rooftop,
+장소,데크 쉼터,Deck Lounge,
+장소,힐링 스테이지,Healing Stage,
+장소,움프 놀이터,UMFF Playground,
+장소,소공연장,Mini Stage,
+장소,움프 로드,UMFF Road,
+장소,산악문화관,Mountain House,
+장소,영상체험관,Experience House,
+장소,프레스센터,Press Center,
+장소,게스트 시사실,Guest Video Room,
+장소,세미나실,Seminar Room,
+장소,안내,Information,
+장소,티켓부스,Ticket Booth,
+장소,기념품샵,Gift Shop,
+장소,회의실,Meeting Room,
+장소,움프 시네마,UMFF Cinema,
+장소,알프스 시네마 1,Alps Cinema 1,
+장소,알프스 시네마 2,Alps Cinema 2,
+장소,언덕 극장,Hill Cinema,
+장소,카페 뒤 극장,Cafe Cinema,
+장소,울주 시네마 1,Ulju Cinema 1,
+장소,울주 시네마 2,Ulju Cinema 2,
+장소,울주 시네마 3,Ulju Cinema 3,
+섹션,국제경쟁,International Competition,
+섹션,아시아경쟁,Asian Competition,
+섹션,산,Mountain,
+섹션,자연,Nature,
+섹션,인간,Human,
+섹션,올해의 산,Guest Country,
+섹션,- 히말라야 - 네팔,- Himalaya - NEPAL,
+섹션,"헬로, 트렌토!","Hello, Trento!",
+섹션,"10년, 10편","10 years, 10 films",
+섹션,코리안 웨이브,Korean Wave,
+섹션,투게더,Together,
+섹션,움프프로젝트,UMFF Project,
+섹션,- 2025 움프서밋,- UMFFsummit 2025,
+섹션,- 2025 움프멘터리,- UMFFmentary 2025,
+시상,대상,Grand Prize,
+시상,작품상,Best Film,
+시상,감독상,Best Director,
+시상,촬영상,Best Cinematography,
+시상,심사위원 특별상,Special Jury Prize,
+시상,넷팩상,NETPAC Award,
+시상,청소년심사위원상,Youth Jury Award,
+시상,산악영화 관객상,Audience Award - Mountain Film,
+시상,울산울주세계산악문화상,Ulsan Ulju Mountain Culture Award,
+시상,특별공로상,Special Achievement Award,
+프로그램,게스트와의 만남,Guest Visit,영화 감독·배우 등 관계자 미참석 시
+프로그램,개막작 / 폐막작,Opening Film / Closing Film,
+프로그램,문화가 있는 날 움프극장,UMFF Screening,
+프로그램,찾아가는 움프극장,,
+프로그램,UMCA 강연,UMCA Lecture,
+프로그램,자연에서 노래하다,Singing in Nature,
+프로그램,자연에서 이야기하다,Talking in Nature,
+프로그램,자연에서 채우다,Playing in Nature,
+프로그램,자연에서 펼치다,Viewing in Nature,
+프로그램,온라인 상영관,UMFF on Air,
+프로그램,게스트와의 만남,Q&A,영화 감독·배우 등 관계자 참석 시
+프로그램,움프 토크,UMFF Talk,영화 관계자 미참석 / 상영 전 해설 포함
+프로그램,움프 무대인사,UMFF Greeting,
+프로그램,움프 포럼,UMFF Forum,
+프로그램,비박 상영,Bivouac Screening,
+프로그램,배리어프리 상영,Barrier-free,
+프로그램,라이브 더빙 극장,Live Dud Theater,
+용어,청소년심사위원,Youth Jury,
+용어,개막식 / 폐막식,Opening Ceremony / Closing Ceremony,
+용어,움프 서포터즈,UMFF Supporters,
+용어,온라인 상영관 관람권,UMFF on Air Ticket,
+용어,움프 패스,UMFF Pass,
+용어,장소,Venue,
+용어,소요시간,Duration,
+용어,일시,Date/Time,
+용어,구성,Content,
+용어,관객리뷰단,Audience Reviewer,
+국가,한국,Korea,
+국가,미국,USA,
+국가,대만,Taiwan,
+국가,홍콩,"Hong Kong, China",
+등급,전체 관람가,General (G),
+등급,12세 이상 관람가,Under 12 not admitted (12),
+등급,15세 이상 관람가,Under 15 not admitted (15),
+등급,18세 이상 관람가,Under 18 not admitted (18),
+자막,영자막 있음,English Subtitles,
+자막,영자막 없음,No English Subtitles,
+자막,대사 없음,No Dialogue,
+월,1월,Jan.,
+월,2월,Feb.,
+월,3월,Mar.,
+월,4월,Apr.,
+월,5월,May.,
+월,6월,June,
+월,7월,July,
+월,8월,Aug.,
+월,9월,Sep.,
+월,10월,Oct.,
+월,11월,Nov.,
+월,12월,Dec.,
+가격,"15,000원","15,000 KRW",
+가격,"3,000원","3,000 KRW",
+주소,"44952 울산광역시 울주군 알프스온천5길 103-8 영상체험관 B1, 울산울주세계산악영화제 사무국","Ulsan Ulju Mountain Film Festival office, B1, Experience House, 103-8 Alpeuseuoncheon 5-gil, Ulju-gun, Ulsan, Korea 44952",
+전화번호,052 248 6450,+82 52 248 6450,`;
+
+const EMBEDDED_FESTIVALS = `구분,국문,영문,비고
+해외영화제,핫독국제다큐멘터리영화제,Hot Docs International Documentary Film Festival,
+해외영화제,밴프산악영화제,Banff Center Mountain Film,
+해외영화제,켄달산악축제,Kendal Mountain Festival,
+해외영화제,선댄스영화제,Sundance Film Festival,
+해외영화제,와일드스크린영화제,Wildscreen Film Festival,
+해외영화제,트렌토영화제,Trento Film Festival,
+해외영화제,반스코국제산악영화제,Bansko International Film Festival for Mountains,
+해외영화제,빌바오산악영화제,Bilbao Mendi Film Festival,
+해외영화제,체르비노국제산악영화제,Cervino Cine Mountain Festival,
+해외영화제,던디산악영화제,Dundee Mountain Film Festival,
+해외영화제,윌리암스버그독립영화제,Williamsburg Independent Film Festival,
+해외영화제,텔룰라이드산악영화제,Telluride Mountain Film Festival,
+해외영화제,사비니애니메이션영화제,Animation Film Festival of Savigny,
+해외영화제,로테르담국제영화제,International Film Festival Rotterdam,
+해외영화제,비종뒤릴영화제,Visions du Réel,
+해외영화제,포르토벨로영화제,Portobello Film Festvial,
+해외영화제,시네마뒤릴,Cinéma du Réel,
+해외영화제,에든버러국제영화제,Edinburg International Film Festival,
+해외영화제,누보시네마영화제,Festival du Nouveau Cinema,
+해외영화제,카를로비바리국제영화제,Karlovy Vary International Film Festival,
+해외영화제,브루클린영화제,Brooklyn Film Fest,
+해외영화제,아스펜단편영화제,Aspen Shortsfest,
+해외영화제,앤아버영화제,Ann Arbor Film Festival,
+해외영화제,예테보리국제영화제,Gothenburg Film Festival,
+해외영화제,브졸국제아시아영화제,Vesoul International Film Festival of Asian Cinemas,
+해외영화제,오트랑국제산악영화제,Festival International du Film de Montagne Autrans,
+해외영화제,그라츠산악영화제,International Film Festival Graz,
+해외영화제,더치산악영화제,Dutch Mountain Film Festival,
+해외영화제,클레르몽페랑국제단편영화제,Clermont-Ferrand,
+해외영화제,내쉬빌영화제,Nashville Film Festival,
+해외영화제,크라쿠프영화제,Krakow Film Festival,
+해외영화제,예루살렘영화제,Jerusalem Film Festival,
+해외영화제,칸영화제,Cannes Film Festival,
+해외영화제,밴쿠버국제영화제,Vancouver International Film Festival,
+해외영화제,토론토국제영화제,Toronto International Film Festival,
+해외영화제,라이프치히국제다큐멘터리영화제,DOK Leipzig - International Festival for Documentary Film,
+해외영화제,마르델플라타국제영화제,Mar del Plata International Film Festival,
+해외영화제,탐페레영화제,Tampere Film Festival,
+해외영화제,카트만두세계산악영화제,Kathmandu International Mountain Film Festival,
+해외학교,런던예술대학교,University of the Arts London,
+해외학교,스코페드라마예술대학,Faculty of Dramatic Arts Skopje,
+해외학교,국립연극영화아카데미,National Academy for Theatre and Film Arts(NATFA),
+해외학교,폼페우파브라대학교,Pompeu Fabra University,
+해외학교,뒤셀도르프예술대학,Art Academy of Düsseldorf,
+해외학교,빈영화아카데미,Vienna Film Academy,
+해외학교,미들베리대학,Middlebury College,
+해외학교,요크대학교,York University,
+해외학교,존무어대학,John Moores University,
+해외학교,루쉰미술아카데미,Lu Xun Academy of Fine Arts,
+해외학교,충칭대학교,Chongqing University,
+해외학교,콜롬비아국립대학교,National University of Colombia,
+해외학교,베오그라드대학교,University of Belgrade,
+해외학교,코넬대학교,Cornell University,
+해외학교,바츨라프홀라르대학교,Václav Hollar College,
+해외학교,바덴뷔르템베르크영화학교,Filmakademie Baden-Württemberg,
+해외학교,푸젠가톨릭대학교,Fu Jen Catholic University,
+해외학교,루체른응용과학예술대학,Lucerne University of Applied Sciences and Arts,
+해외학교,위트레흐트예술대학,University of the Arts Utrecht,
+해외학교,빈데샤임대학,Windesheim College,
+해외학교,휴베어드대학,Hugh Baird College,
+해외학교,타우슨대학교,Towson University,
+해외학교,함부르크대학,Hamburg College,
+해외학교,콘코디아대학교,Concordia University,`;
+
+const EMBEDDED_RULES = `# 표기 규칙 (Notation Rules)
+
+울산울주세계산악영화제 출판물 표기 규칙.
+국문↔영문 대조쌍은 proper-nouns.csv에, 규칙은 이 파일에 둔다.
+
+## 영화 제목 표기
+- 영화 제목은 꺽쇠 < > 를 사용하고, 영문 제목은 이탤릭체로 쓴다. (예: <화양연화> / *In the Mood for Love*)
+- 국영문 병기 시에는 꺽쇠만 사용한다. (예: <영원과 하루 Eternity and a Day>)
+- 저작권자의 별도 제목표기 요청이 있을 경우 요청에 따라 표기한다.
+- 제목·제작연도·감독을 함께 표기할 경우:
+  - <화양연화>(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
+  - <영원과 하루 Eternity and a Day>(테오 앙겔로풀로스 Theo Angelopoulos, 1998)
+
+## 작품 정보 표기
+- 표기 순서: 제작국가, 제작연도, 러닝타임, 색채, 카테고리, 관람 등급.
+- 예: Korea | 2015 | 114min | Color | Documentary | G
+
+## 기타 영화 관련
+- 제작연도는 마지막 최종 작업(제작)이 완료된 시점만 표기한다. (2002-2003 → X, 2003 → O)
+- 러닝타임은 분·초 단위 모두 올림하여 분 단위로만 표기한다. 숫자 바로 뒤에 min, 마침표 없음. (예: 53min)
+- 색채 표기: 컬러는 Color, 흑백은 B&W.
+- 프리미어 표기: World Premiere / International Premiere / Asian Premiere / Korean Premiere 중 해당 사항 표기.
+
+## 서적 표기
+- 도서 제목은 겹낫표 『 』, 영문은 이탤릭, 저자명은 ( ) 안에 표기한다.
+- 예: 『도전』 (크리스 보닝턴) / *Cahier du Cinema* (Chris Bonington)
+
+## 기타 표기 (논문·정기간행물·TV·전시·음반·공연 등)
+- 논문·정기간행물·TV 프로그램의 국문 제목은 낫표 「 」, 영문은 이탤릭, 저자명은 ( ).
+- 전시는 《 》 사용, 국영문 동일.
+- 음반의 한글·영문 표기는 낫표 「 」 안에, 노래 제목은 작은따옴표 ' '.
+- 학교·단체·회사 명칭의 한글 표기는 띄어쓰기 없음. (예: 울주세계산악영화제조직위원회)
+- 공연: 국문은 작은따옴표 ' ' / 영문은 따옴표 없이 앞 글자만 대문자, 이탤릭
+
+## 이름 표기
+- 외국인의 이름은 현지 발음에 가깝게 표기함을 원칙으로 하되, 현행 외래어 표기법을 준수한다.
+- 한국·중국·일본 등 한자식 이름은 성을 앞에 표기하고 성은 대문자로. 영문 이름일 경우 성을 뒤에 표기.
+- 한국·중국 이름은 성과 이름을 붙여서 명기한다.
+- 별명·애칭은 첫 번째 언급 시 작은따옴표 ' ' 안에 표기하고, 이후에는 별도 문장부호를 쓰지 않는다.
+
+## 일반 콘텐츠 (문장부호) — 국영문 동일
+- 대화 문구, 인용 구문은 큰따옴표 " " 를 사용한다.
+- 인용구를 문장 그대로 사용하지 않을 경우 작은따옴표 ' ' 를 사용한다.
+- 말줄임표는 아래 점 3개만 사용한다.
+- 콜론(:), 세미콜론(;)은 앞 글자와 붙여 쓰고 뒤에 오는 글자와는 한 칸 띄운다.
+
+## 날짜 / 시간 표기
+- 날짜·시간: 9. 26.(금) 19:00 / Sep. 26(Fri) 19:00
+- 기간: 9. 26.(금) ~ 9. 20.(화) 09:00 ~ 20:00 / Sep. 26(Fri) - 30(Tue) 09:00 - 20:00
+- 24시간 표시: 04:00 / 16:00 (4 digit 방식). AM/PM 사용하지 않음.
+- n번째·n주년: 표지 등에서는 th를 윗첨자로 표기, 본문에서는 윗첨자 X.
+
+## 회사 표기
+- 회사 공식 표기를 따른다: Co. / Inc. / Ltd. / Co.,Ltd.`;
+
+const EMBEDDED_STYLE = `# UMFF 프로그램북 번역 스타일 가이드 (v2)
+
+## 0. 출처 위계
+충돌 시: 표기 시트(proper-nouns.csv + notation-rules.md) > translation_memory > 본 스타일 가이드.
+
+## 1. 영→한 번역
+
+### 1-1. 시놉시스 (영→한)
+- 규칙 1: 영어 관계절·분사구를 한국어 관형절로 끌어당긴다.
+  예) "newly married and pregnant Pema" → "결혼한 지 얼마 되지 않은 임산부 페마"
+- 규칙 2: 영어 단문 나열을 연결어미(~고, ~며, ~지만, ~는데)로 잇는다. 의미 흐름이 자연스러울 때만.
+- 규칙 3: 시놉시스는 영어 시제에 관계없이 한국어 현재형으로 서술한다.
+- 규칙 4: 외국 인명 첫 등장 시 한글(영문) 병기. 이후 한글만.
+
+### 1-2. 프로그램 노트 (영→한)
+- 규칙 5: 1인칭(I/we/my) 노트는 한국어에서도 1인칭 유지. 주어 반복 불필요.
+- 규칙 6: 3인칭 노트에서 "This film/The film/감독명" 반복 주어 생략, 술어만 이어간다.
+- 규칙 7: 마지막 문장을 "~한 영화.", "~이 돋보이는 애니메이션."처럼 명사형으로 끝낼 수 있다(강제 아님).
+- 규칙 8: 직접 인용·대사 → 큰따옴표. 의역 인용·강조어 → 작은따옴표. "영어 큰따옴표는 무조건 한국어 작은따옴표" 일반화는 틀렸다.
+
+### 1-3. 바이오 (영→한)
+- 규칙 9: 이름 생략, "[국가] 출신의 [직함]" 또는 "[활동지] 기반의 [직함]"으로 시작.
+- 규칙 10: 영어 현재완료·과거형을 한국어 현재형으로 처리.
+- 규칙 11: 국문 작품명은 꺾쇠 <작품명>, 영문은 이탤릭. 병기 시 꺾쇠 하나 <한글 English>.
+
+## 2. 한→영 번역
+
+### 2-1. 시놉시스 (한→영)
+- 규칙 12: 배경 맥락을 문두 부사구로 배치.
+  예) "6.25 전쟁으로 부모를 잃은" → "During the Korean War, ... lose their parents"
+- 규칙 13: 시간 전환에 전환사(Years later, Meanwhile, Eventually, After, Only then) 사용.
+- 규칙 14: 한국어 관형절을 영어 관계절(who/which/that)·분사구문으로 변환.
+- 규칙 15: 영어에서도 현재 시제(historical present)로 서술.
+- 규칙 16: 한국 고유어는 음차 유지 또는 풀어서 설명. 한 작품 내에서 일관 유지.
+
+### 2-2. 프로그램 노트 (한→영)
+- 규칙 17: 3인칭 노트는 "This film..." 또는 "The film..."으로 시작.
+- 규칙 18: 1인칭(나/우리) 노트는 I/we 유지. 생략된 주어도 문맥으로 추정해 명시.
+- 규칙 19: 한국어 긴 복문을 영어에서 2~3문장으로 분리.
+
+### 2-3. 바이오 (한→영)
+- 규칙 20: 감독 이름을 주어로 첫 문장 시작.
+- 규칙 21: 한국어 완료 사실을 현재완료(has won, has directed)로 처리.
+- 규칙 22: 한국 영화 제목은 꺾쇠 없이 영문 번역 제목(이탤릭)으로 표기.
+
+## 3. 길이 기준 (공백 포함, 조직위 공식 스펙)
+| 유형 | 국문 | 영문 글자 | 영문 단어 |
+|---|---|---|---|
+| 시놉시스 | 215자 | 390자 | 70단어 |
+| 프로그램 노트 | 150자 | 260자 | 35단어 |
+| 바이오 | 110자 | 260자 | 50단어 |
+목표 상한. 내용 누락보다 초과를 우선 허용. 짧은 원문을 한도까지 늘리지 않는다.
+
+## 4. 고유명사 표기 원칙
+- 4-2. 한국 인명 영문 로마자: 성+공백+이름, 이름 음절은 하이픈. (예: Bae Chang-ho, Um Hong-gil)
+- 본인 별도 영문명이 있으면 우선. (예: 이순걸 → Lee Soon-geol)
+- 한·중·일 한자식 이름은 성 앞에, 영문식 이름은 성 뒤에.
+
+## 6. 표기법 세칙
+- 따옴표: 대화·정확 인용 → 큰따옴표. 의역·강조어 → 작은따옴표.
+- 말줄임표: 아래 점 3개(...) 만. 중간점 ···, 유니코드 … 금지.
+- 콜론·세미콜론: 앞 글자에 붙이고 뒤는 한 칸.
+- 작품 정보: 국가 | 연도 | 러닝타임(53min, 마침표X) | Color/B&W | 카테고리 | 등급
+- 별명·애칭: 첫 언급 시 작은따옴표, 이후 없음.
+- 날짜: 24시간 4자리, AM/PM 미사용, 범위는 - 앞뒤 한 칸.`;
+
+const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
+
+2025년 확정 원고 문체·길이 참고용. 표기 규칙의 최종 권위는 notation-rules.md.
+
+## 시놉시스 · 영→한
+
+**예시 (SHAMBHALA)**
+- EN: In a Himalayan polyandrous village in Nepal, newly married and pregnant Pema tries to make the best of her new life. But soon, her first husband Tashi vanishes on the trade route to Lhasa. Accompanied by her monk de facto husband, Karma, she embarks on a journey into the unforgiving wilderness to find him, evolving into a quest of self-discovery and liberation.
+- KO: 네팔 히말라야의 일처다부제 마을. 결혼한 지 얼마 되지 않은 임산부 페마는 새로운 삶에 적응하려 애쓴다. 그러나 곧 그녀의 첫 번째 남편 타시가 라싸로 향하는 교역로에서 실종되고 만다. 페마는 자신의 또 다른 남편인 카르마와 함께 타시를 찾아 험난한 길을 떠나고, 점차 이 여정은 자아 발견과 해방의 여정으로 이어진다.
+- *(규칙)* 관형절 끌어당김 · 단문→연결어미 · 현재형 — KO 178/215자, EN 363/390자·62/70단어
+
+**예시 (The Woolen Sweater)**
+- EN: Based in the multi-cultural settings of Eastern hills of Nepal, film takes us on a journey filled with the warmth of love and human connections. The film follows Dharanidhar Kafle, a skilled mason who has inherited his craft from his father. Dharani frequently visits his father's soul friend in the highlands where he reconnects with his childhood crush, Phool Gurung.
+- KO: 네팔 동부 구릉지대의 다문화적 배경 속에서 펼쳐지는 이 영화는, 사랑과 사람이 주는 따스함이 가득 찬 여정으로 우리를 초대한다. 아버지로부터 기술을 물려받은 숙련된 석공 다라니다르 카플레. 그는 종종 아버지의 절친한 친구를 찾아 구릉지대로 향하고, 그곳에서 어린 시절 짝사랑했던 풀 구룽과 재회하게 된다.
+- *(규칙)* 분사구→관형절 · 현재형 · 인물 첫 등장 처리 — KO 170/215자, EN 369/390자·60/70단어
+
+## 시놉시스 · 한→영
+
+**예시 (Mind Over Matter)**
+- KO: 매사에 최선을 다하며 열정적으로 살아온 주인공 정민. 하지만 점점 자신의 이러한 모습에 의구심을 품게 된다. 이렇게 사는 것이 맞는 것일까 고민하며 방황하던 정민은 자신처럼 그리고 자신보다 열심히 하루하루를 살아가는 친구들과 가족들의 모습을 보게 되고 다시 한번 자신감을 갖게 된다.
+- EN: Jung-min has always lived passionately, giving his best in everything he does. However, he gradually begins to question this way of life. Is this really the right path? As he struggles with doubt and uncertainty, he encounters friends and family who, like him, or even more so, live each day with dedication.
+- *(규칙)* historical present · 인물 주어 소개 · 관형절→관계절/분사절 — KO 158/215자, EN 308/390자·52/70단어
+
+**예시 (End of Bardo)**
+- KO: 이유를 모른 채 갯벌에서 눈을 뜬 남자는 집으로 향하는 과정에서 자신이 망자임을 알게 된다. 그러나 죽음을 깨달은 뒤에도 고독과 혼란은 끝나지 않는다. 갯벌에서 시작한 '바르도'는, 도심을 지나 산에서 끝난다. 이 영화는 바다에서 산 정상까지, 죽음을 받아들이는 긴 모험을 떠나는 한 사람의 이야기이다.
+- EN: The man stands on the mudflat. On his way home, he realizes that he is dead. Lost in enduring solitude and confusion, he encounters a psychopomp. "Bardo" begins on the mudflat, passes through the city, and ends at the mountain ridge. This film follows the man's story from the shore to the mountaintop, a long journey toward embracing one being's death.
+- *(규칙)* 현재형 · 병렬구조 · 개념어 "Bardo" 따옴표 — KO 169/215자, EN 353/390자·61/70단어
+
+## 프로그램 노트 · 영→한
+
+**예시 (Placekeepers)**
+- EN: In remote Tusheti, Georgia, a dwindling highland community grapples with rural depopulation, intergenerational change, and Soviet memory—offering a rare glimpse into alternative ways of living, collective resilience, and an uncertain path into the future.
+- KO: 조지아의 투셰티, 쇠퇴하고 있는 고산지대 공동체는 농촌 인구 감소, 세대 간 변화, 소련 체제의 잔재라는 어려움을 겪고 있다. 동시에 대안적 생활 방식과 집단 회복력, 미래로 이어지는 불확실한 길을 엿볼 수 있는 기회를 제공한다.
+- *(규칙)* 3인칭 노트 · 반복 주어 생략 · em-dash 부연 — KO 128/150자, EN 255/260자·34/35단어
+
+**예시 (Savanna and the Mountain)**
+- EN: Exploring cinema as a gesture of resistance, a village's fictional daily struggle against big capital, a mirror of our collective fight against deep political impotence. Perhaps cinema returns to people through nature. Perhaps not.
+- KO: 저항의 몸짓을 탐구하는 영화. 거대 자본에 맞선 어느 마을의 허구적인 일상이자 정치적 무능에 맞선 집단적 투쟁의 반영. 어쩌면 영화는 자연을 통해 인간에게 돌아갈지도 모른다. 어쩌면 아닐 수도 있고.
+- *(규칙)* 명사형 종결 · 단문 나열 · 분위기 유지 — KO 111/150자, EN 231/260자·34/35단어
+
+## 프로그램 노트 · 한→영
+
+**예시 (The Wishes)**
+- KO: 우리는 꽤 자주 서로를 오해한다. 하지만 그런 실수도 바로잡을 기회를 주는 게 확실한 사랑의 방법이 아닐까 하는 생각에서 이야기를 만들었다.
+- EN: We often misunderstand each other. However, I created this story believing that giving each other the opportunity to correct even those misunderstandings could be a true act of love.
+- *(규칙)* 1인칭 유지 — KO 78/150자, EN 182/260자·29/35단어
+
+## 바이오 · 영→한
+
+**예시 (Far Enough)**
+- EN: Julien Carot is an independent filmmaker based in Paris. He has directed several music videos and experimental short films, while also contributing to a wide range of projects through various post-production roles. Far Enough is his first documentary film.
+- KO: 파리를 중심으로 활동하는 독립 영화감독. 여러 뮤직비디오와 단편 실험 영화를 연출했으며, 다양한 프로젝트의 후반 작업에 참여했다. <충분해>는 그의 첫 번째 다큐멘터리 영화다.
+- *(규칙)* 이름 생략, [활동지] 기반 [직함] · <작품명>(국문 꺾쇠) · 현재완료→현재형 — KO 98/110자, EN 256/260자·39/50단어
+
+**예시 (Writing Home)**
+- EN: Eva Matejovičová is a Slovak filmmaker living in Prague and studying at Film and TV School of Academy of Performing Arts. As a big animal lover, her films revolve around animals, starting with her short film Sanctuary.
+- KO: 프라하에 거주하는 슬로바키아 출신 영화감독으로 프라하공연예술아카데미 영화TV학부(FAMU)에 재학 중이다. 동물 애호가인 그녀는 단편 <생크추어리>를 비롯해 동물을 중심으로 한 작품을 만들어 왔다.
+- *(규칙)* 이름 생략, [거주지] 거주 [국가] 출신 [직함] · 단편 <작품명> — KO 110/110자, EN 218/260자·37/50단어
+
+## 바이오 · 한→영
+
+**예시 (What You are Touching Now)**
+- KO: 조각을 전공한 시각예술가 홍이현숙은 인간 중심의 주류에서 벗어나고자 한다. 일상의 수행을 통해 길어 올린 신체의 잠재력으로 닫힌 것을 뚫고 들어가는 퍼포먼스를 선보이며, 그 과정을 기록한다.
+- EN: Visual artist Hong Lee Hyun-sook, who majored in sculpture, seeks to move beyond human-centered paradigms. Through daily practices that cultivate the body's latent potential, she stages and documents performances that break into what is closed.
+- *(규칙)* 이름 주어 · 직함+전공 앞에 · 현재형 — KO 106/110자, EN 244/260자·35/50단어
+
+**예시 (The House Beyond the Stairs)**
+- KO: 임왕태 감독의 장편영화 <이별식당>의 각본을 맡아 인도 차트라파티쉬바지영화제에서 최우수로맨스상을 수상했다. 이후 직접 각본과 감독을 맡은 영화 <시인들의 창>은 부산국제영화제에서 상영했다.
+- EN: He wrote the screenplay for the feature film Farewell Restaurant(Lim Wang-tae), which won the Best Romance Film award at the 2019 Chhatrapati Shivaji IFF. Subsequently, he wrote and directed the film Poets' Window, which was screened at the 2021 Busan IFF.
+- *(규칙)* 한국 영화 제목→영문 번역 제목(이탤릭) · 현재완료 · 영화제 약칭 — KO 105/110자, EN 256/260자·41/50단어`;
+
+// ═══════════════════════════════════════════════
+//  State
+// ═══════════════════════════════════════════════
+let properNouns    = EMBEDDED_CSV;
+let festivalsData  = EMBEDDED_FESTIVALS;
+let notationRules  = EMBEDDED_RULES;
+let styleGuide     = EMBEDDED_STYLE;
+let tmExamples     = EMBEDDED_EXAMPLES;
+let glossaryReady  = false;
+let selectedModel     = 'sonnet';
+let selectedDirection = 'ko-en';
+let selectedType      = 'synopsis';
+
+const MODEL_CONFIG = {
+  sonnet: {
+    id:         'claude-sonnet-4-6',
+    label:      'Sonnet 4.6',
+    input:      3.00,
+    cacheWrite: 3.75,
+    cacheRead:  0.30,
+    output:     15.00,
+  },
+  opus: {
+    id:         'claude-opus-4-8',
+    label:      'Opus 4.8',
+    input:      5.00,
+    cacheWrite: 6.25,
+    cacheRead:  0.50,
+    output:     25.00,
+  },
+};
+
+const TYPE_LABELS = {
+  synopsis: '시놉시스',
+  note:     '프로그램 노트',
+  bio:      '바이오',
+};
+
+const LEN_LIMITS = {
+  synopsis: { ko: 215, enChar: 390, enWord: 70 },
+  note:     { ko: 150, enChar: 260, enWord: 35 },
+  bio:      { ko: 110, enChar: 260, enWord: 50 },
+};
+
+// ═══════════════════════════════════════════════
+//  Glossary loader
+// ═══════════════════════════════════════════════
+async function loadGlossary() {
+  const notice = document.getElementById('glossaryNotice');
+  const loaded = [];
+  const failed = [];
+
+  async function tryFetch(url, label) {
+    try {
+      const r = await fetch(url);
+      if (!r.ok) throw new Error(r.status);
+      return { label, text: await r.text() };
+    } catch {
+      failed.push(label);
+      return null;
+    }
+  }
+
+  const results = await Promise.all([
+    tryFetch('./glossary/proper-nouns.csv',   'proper-nouns.csv'),
+    tryFetch('./glossary/festivals-schools.csv', 'festivals-schools.csv'),
+    tryFetch('./glossary/notation-rules.md',  'notation-rules.md'),
+    tryFetch('./glossary/style_guide_v2.md',  'style_guide_v2.md'),
+    tryFetch('./glossary/tm-examples.md',     'tm-examples.md'),
+  ]);
+
+  if (results[0]) { properNouns   = results[0].text; loaded.push(results[0].label); }
+  if (results[1]) { festivalsData = results[1].text; loaded.push(results[1].label); }
+  if (results[2]) { notationRules = results[2].text; loaded.push(results[2].label); }
+  if (results[3]) { styleGuide    = results[3].text; loaded.push(results[3].label); }
+  if (results[4]) { tmExamples    = results[4].text; loaded.push(results[4].label); }
+
+  glossaryReady = true;
+  if (failed.length === 0) {
+    notice.className = 'glossary-notice ok';
+    notice.textContent = `✓ 글로서리 로드 완료 (${loaded.join(' · ')})`;
+  } else if (loaded.length > 0) {
+    notice.className = 'glossary-notice warn';
+    notice.textContent = `⚠ 일부 파일 로드 실패 (${failed.join(', ')}) — 내장 데이터로 대체. 나머지 파일은 최신 버전 사용.`;
+  } else {
+    notice.className = 'glossary-notice warn';
+    notice.textContent = '⚠ 글로서리 파일을 로드하지 못했습니다. 내장된 데이터로 실행합니다. (서버 환경에서 실행하면 최신 파일을 불러옵니다)';
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  System Prompt
+// ═══════════════════════════════════════════════
+function buildSystemPrompt() {
+  const dirLabel  = selectedDirection === 'ko-en' ? '한국어 → 영어' : '영어 → 한국어';
+  const typeLabel = TYPE_LABELS[selectedType];
+  const limits    = LEN_LIMITS[selectedType];
+  const inclFest  = document.getElementById('chkFestivals').checked;
+
+  const lenSpec = selectedDirection === 'ko-en'
+    ? `영문 ${limits.enChar}자 이하 · ${limits.enWord}단어 이하`
+    : `국문 ${limits.ko}자 이하`;
+
+  const festSection = inclFest ? `\n\n## 참조 자료 5: 해외 영화제·학교 명칭 (festivals-schools.csv)\n\`\`\`\n${festivalsData}\n\`\`\`` : '';
+
+  return `당신은 UMFF(울산울주세계산악영화제) 출판물 한↔영 **초벌 번역자**입니다.
+의미를 정확히 옮기고 자연스러운 문장을 만들되, 최종 확정은 담당자/원어민 감수의 몫입니다.
+
+## 번역 설정
+- **방향**: ${dirLabel}
+- **유형**: ${typeLabel}
+- **길이 기준**: ${lenSpec} (목표 상한. 초과 시 누락보다 초과 우선. 짧은 원문을 늘리지 말 것.)
+
+## 절대 원칙
+1. **고정 명칭은 글로서리 먼저.** 고유명사·감독명·작품명·섹션·시상·장소·영화제·학교가 나오면 proper-nouns.csv에서 조회하고, 있으면 그 표기를 그대로 쓴다. 더 자연스러워 보여도 바꾸지 않는다.
+2. **글로서리에 없으면 [확인필요: 원문]으로 표시**한다("틀림"이 아니라 "미확정").
+3. 국문 하나에 영문이 여럿일 때(예: 게스트와의 만남 = Guest Visit / Q&A) 문맥에 맞는 것을 고르고, 애매하면 [확인필요].
+4. **의미·정보를 임의로 더하거나 빼지 않는다.** 길이 한도 때문에 내용을 누락하지 않는다.
+5. 사람 이름이 본인 선호 영문명을 가진 경우 표준 로마자보다 우선(예: 이순걸 → Lee Soon-geol).
+6. 글로서리 오타(Festvial, Edinburg 등)는 임의로 교정하지 말고 글로서리 값을 그대로 사용한다.
+
+---
+
+## 참조 자료 1: proper-nouns.csv (고유명사·고정 명칭 국문↔영문 대조표)
+\`\`\`
+${properNouns}
+\`\`\`
+
+---
+
+## 참조 자료 2: 표기 규칙 (notation-rules.md)
+${notationRules}
+
+---
+
+## 참조 자료 3: 번역 스타일 가이드
+${styleGuide}
+
+---
+
+## 참조 자료 4: 번역 예시 (유형×방향별 few-shot)
+${tmExamples}${festSection}
+
+---
+
+## 출력 형식 (반드시 아래 구분자를 그대로 사용할 것)
+
+[SECTION:번역문]
+번역 결과 전문. 고정 명칭은 글로서리 표기 그대로, 미확정 고유명사는 [확인필요: 원문] 인라인 표시.
+[/SECTION]
+
+[SECTION:확인필요]
+유형별 나열 — 작품명: X / 인명: Y / 표기: Z  (없으면 "확인 필요 항목 없음" 한 줄만)
+[/SECTION]
+
+[SECTION:적용]
+글로서리에서 적용한 고정 명칭과, 판단이 필요했던 규칙을 간단히. (없으면 생략 가능)
+[/SECTION]
+
+[SECTION:길이]
+유형 / 원문 N자 / 번역문 N자 · N단어 / 한도 대비 (초과 시 표시)
+[/SECTION]`;
+}
+
+// ═══════════════════════════════════════════════
+//  Selectors
+// ═══════════════════════════════════════════════
+function selectDirection(dir) {
+  selectedDirection = dir;
+  document.getElementById('btnKoEn').classList.toggle('active', dir === 'ko-en');
+  document.getElementById('btnEnKo').classList.toggle('active', dir === 'en-ko');
+}
+
+function selectType(type) {
+  selectedType = type;
+  document.getElementById('btnSynopsis').classList.toggle('active', type === 'synopsis');
+  document.getElementById('btnNote').classList.toggle('active', type === 'note');
+  document.getElementById('btnBio').classList.toggle('active', type === 'bio');
+}
+
+function selectModel(key) {
+  selectedModel = key;
+  document.getElementById('btnSonnet').className = 'model-btn' + (key === 'sonnet' ? ' active-sonnet' : '');
+  document.getElementById('btnOpus').className   = 'model-btn' + (key === 'opus'   ? ' active-opus'   : '');
+}
+
+// ═══════════════════════════════════════════════
+//  API Key
+// ═══════════════════════════════════════════════
+function toggleKeyBar() {
+  const bar = document.getElementById('keyBar');
+  bar.classList.toggle('open');
+  if (bar.classList.contains('open')) {
+    document.getElementById('keyInput').value = localStorage.getItem('umff_api_key') || '';
+    refreshKeyStatus();
+  }
+}
+
+function saveKey() {
+  const val = document.getElementById('keyInput').value.trim();
+  if (!val) { alert('API Key를 입력하세요.'); return; }
+  localStorage.setItem('umff_api_key', val);
+  refreshKeyStatus();
+  document.getElementById('keyBar').classList.remove('open');
+}
+
+function refreshKeyStatus() {
+  const key = localStorage.getItem('umff_api_key') || '';
+  const el = document.getElementById('key-status');
+  if (key) {
+    el.textContent = `저장됨: ${key.slice(0, 10)}…`;
+    el.style.color = '#1a5040';
+  } else {
+    el.textContent = '미설정';
+    el.style.color = '#999';
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  UI helpers
+// ═══════════════════════════════════════════════
+function onInput() {
+  const len = document.getElementById('inputText').value.length;
+  document.getElementById('charCount').textContent = `${len.toLocaleString()}자`;
+}
+
+function switchTab(idx) {
+  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+}
+
+function setLoading(on) {
+  document.getElementById('loading').classList.toggle('show', on);
+  document.getElementById('runBtn').disabled = on;
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorBox');
+  el.textContent = `오류: ${msg}`;
+  el.classList.add('show');
+}
+
+function clearError() {
+  document.getElementById('errorBox').classList.remove('show');
+}
+
+function showStream(text) {
+  const el = document.getElementById('streamBox');
+  el.textContent = text;
+  el.classList.add('show');
+  el.scrollTop = el.scrollHeight;
+}
+
+function hideStream() {
+  const el = document.getElementById('streamBox');
+  el.classList.remove('show');
+  el.textContent = '';
+}
+
+function countCheckItems(text) {
+  if (!text || text.trim() === '' || text.trim() === '확인 필요 항목 없음') return 0;
+  return text.split('\n').filter(l => l.trim()).length;
+}
+
+// ═══════════════════════════════════════════════
+//  Response parser
+// ═══════════════════════════════════════════════
+function parseResponse(raw) {
+  const get = (key) => {
+    const re = new RegExp(`\\[SECTION:${key}\\]([\\s\\S]*?)\\[\\/SECTION\\]`);
+    const m = raw.match(re);
+    return m ? m[1].trim() : '';
+  };
+  return {
+    translation : get('번역문'),
+    checkNeeded : get('확인필요'),
+    applied     : get('적용'),
+    length      : get('길이'),
+  };
+}
+
+// ═══════════════════════════════════════════════
+//  Main: run translation
+// ═══════════════════════════════════════════════
+async function runTranslation() {
+  clearError();
+  hideStream();
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('tokenBar').classList.remove('show');
+
+  const text = document.getElementById('inputText').value.trim();
+  if (!text) { showError('번역할 텍스트를 입력하세요.'); return; }
+
+  const apiKey = localStorage.getItem('umff_api_key');
+  if (!apiKey) {
+    showError('API Key가 설정되지 않았습니다. 우측 상단 ⚙ API Key 버튼을 눌러 입력하세요.');
+    toggleKeyBar();
+    return;
+  }
+
+  const dirLabel  = selectedDirection === 'ko-en' ? '한→영' : '영→한';
+  const typeLabel = TYPE_LABELS[selectedType];
+  const userMsg   = `다음 텍스트를 번역해 주세요.\n번역 방향: ${dirLabel} / 유형: ${typeLabel}\n\n${text}`;
+
+  setLoading(true);
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-beta': 'prompt-caching-2024-07-31',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: MODEL_CONFIG[selectedModel].id,
+        max_tokens: 8000,
+        stream: true,
+        system: [{ type: 'text', text: buildSystemPrompt(), cache_control: { type: 'ephemeral' } }],
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+
+    if (!response.ok) {
+      let msg = `HTTP ${response.status}`;
+      try { const e = await response.json(); msg = e.error?.message || msg; } catch {}
+      throw new Error(msg);
+    }
+
+    const reader  = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let fullText = '';
+    let inputUsage = null;
+    let usageData  = null;
+
+    document.getElementById('loading').querySelector('.loading-msg').textContent = '번역 진행 중… (실시간 출력)';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop();
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const data = line.slice(6).trim();
+        if (data === '[DONE]') continue;
+        try {
+          const evt = JSON.parse(data);
+          if (evt.type === 'message_start' && evt.message?.usage) {
+            inputUsage = evt.message.usage;
+          }
+          if (evt.type === 'content_block_delta' && evt.delta?.type === 'text_delta') {
+            fullText += evt.delta.text;
+            showStream(fullText);
+          }
+          if (evt.type === 'message_delta' && evt.usage) {
+            usageData = evt.usage;
+          }
+        } catch {}
+      }
+    }
+
+    setLoading(false);
+    hideStream();
+
+    // Token counter
+    if (usageData || inputUsage) {
+      const inTok      = inputUsage?.input_tokens                || 0;
+      const cacheWrite = inputUsage?.cache_creation_input_tokens || 0;
+      const cacheRead  = inputUsage?.cache_read_input_tokens     || 0;
+      const outTok     = usageData?.output_tokens                || 0;
+      const p = MODEL_CONFIG[selectedModel];
+      const costUSD = (inTok * p.input + cacheWrite * p.cacheWrite + cacheRead * p.cacheRead + outTok * p.output) / 1_000_000;
+      const costKRW = Math.round(costUSD * 1380);
+      const cacheHit = cacheRead > 0;
+      document.getElementById('tokIn').textContent         = inTok.toLocaleString();
+      document.getElementById('tokCacheWrite').textContent = cacheWrite > 0 ? cacheWrite.toLocaleString() : '—';
+      document.getElementById('tokCacheRead').textContent  = cacheRead  > 0 ? `${cacheRead.toLocaleString()} ✓` : '—';
+      document.getElementById('tokOut').textContent        = outTok.toLocaleString();
+      document.getElementById('tokCost').textContent       = `${p.label} · 약 $${costUSD.toFixed(4)} (₩${costKRW})${cacheHit ? ' 🔁캐시' : ''}`;
+      document.getElementById('tokenBar').classList.add('show');
+    }
+
+    const parsed = parseResponse(fullText);
+
+    document.getElementById('content0').textContent = parsed.translation || '(번역문 없음)';
+    document.getElementById('content1').textContent = parsed.checkNeeded || '확인 필요 항목 없음';
+    document.getElementById('content2').textContent = parsed.applied     || '(내용 없음)';
+    document.getElementById('content3').textContent = parsed.length      || '(내용 없음)';
+
+    const checkCount = countCheckItems(parsed.checkNeeded);
+    document.getElementById('badge1').textContent = checkCount || '';
+
+    document.getElementById('results').classList.add('show');
+    switchTab(0);
+
+  } catch (err) {
+    setLoading(false);
+    hideStream();
+    showError(err.message);
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  Copy button
+// ═══════════════════════════════════════════════
+function copyContent(panelIdx) {
+  const text = document.getElementById(`content${panelIdx}`).textContent;
+  const btnId = `copyBtn${panelIdx}`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(btnId);
+    btn.textContent = '복사됨!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '번역문 복사'; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    const btn = document.getElementById(btnId);
+    btn.textContent = '복사 실패';
+    setTimeout(() => { btn.textContent = '번역문 복사'; }, 2000);
+  });
+}
+
+// ═══════════════════════════════════════════════
+//  Init
+// ═══════════════════════════════════════════════
+refreshKeyStatus();
+loadGlossary();
+</script>
+</body>
+</html>

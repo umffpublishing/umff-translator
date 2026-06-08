@@ -112,6 +112,7 @@ Butterfly Bhutan follows Sonam Phuntsho, who tries to protect a tree threatened 
 
 **예시 (투게더 Together)**
 
+
 - KO: 다양한 세대가 함께 즐기는 ‘투게더’ 섹션은 오늘날 우리가 마주한 복잡한 질문에 색다른 해답을 제시하는 15편의 영화와 함께합니다.
 산과 자연을 중심으로 풀어내는 도전과 스포츠 정신, 자연과 놀이, 동물권과 생태적 윤리, 환경과 기후 위기 소재들은 인간과 자연의 관계를 다층적으로 비추고, 존재를 향한 따뜻한 시선을 보여줍니다. 이는 산의 이야기가 이들 영화 속에서 단순한 배경이 아니라 관계가 형성되고 감정이 발화되는, 사유가 시작되는 공간으로 작용하고 있기 때문일 것입니다.
 울산광역시교육청 및 울산 울주 지역 학교가 함께하는 영화 읽기 프로그램은 올해도 계속됩니다. 어린이·청소년들이 각자의 시선으로 영화를 해석하고, 자신만의 언어로 세상과 소통할 수 있는 소중한 경험이 될 것입니다. 9월, 영남알프스에서 자연과 영화, 사람과 사람이 만나는 뜻깊은 자리에 함께해 주시길 기대합니다.
@@ -121,3 +122,56 @@ Centered on themes of mountains and nature, these films explore the topics of ch
 The collaborative film reading program with the Ulsan Metropolitan Office of Education and local Ulju schools also returns this year. It will be a valuable opportunity for children and teens to interpret films from their own perspectives and connect with the world in their own voices. This September, we invite you to the Yeongnam Alps for a meaningful gathering where nature and film, people and people come together.
 ― Jang Da-na, Programmer
 - *(보이는 규칙)* `’투게더’ 섹션은` → `The "Together" section presents` · 한국어 2개 연결 문장→영어 별도 문장 · 귀속: `― 프로그래머 장다나` → `― Jang Da-na, Programmer`
+
+
+## 페스티벌 프로그램 · 한 → 영
+
+길이 제한 없음. 문체·구조·불릿 형식 참고용.
+
+**예시 (자연에서 채우다 — 프로그램 섹션 소개)**
+
+- KO: 자연을 닮은 쉼, 일상 속 활력을 채우는 시간
+누구나 언제든 자연을 느끼고 웃을 수 있는 공간입니다.
+특별한 준비없이 그저 잠시 머물러 주시면 됩니다.
+당신을 위한 자연이 기다리고 있습니다.
+- EN: Rest inspired by nature; a time to recharge
+A space where anyone, at any time, can bask in nature and smile.
+No special preparation needed – just pause and stay a moment.
+Your nature awaits.
+- *(보이는 규칙)* 권유·청유형→서술형·명령형(규칙 28) · 줄바꿈 구조 유지
+
+**예시 (자연에서 노래하다 — 아티스트 소개)**
+
+- KO: 인순이는 세대를 초월하는 폭발적인 가창력과 무대 장악력으로 오랜 시간 세대를 아우르며 사랑받아온 디바입니다.
+1978년 그룹 ‘희자매’로 데뷔한 인순이는 ‘밤이면 밤마다’, ‘거위의 꿈’, ‘아버지’ 등 수많은 명곡을 남기며 가수로서 독보적인 존재감을 쌓아왔습니다.
+진심 어린 노래와 깊이 있는 메시지는 공연장을 찾은 관객들에게 뜨거운 울림을 전하며, 지금도 음악, 방송, 사회공헌 등 다방면에서 왕성한 활동을 이어가고 있습니다.
+- EN: Insooni is a beloved diva whose powerful vocals and commanding stage presence have transcended generations.
+She made her debut in 1978 as a member of the group Hee Sisters, and has since built a remarkable career with timeless hits such as At Night, Every Night, A Goose’s Dream, and Father.
+Her heartfelt performances and deeply resonant messages continue to move audiences, and she remains a dynamic presence in music, television, and public service.
+- *(보이는 규칙)* 이름 생략 안 함(규칙 30) · 그룹명 ‘희자매’→Hee Sisters · 곡명 직역(이탤릭 대상) · 현재완료·현재형 혼용
+
+**예시 (자연에서 채우다 — 안내문 불릿 구조)**
+
+- KO:
+준비물
+- 신체활동에 적합한 복장(운동화 착용 권장)
+
+유의 사항
+- 전 연령 누구나 참여 가능하나, 미성년자의 경우 보호자 동반 또는 동의 필요
+- 원활한 입장 및 예매 내역 확인을 위해 프로그램 시작 20분 전에 도착해 주시기 바랍니다.
+
+프로그램
+- 입장 및 준비
+- 오프닝 인사 및 강사진 소개
+- EN:
+Items to Bring
+- Clothing suitable for physical activity (sneakers recommended)
+
+Notes
+- Open to all ages. Minors must be accompanied by a guardian or have guardian consent.
+- Please arrive 20 minutes before the program starts to ensure smooth entry and ticket confirmation.
+
+Program
+- Entry and preparation
+- Opening remarks and instructor introductions
+- *(보이는 규칙)* 항목 제목 번역(준비물→Items to Bring · 유의 사항→Notes · 프로그램→Program)(규칙 29) · 불릿 기호 그대로

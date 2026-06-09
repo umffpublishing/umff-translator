@@ -294,6 +294,19 @@
     .model-btn.active-opus   { border-color: #7a4fa8; color: #7a4fa8; background: #f5f0ff; font-weight: 700; }
 
     /* ─── Model guide ─── */
+    .guide-toggle-row {
+      display: flex; justify-content: flex-end;
+      margin-bottom: 6px;
+    }
+    .btn-guide-toggle {
+      background: none; border: none;
+      color: var(--muted); font-size: .76rem;
+      cursor: pointer; padding: 2px 0;
+      display: flex; align-items: center; gap: 4px;
+      letter-spacing: .01em;
+    }
+    .btn-guide-toggle:hover { color: var(--text); }
+
     .model-guide {
       display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
     }
@@ -391,7 +404,12 @@
   </div>
 
   <!-- Model guide -->
-  <div class="model-guide">
+  <div class="guide-toggle-row">
+    <button class="btn-guide-toggle" id="guideToggleBtn" onclick="toggleGuide()">
+      모델 안내 <span id="guideToggleIcon">▼</span>
+    </button>
+  </div>
+  <div class="model-guide" id="modelGuide" style="display:none">
     <div class="model-guide-card sonnet">
       <div class="model-guide-title">Sonnet 4.6 — 정확 · 기본값</div>
       <span class="guide-good">✔ 유리한 경우</span><br>
@@ -451,9 +469,7 @@
   <div class="results" id="results">
     <div class="tabs" id="tabs">
       <div class="tab active" onclick="switchTab(0)">번역문</div>
-      <div class="tab"        onclick="switchTab(1)">확인 필요<span class="badge" id="badge1"></span></div>
-      <div class="tab"        onclick="switchTab(2)">적용 내역</div>
-      <div class="tab"        onclick="switchTab(3)">길이</div>
+      <div class="tab"        onclick="switchTab(1)">길이</div>
     </div>
 
     <div class="panel active" id="panel0">
@@ -467,16 +483,6 @@
     <div class="panel" id="panel1">
       <div class="panel-content">
         <div class="result-text" id="content1"></div>
-      </div>
-    </div>
-    <div class="panel" id="panel2">
-      <div class="panel-content">
-        <div class="result-text" id="content2"></div>
-      </div>
-    </div>
-    <div class="panel" id="panel3">
-      <div class="panel-content">
-        <div class="result-text" id="content3"></div>
       </div>
     </div>
   </div>
@@ -668,140 +674,123 @@ const EMBEDDED_FESTIVALS = `구분,국문,영문,비고
 해외학교,함부르크대학,Hamburg College,
 해외학교,콘코디아대학교,Concordia University,`;
 
-const EMBEDDED_RULES = `# 표기 규칙 (Notation Rules)
+const EMBEDDED_STYLE = `# UMFF 번역 스타일 가이드 (v2)
 
-울산울주세계산악영화제 출판물 표기 규칙.
-국문↔영문 대조쌍은 proper-nouns.csv에, 규칙은 이 파일에 둔다.
+출처 우선순위: proper-nouns.csv > notation-rules.md > 본 가이드
 
-## 영화 제목 표기
-- 영화 제목은 꺽쇠 < > 를 사용하고, 영문 제목은 이탤릭체로 쓴다. (예: <화양연화> / *In the Mood for Love*)
-- 국영문 병기 시에는 꺽쇠만 사용한다. (예: <영원과 하루 Eternity and a Day>)
-- 저작권자의 별도 제목표기 요청이 있을 경우 요청에 따라 표기한다.
-- 제목·제작연도·감독을 함께 표기할 경우:
-  - <화양연화>(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
-  - <영원과 하루 Eternity and a Day>(테오 앙겔로풀로스 Theo Angelopoulos, 1998)
+## 0. 공통 원칙 (모든 방향·유형에 적용)
+- 규칙 0-1 강도 보존: 원문의 강한 표현을 임의로 순화하지 않는다. 강한 동사는 그대로 옮긴다. ✗ "부서진다" → "무너질 듯" (순화 금지) / ✓ "부서진다" → shatters / breaks apart
+- 규칙 0-2 수식어 완전 보존: 형용사·부사 수식어는 문법적으로 불가능하지 않은 한 모두 옮긴다. ✗ "painful struggle" → "투쟁" (수식어 누락 금지) / ✓ "painful struggle" → "고통스러운 투쟁"
 
-## 작품 정보 표기
-- 표기 순서: 제작국가, 제작연도, 러닝타임, 색채, 카테고리, 관람 등급.
-- 예: Korea | 2015 | 114min | Color | Documentary | G
+## 1. 영→한
 
-## 기타 영화 관련
-- 제작연도는 마지막 최종 작업(제작)이 완료된 시점만 표기한다. (2002-2003 → X, 2003 → O)
-- 러닝타임은 분·초 단위 모두 올림하여 분 단위로만 표기한다. 숫자 바로 뒤에 min, 마침표 없음. (예: 53min)
-- 색채 표기: 컬러는 Color, 흑백은 B&W.
-- 프리미어 표기: World Premiere / International Premiere / Asian Premiere / Korean Premiere 중 해당 사항 표기.
+### 1-1. 시놉시스
+- 규칙 1: 관계절·분사구 → 앞당긴 관형절. 예) "newly married and pregnant Pema" → "결혼한 지 얼마 되지 않은 임산부 페마"
+- 규칙 2: 영어 단문 나열 → ~고, ~며, ~지만, ~는데, ~면서로 연결 (흐름이 자연스러울 때만). 말줄임표: 아래 점 3개(...)만 사용.
+- 규칙 3: 영어 시제 무관하게 한국어 현재형 유지.
+- 규칙 4: 외국 인명 첫 등장: 한글(영문) 병기, 이후 한글만. 예) 남상(다야항 라이)
 
-## 서적 표기
-- 도서 제목은 겹낫표 『 』, 영문은 이탤릭, 저자명은 ( ) 안에 표기한다.
-- 예: 『도전』 (크리스 보닝턴) / *Cahier du Cinema* (Chris Bonington)
+### 1-2. 프로그램 노트
+- 규칙 5: 감독 노트(1인칭) → 한국어도 1인칭 유지. 주어 반복 불필요.
+- 규칙 6: 3인칭 노트 — "This film" 등 반복 주어 첫 문장 이후 생략.
+- 규칙 7: 노트 마지막 문장 명사형 허용. 예) "역동적이고 몰입감 있는 카메라 무빙이 만들어내는 짜릿한 속도감이 가히 환상적인 영화."
+- 규칙 8: 직접 인용·대사 → 큰따옴표. 의역 인용·강조어 → 작은따옴표. "영어 큰따옴표 무조건 작은따옴표 변환"은 틀림.
 
-## 기타 표기 (논문·정기간행물·TV·전시·음반·공연 등)
-- 논문·정기간행물·TV 프로그램의 국문 제목은 낫표 「 」, 영문은 이탤릭, 저자명은 ( ).
-- 전시는 《 》 사용, 국영문 동일.
-- 음반의 한글·영문 표기는 낫표 「 」 안에, 노래 제목은 작은따옴표 ' '.
-- 학교·단체·회사 명칭의 한글 표기는 띄어쓰기 없음. (예: 울주세계산악영화제조직위원회)
-- 공연: 국문은 작은따옴표 ' ' / 영문은 따옴표 없이 앞 글자만 대문자, 이탤릭
+### 1-3. 바이오
+- 규칙 9: 이름 생략, 국적+직함으로 시작. 예) "덴마크 출신의 영화감독이자 예술가로..." / "[활동지] 기반의 [직함]" / "[직함] 겸 [직함]"
+- 규칙 10: 현재완료·과거형 → 한국어 현재형.
+- 규칙 11: 국문 작품명 꺾쇠 <작품명>, 영문 이탤릭. 병기 시 꺾쇠 하나: <한글제목 English Title>. 예) <영원과 하루 Eternity and a Day>
 
-## 이름 표기
-- 외국인의 이름은 현지 발음에 가깝게 표기함을 원칙으로 하되, 현행 외래어 표기법을 준수한다.
-- 한국·중국·일본 등 한자식 이름은 성을 앞에 표기하고 성은 대문자로. 영문 이름일 경우 성을 뒤에 표기.
-- 한국·중국 이름은 성과 이름을 붙여서 명기한다.
-- 별명·애칭은 첫 번째 언급 시 작은따옴표 ' ' 안에 표기하고, 이후에는 별도 문장부호를 쓰지 않는다.
+## 2. 한→영
 
-## 일반 콘텐츠 (문장부호) — 국영문 동일
-- 대화 문구, 인용 구문은 큰따옴표 " " 를 사용한다.
-- 인용구를 문장 그대로 사용하지 않을 경우 작은따옴표 ' ' 를 사용한다.
-- 말줄임표는 아래 점 3개만 사용한다.
-- 콜론(:), 세미콜론(;)은 앞 글자와 붙여 쓰고 뒤에 오는 글자와는 한 칸 띄운다.
+### 2-1. 시놉시스
+- 규칙 12: 시간·장소 맥락 → 문두 부사구. 예) "6.25 전쟁으로 부모를 잃은" → "During the Korean War, ... lose their parents"
+- 규칙 13: 시간 전환 → 전환사 명시 (Years later / Meanwhile / Eventually / After / Only then).
+- 규칙 14: 관형절 → 관계절(who/which/that) 또는 분사구문.
+- 규칙 15: 한국어 현재형 → 영어 현재 시제(historical present) 유지.
+- 규칙 16: 고유어 처리 — 음차 유지(막걸리→makgeolli) 또는 풀어서 설명(외가→maternal relatives). 한 작품 내 일관 유지.
 
-## 날짜 / 시간 표기
-- 날짜·시간: 9. 26.(금) 19:00 / Sep. 26(Fri) 19:00
-- 기간: 9. 26.(금) ~ 9. 20.(화) 09:00 ~ 20:00 / Sep. 26(Fri) - 30(Tue) 09:00 - 20:00
-- 24시간 표시: 04:00 / 16:00 (4 digit 방식). AM/PM 사용하지 않음.
-- n번째·n주년: 표지 등에서는 th를 윗첨자로 표기, 본문에서는 윗첨자 X.
+### 2-2. 프로그램 노트
+- 규칙 17: 3인칭 노트 → "This film..." 또는 "The film..."으로 시작.
+- 규칙 18: 1인칭(나/우리) → I/we 유지. 생략 주어도 명시.
+- 규칙 19: 한국어 긴 복문 → 영어 2~3문장으로 분리.
 
-## 회사 표기
-- 회사 공식 표기를 따른다: Co. / Inc. / Ltd. / Co.,Ltd.`;
+### 2-3. 바이오
+- 규칙 20: 감독 이름을 주어로 시작 (규칙 9와 반대). 예) "Bae Chang-ho made his directorial debut..."
+- 규칙 21: 완료 사실 → 현재완료 (has won / has directed / has appeared).
+- 규칙 22: 한국 영화 제목 → 꺾쇠 없이 영문 번역 제목(이탤릭). 예) <꼬방동네 사람들> → People in the Slum
 
-const EMBEDDED_STYLE = `# UMFF 프로그램북 번역 스타일 가이드 (v2)
+### 2-4. 섹션 서문
+- 규칙 23: 섹션명 영문 큰따옴표. '자연' → "Nature". 도입 동사: presents / features / is composed of.
+- 규칙 24: 비슷한 작품 주제별 단락으로 묶기. 세미콜론·연결사(while/also/in addition) 허용.
+- 규칙 25: 귀속 표시 — ― 프로그래머 이정진 → ― Jinna Lee, Programmer / ― 트렌토영화제 로잔나 스테딜레 → ― Rosanna Stedile, Trento Film Festival
+- 규칙 26: * 각주 포함 전문 번역. 기관명은 글로서리 확정 표기 사용.
+- 규칙 27: 길이 제한 없음. 작품명·감독명·정보 누락 불가.
 
-## 0. 출처 위계
-충돌 시: 표기 시트(proper-nouns.csv + notation-rules.md) > translation_memory > 본 스타일 가이드.
-
-## 1. 영→한 번역
-
-### 1-1. 시놉시스 (영→한)
-- 규칙 1: 영어 관계절·분사구를 한국어 관형절로 끌어당긴다.
-  예) "newly married and pregnant Pema" → "결혼한 지 얼마 되지 않은 임산부 페마"
-- 규칙 2: 영어 단문 나열을 연결어미(~고, ~며, ~지만, ~는데)로 잇는다. 의미 흐름이 자연스러울 때만.
-- 규칙 3: 시놉시스는 영어 시제에 관계없이 한국어 현재형으로 서술한다.
-- 규칙 4: 외국 인명 첫 등장 시 한글(영문) 병기. 이후 한글만.
-
-### 1-2. 프로그램 노트 (영→한)
-- 규칙 5: 1인칭(I/we/my) 노트는 한국어에서도 1인칭 유지. 주어 반복 불필요.
-- 규칙 6: 3인칭 노트에서 "This film/The film/감독명" 반복 주어 생략, 술어만 이어간다.
-- 규칙 7: 마지막 문장을 "~한 영화.", "~이 돋보이는 애니메이션."처럼 명사형으로 끝낼 수 있다(강제 아님).
-- 규칙 8: 직접 인용·대사 → 큰따옴표. 의역 인용·강조어 → 작은따옴표. "영어 큰따옴표는 무조건 한국어 작은따옴표" 일반화는 틀렸다.
-
-### 1-3. 바이오 (영→한)
-- 규칙 9: 이름 생략, "[국가] 출신의 [직함]" 또는 "[활동지] 기반의 [직함]"으로 시작.
-- 규칙 10: 영어 현재완료·과거형을 한국어 현재형으로 처리.
-- 규칙 11: 국문 작품명은 꺾쇠 <작품명>, 영문은 이탤릭. 병기 시 꺾쇠 하나 <한글 English>.
-
-## 2. 한→영 번역
-
-### 2-1. 시놉시스 (한→영)
-- 규칙 12: 배경 맥락을 문두 부사구로 배치.
-  예) "6.25 전쟁으로 부모를 잃은" → "During the Korean War, ... lose their parents"
-- 규칙 13: 시간 전환에 전환사(Years later, Meanwhile, Eventually, After, Only then) 사용.
-- 규칙 14: 한국어 관형절을 영어 관계절(who/which/that)·분사구문으로 변환.
-- 규칙 15: 영어에서도 현재 시제(historical present)로 서술.
-- 규칙 16: 한국 고유어는 음차 유지 또는 풀어서 설명. 한 작품 내에서 일관 유지.
-
-### 2-2. 프로그램 노트 (한→영)
-- 규칙 17: 3인칭 노트는 "This film..." 또는 "The film..."으로 시작.
-- 규칙 18: 1인칭(나/우리) 노트는 I/we 유지. 생략된 주어도 문맥으로 추정해 명시.
-- 규칙 19: 한국어 긴 복문을 영어에서 2~3문장으로 분리.
-
-### 2-3. 바이오 (한→영)
-- 규칙 20: 감독 이름을 주어로 첫 문장 시작.
-- 규칙 21: 한국어 완료 사실을 현재완료(has won, has directed)로 처리.
-- 규칙 22: 한국 영화 제목은 꺾쇠 없이 영문 번역 제목(이탤릭)으로 표기.
-
-### 2-4. 섹션 서문 (한→영)
-- 규칙 23: 섹션명은 영문 큰따옴표. '자연' → "Nature". 도입 동사: presents / features / is composed of.
-- 규칙 24: 비슷한 성격의 작품들을 주제별 단락으로 묶어 소개. 한국어 긴 나열을 영어에서 2~3문장으로 분리.
-- 규칙 25: 귀속 표시 — ― 프로그래머 이름 → ― [Name], Programmer / ― 기관 담당자 → ― [Name], [Institution]
-- 규칙 26: *각주 포함 시 전문 번역. 기관명은 글로서리 확정 표기 사용.
-- 규칙 27: 길이 제한 없음. 수록 작품·감독명 누락 절대 불가.
-
-### 2-5. 페스티벌 프로그램 (한→영)
-- 규칙 28: 청유·권유 문체를 영어 명령형·청유형으로 유지. "함께해요!" → "Join us!" / "경험해 보세요" → "experience" / "초대합니다" → "invites you"
-- 규칙 29: 불릿 구조(준비물→Items to Bring / 유의 사항→Notes / 프로그램→Program) 그대로 유지.
-- 규칙 30: 공연·행사 소개에서 아티스트 이름 생략하지 않음(바이오와 달리).
+### 2-5. 페스티벌 프로그램
+- 규칙 28: 청유·권유 → 영어 명령형·청유형. 예) "함께해요!" → "Join us!" / "초대합니다" → "invites you"
+- 규칙 29: 불릿 구조 유지. 준비물→Items to Bring / 유의 사항→Notes / 프로그램→Program
+- 규칙 30: 공연·행사 소개 — 아티스트 이름 생략 금지 (바이오 규칙 9와 다름).
 - 규칙 31: 길이 제한 없음. 원문 정보 전부 유지.
 
-## 3. 길이 기준 (공백 포함, 조직위 공식 스펙)
-| 유형 | 국문 | 영문 글자 | 영문 단어 |
+## 3. 길이 기준
+| 콘텐츠 | 국문 | 영문 글자 | 영문 단어 |
 |---|---|---|---|
 | 시놉시스 | 215자 | 390자 | 70단어 |
 | 프로그램 노트 | 150자 | 260자 | 35단어 |
 | 바이오 | 110자 | 260자 | 50단어 |
 | 섹션 서문 | — | — | — |
-목표 상한. 내용 누락보다 초과를 우선 허용. 짧은 원문을 한도까지 늘리지 않는다. 섹션 서문은 길이 제한 없음.
+목표 상한. 내용 누락보다 초과를 우선 허용. 짧은 원문을 한도까지 늘리지 않는다.
 
-## 4. 고유명사 표기 원칙
-- 4-2. 한국 인명 영문 로마자: 성+공백+이름, 이름 음절은 하이픈. (예: Bae Chang-ho, Um Hong-gil)
-- 본인 별도 영문명이 있으면 우선. (예: 이순걸 → Lee Soon-geol)
-- 한·중·일 한자식 이름은 성 앞에, 영문식 이름은 성 뒤에.
+## 4. 고유명사 표기
+- 외국 인명: 원어 발음 기준, 현행 외래어 표기법 준수.
+- 한국 인명 영문: 성+공백+이름, 이름 음절 하이픈. 예) Bae Chang-ho / Um Hong-gil. 본인 영문명 있으면 우선.
+- 한·중·일 한자식: 성 앞. 영문식: 성 뒤.
+- 산 이름·지명: TM·시트 우선, 없으면 외래어표기법.
 
-## 6. 표기법 세칙
-- 따옴표: 대화·정확 인용 → 큰따옴표. 의역·강조어 → 작은따옴표.
-- 말줄임표: 아래 점 3개(...) 만. 중간점 ···, 유니코드 … 금지.
-- 콜론·세미콜론: 앞 글자에 붙이고 뒤는 한 칸.
-- 작품 정보: 국가 | 연도 | 러닝타임(53min, 마침표X) | Color/B&W | 카테고리 | 등급
-- 별명·애칭: 첫 언급 시 작은따옴표, 이후 없음.
-- 날짜: 24시간 4자리, AM/PM 미사용, 범위는 - 앞뒤 한 칸.`;
+표기법 세칙은 notation-rules.md 참조.`;
+
+const EMBEDDED_NOTATION = `# 표기 규칙 (Notation Rules)
+
+## 영화 제목 표기
+- 영화 제목은 꺾쇠 < >를 사용하고, 영문 제목은 이탤릭체로 쓴다. (예: <화양연화> / *In the Mood for Love*)
+- 국영문 병기 시에는 꺾쇠 하나 안에 한글·영문을 함께 넣는다. (예: <영원과 하루 Eternity and a Day>)
+- 제목+감독+연도 병기 시: <화양연화>(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
+
+## 작품 정보 표기
+- 표기 순서: 제작국가 | 제작연도 | 러닝타임 | 색채 | 카테고리 | 관람 등급
+- 예: Korea | 2015 | 114min | Color | Documentary | G
+- 제작연도는 최종 완료 시점만. (2002-2003 X / 2003 O)
+- 러닝타임: 올림 후 분 단위, 숫자 바로 뒤에 min(마침표 없음). 예: 53min
+- 색채: Color / B&W. 프리미어: World / International / Asian / Korean Premiere
+
+## 이름 표기
+- 외국인 이름은 현지 발음에 가깝게, 현행 외래어 표기법 준수.
+- 한자식 이름은 성 앞에 대문자. 영문식 이름은 성 뒤에.
+- 한국·중국 이름은 성과 이름을 붙여서 명기한다.
+- 별명·애칭: 첫 언급 시 작은따옴표 ' ', 이후 부호 없음. 예) Francisco Marín 'Novato'
+
+## 서적·기타 매체 표기
+- 도서: 겹낫표 『 』(국문), 이탤릭(영문), 저자명 ( ) 안에.
+- 논문·정기간행물·TV: 낫표 「 」(국문), 이탤릭(영문).
+- 전시: 《 》(국영문 동일). 음반: 낫표 「 」, 곡명은 작은따옴표 ' '.
+- 공연: 국문 작은따옴표 ' ', 영문 이탤릭(따옴표 없이 첫 글자 대문자).
+
+## 문장부호
+- 대화·정확 인용: 큰따옴표 " ". 의역·강조어: 작은따옴표 ' '.
+- 말줄임표: 아래 점 3개(...)만. 중간점 ···, 유니코드 … 금지.
+- 콜론·세미콜론: 앞 글자에 붙이고 뒤는 한 칸 띄운다.
+
+## 날짜·시간·통화
+- 날짜: 9. 26.(금) 19:00 (국문) / Sep. 26(Fri) 19:00 (영문)
+- 기간: - 앞뒤 한 칸. 예) 09:00 - 20:00, Sep. 26(Fri) - 30(Tue)
+- 24시간 4자리(04:00 / 16:00), AM/PM 불가.
+- n번째·n주년: 표지에서 th 윗첨자, 본문에서는 윗첨자 X. (월 약어는 proper-nouns.csv '월' 항목 참조)
+- 통화: 15,000원 → 15,000 KRW
+
+## 학교·단체·회사
+- 한글 표기는 띄어쓰기 없이 붙여 쓴다. 예) 울산울주세계산악영화제조직위원회
+- 회사 공식 표기: Co. / Inc. / Ltd. / Co.,Ltd.`;
 
 const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
 
@@ -812,67 +801,56 @@ const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
 **예시 (SHAMBHALA)**
 - EN: In a Himalayan polyandrous village in Nepal, newly married and pregnant Pema tries to make the best of her new life. But soon, her first husband Tashi vanishes on the trade route to Lhasa. Accompanied by her monk de facto husband, Karma, she embarks on a journey into the unforgiving wilderness to find him, evolving into a quest of self-discovery and liberation.
 - KO: 네팔 히말라야의 일처다부제 마을. 결혼한 지 얼마 되지 않은 임산부 페마는 새로운 삶에 적응하려 애쓴다. 그러나 곧 그녀의 첫 번째 남편 타시가 라싸로 향하는 교역로에서 실종되고 만다. 페마는 자신의 또 다른 남편인 카르마와 함께 타시를 찾아 험난한 길을 떠나고, 점차 이 여정은 자아 발견과 해방의 여정으로 이어진다.
-- *(규칙)* 관형절 끌어당김 · 단문→연결어미 · 현재형 — KO 178/215자, EN 363/390자·62/70단어
 
 **예시 (The Woolen Sweater)**
 - EN: Based in the multi-cultural settings of Eastern hills of Nepal, film takes us on a journey filled with the warmth of love and human connections. The film follows Dharanidhar Kafle, a skilled mason who has inherited his craft from his father. Dharani frequently visits his father's soul friend in the highlands where he reconnects with his childhood crush, Phool Gurung.
 - KO: 네팔 동부 구릉지대의 다문화적 배경 속에서 펼쳐지는 이 영화는, 사랑과 사람이 주는 따스함이 가득 찬 여정으로 우리를 초대한다. 아버지로부터 기술을 물려받은 숙련된 석공 다라니다르 카플레. 그는 종종 아버지의 절친한 친구를 찾아 구릉지대로 향하고, 그곳에서 어린 시절 짝사랑했던 풀 구룽과 재회하게 된다.
-- *(규칙)* 분사구→관형절 · 현재형 · 인물 첫 등장 처리 — KO 170/215자, EN 369/390자·60/70단어
 
 ## 시놉시스 · 한→영
 
 **예시 (Mind Over Matter)**
 - KO: 매사에 최선을 다하며 열정적으로 살아온 주인공 정민. 하지만 점점 자신의 이러한 모습에 의구심을 품게 된다. 이렇게 사는 것이 맞는 것일까 고민하며 방황하던 정민은 자신처럼 그리고 자신보다 열심히 하루하루를 살아가는 친구들과 가족들의 모습을 보게 되고 다시 한번 자신감을 갖게 된다.
 - EN: Jung-min has always lived passionately, giving his best in everything he does. However, he gradually begins to question this way of life. Is this really the right path? As he struggles with doubt and uncertainty, he encounters friends and family who, like him, or even more so, live each day with dedication.
-- *(규칙)* historical present · 인물 주어 소개 · 관형절→관계절/분사절 — KO 158/215자, EN 308/390자·52/70단어
 
 **예시 (End of Bardo)**
 - KO: 이유를 모른 채 갯벌에서 눈을 뜬 남자는 집으로 향하는 과정에서 자신이 망자임을 알게 된다. 그러나 죽음을 깨달은 뒤에도 고독과 혼란은 끝나지 않는다. 갯벌에서 시작한 '바르도'는, 도심을 지나 산에서 끝난다. 이 영화는 바다에서 산 정상까지, 죽음을 받아들이는 긴 모험을 떠나는 한 사람의 이야기이다.
 - EN: The man stands on the mudflat. On his way home, he realizes that he is dead. Lost in enduring solitude and confusion, he encounters a psychopomp. "Bardo" begins on the mudflat, passes through the city, and ends at the mountain ridge. This film follows the man's story from the shore to the mountaintop, a long journey toward embracing one being's death.
-- *(규칙)* 현재형 · 병렬구조 · 개념어 "Bardo" 따옴표 — KO 169/215자, EN 353/390자·61/70단어
 
 ## 프로그램 노트 · 영→한
 
 **예시 (Placekeepers)**
 - EN: In remote Tusheti, Georgia, a dwindling highland community grapples with rural depopulation, intergenerational change, and Soviet memory—offering a rare glimpse into alternative ways of living, collective resilience, and an uncertain path into the future.
 - KO: 조지아의 투셰티, 쇠퇴하고 있는 고산지대 공동체는 농촌 인구 감소, 세대 간 변화, 소련 체제의 잔재라는 어려움을 겪고 있다. 동시에 대안적 생활 방식과 집단 회복력, 미래로 이어지는 불확실한 길을 엿볼 수 있는 기회를 제공한다.
-- *(규칙)* 3인칭 노트 · 반복 주어 생략 · em-dash 부연 — KO 128/150자, EN 255/260자·34/35단어
 
 **예시 (Savanna and the Mountain)**
 - EN: Exploring cinema as a gesture of resistance, a village's fictional daily struggle against big capital, a mirror of our collective fight against deep political impotence. Perhaps cinema returns to people through nature. Perhaps not.
 - KO: 저항의 몸짓을 탐구하는 영화. 거대 자본에 맞선 어느 마을의 허구적인 일상이자 정치적 무능에 맞선 집단적 투쟁의 반영. 어쩌면 영화는 자연을 통해 인간에게 돌아갈지도 모른다. 어쩌면 아닐 수도 있고.
-- *(규칙)* 명사형 종결 · 단문 나열 · 분위기 유지 — KO 111/150자, EN 231/260자·34/35단어
 
 ## 프로그램 노트 · 한→영
 
 **예시 (The Wishes)**
 - KO: 우리는 꽤 자주 서로를 오해한다. 하지만 그런 실수도 바로잡을 기회를 주는 게 확실한 사랑의 방법이 아닐까 하는 생각에서 이야기를 만들었다.
 - EN: We often misunderstand each other. However, I created this story believing that giving each other the opportunity to correct even those misunderstandings could be a true act of love.
-- *(규칙)* 1인칭 유지 — KO 78/150자, EN 182/260자·29/35단어
 
 ## 바이오 · 영→한
 
 **예시 (Far Enough)**
 - EN: Julien Carot is an independent filmmaker based in Paris. He has directed several music videos and experimental short films, while also contributing to a wide range of projects through various post-production roles. Far Enough is his first documentary film.
 - KO: 파리를 중심으로 활동하는 독립 영화감독. 여러 뮤직비디오와 단편 실험 영화를 연출했으며, 다양한 프로젝트의 후반 작업에 참여했다. <충분해>는 그의 첫 번째 다큐멘터리 영화다.
-- *(규칙)* 이름 생략, [활동지] 기반 [직함] · <작품명>(국문 꺾쇠) · 현재완료→현재형 — KO 98/110자, EN 256/260자·39/50단어
 
 **예시 (Writing Home)**
 - EN: Eva Matejovičová is a Slovak filmmaker living in Prague and studying at Film and TV School of Academy of Performing Arts. As a big animal lover, her films revolve around animals, starting with her short film Sanctuary.
 - KO: 프라하에 거주하는 슬로바키아 출신 영화감독으로 프라하공연예술아카데미 영화TV학부(FAMU)에 재학 중이다. 동물 애호가인 그녀는 단편 <생크추어리>를 비롯해 동물을 중심으로 한 작품을 만들어 왔다.
-- *(규칙)* 이름 생략, [거주지] 거주 [국가] 출신 [직함] · 단편 <작품명> — KO 110/110자, EN 218/260자·37/50단어
 
 ## 바이오 · 한→영
 
 **예시 (What You are Touching Now)**
 - KO: 조각을 전공한 시각예술가 홍이현숙은 인간 중심의 주류에서 벗어나고자 한다. 일상의 수행을 통해 길어 올린 신체의 잠재력으로 닫힌 것을 뚫고 들어가는 퍼포먼스를 선보이며, 그 과정을 기록한다.
 - EN: Visual artist Hong Lee Hyun-sook, who majored in sculpture, seeks to move beyond human-centered paradigms. Through daily practices that cultivate the body's latent potential, she stages and documents performances that break into what is closed.
-- *(규칙)* 이름 주어 · 직함+전공 앞에 · 현재형 — KO 106/110자, EN 244/260자·35/50단어
 
 **예시 (The House Beyond the Stairs)**
 - KO: 임왕태 감독의 장편영화 <이별식당>의 각본을 맡아 인도 차트라파티쉬바지영화제에서 최우수로맨스상을 수상했다. 이후 직접 각본과 감독을 맡은 영화 <시인들의 창>은 부산국제영화제에서 상영했다.
 - EN: He wrote the screenplay for the feature film Farewell Restaurant(Lim Wang-tae), which won the Best Romance Film award at the 2019 Chhatrapati Shivaji IFF. Subsequently, he wrote and directed the film Poets' Window, which was screened at the 2021 Busan IFF.
-- *(규칙)* 한국 영화 제목→영문 번역 제목(이탤릭) · 현재완료 · 영화제 약칭 — KO 105/110자, EN 256/260자·41/50단어
 
 ## 섹션 서문 · 한→영
 
@@ -887,7 +865,6 @@ const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
 Hunter Brothers depicts the clash between tradition and modernity through the story of two indigenous hunter brothers in Taiwan, while How to Lease a Cow captures the transformation of traditional herding practices under the pressure of modernization. Both films prompt reflections on identity and ways of life.
 Butterfly Bhutan follows Sonam Phuntsho, who tries to protect a tree threatened by the Bhutanese tradition of tying prayer flags, while Dream to Cure Water addresses the issue of glacier melt caused by climate change and the resulting water pollution, showing the efforts of people working to fix the crisis. These films offer a deep meditation on the environment, survival, and sustainability.
 ― Jinna Lee, Programmer
-- *(규칙)* '자연'→"Nature" · 비슷한 작품 단락 묶기 · ― 프로그래머 이정진→― Jinna Lee, Programmer
 
 **예시 (투게더 Together)**
 - KO: 다양한 세대가 함께 즐기는 '투게더' 섹션은 오늘날 우리가 마주한 복잡한 질문에 색다른 해답을 제시하는 15편의 영화와 함께합니다.
@@ -898,7 +875,6 @@ Butterfly Bhutan follows Sonam Phuntsho, who tries to protect a tree threatened 
 Centered on themes of mountains and nature, these films explore the topics of challenge and sportsmanship, animal rights and ecological ethics, and environmental and climate crises to explore the relationship between humans and nature in deeply layered yet warm perspectives. This is probably possible because the mountains are not simple backdrops in these stories, but a space where relationships form, emotions are stirred, and reflection begins.
 The collaborative film reading program with the Ulsan Metropolitan Office of Education and local Ulju schools also returns this year. It will be a valuable opportunity for children and teens to interpret films from their own perspectives and connect with the world in their own voices. This September, we invite you to the Yeongnam Alps for a meaningful gathering where nature and film, people and people come together.
 ― Jang Da-na, Programmer
-- *(규칙)* '투게더'→"Together" · 한국어 2문장 연결→영어 별도 문장 · ― 프로그래머 장다나→― Jang Da-na, Programmer
 
 ## 페스티벌 프로그램 · 한 → 영
 
@@ -913,27 +889,23 @@ The collaborative film reading program with the Ulsan Metropolitan Office of Edu
 A space where anyone, at any time, can bask in nature and smile.
 No special preparation needed – just pause and stay a moment.
 Your nature awaits.
-- *(규칙)* 권유형→서술·명령형(규칙 28) · 줄바꿈 구조 유지
 
 **예시 (자연에서 노래하다 — 아티스트 소개)**
 - KO: 인순이는 세대를 초월하는 폭발적인 가창력과 무대 장악력으로 오랜 시간 세대를 아우르며 사랑받아온 디바입니다. 1978년 그룹 '희자매'로 데뷔한 인순이는 '밤이면 밤마다', '거위의 꿈', '아버지' 등 수많은 명곡을 남기며 독보적인 존재감을 쌓아왔습니다.
 - EN: Insooni is a beloved diva whose powerful vocals and commanding stage presence have transcended generations. She made her debut in 1978 as a member of the group Hee Sisters, and has since built a remarkable career with timeless hits such as At Night Every Night, A Goose's Dream, and Father.
-- *(규칙)* 이름 생략 안 함(규칙 30) · '희자매'→Hee Sisters · 곡명 직역(이탤릭 대상)
 
 **예시 (자연에서 채우다 — 안내문 불릿 구조)**
 - KO: 준비물 / - 신체활동에 적합한 복장(운동화 착용 권장) / 유의 사항 / - 전 연령 누구나 참여 가능하나, 미성년자의 경우 보호자 동반 또는 동의 필요 / - 프로그램 시작 20분 전에 도착해 주시기 바랍니다.
-- EN: Items to Bring / - Clothing suitable for physical activity (sneakers recommended) / Notes / - Open to all ages. Minors must be accompanied by a guardian or have guardian consent. / - Please arrive 20 minutes before the program starts.
-- *(규칙)* 항목 제목 번역(준비물→Items to Bring · 유의 사항→Notes)(규칙 29) · 불릿 기호 그대로`;
+- EN: Items to Bring / - Clothing suitable for physical activity (sneakers recommended) / Notes / - Open to all ages. Minors must be accompanied by a guardian or have guardian consent. / - Please arrive 20 minutes before the program starts.`;
 
 // ═══════════════════════════════════════════════
 //  State
 // ═══════════════════════════════════════════════
 let properNouns    = EMBEDDED_CSV;
 let festivalsData  = EMBEDDED_FESTIVALS;
-let notationRules  = EMBEDDED_RULES;
+let notationRules  = EMBEDDED_NOTATION;
 let styleGuide     = EMBEDDED_STYLE;
 let tmExamples     = EMBEDDED_EXAMPLES;
-let glossaryReady  = false;
 let selectedModel     = 'sonnet';
 let selectedDirection = 'ko-en';
 let selectedType      = 'synopsis';
@@ -993,11 +965,11 @@ async function loadGlossary() {
   }
 
   const results = await Promise.all([
-    tryFetch('./glossary/proper-nouns.csv',   'proper-nouns.csv'),
-    tryFetch('./glossary/festivals-schools.csv', 'festivals-schools.csv'),
-    tryFetch('./glossary/notation-rules.md',  'notation-rules.md'),
-    tryFetch('./glossary/style_guide_v2.md',  'style_guide_v2.md'),
-    tryFetch('./glossary/tm-examples.md',     'tm-examples.md'),
+    tryFetch('./glossary/proper-nouns.csv',      'proper-nouns.csv'),
+    tryFetch('./glossary/festivals-schools.csv',  'festivals-schools.csv'),
+    tryFetch('./glossary/notation-rules.md',      'notation-rules.md'),
+    tryFetch('./glossary/style_guide_v2.md',      'style_guide_v2.md'),
+    tryFetch('./glossary/tm-examples.md',         'tm-examples.md'),
   ]);
 
   if (results[0]) { properNouns   = results[0].text; loaded.push(results[0].label); }
@@ -1006,7 +978,7 @@ async function loadGlossary() {
   if (results[3]) { styleGuide    = results[3].text; loaded.push(results[3].label); }
   if (results[4]) { tmExamples    = results[4].text; loaded.push(results[4].label); }
 
-  glossaryReady = true;
+
   if (failed.length === 0) {
     notice.className = 'glossary-notice ok';
     notice.textContent = `✓ 글로서리 로드 완료 (${loaded.join(' · ')})`;
@@ -1022,41 +994,64 @@ async function loadGlossary() {
 // ═══════════════════════════════════════════════
 //  System Prompt
 // ═══════════════════════════════════════════════
-function buildSystemPrompt() {
-  const dirLabel  = selectedDirection === 'ko-en' ? '한국어 → 영어' : '영어 → 한국어';
-  const typeLabel = TYPE_LABELS[selectedType];
-  const limits    = LEN_LIMITS[selectedType];
-  const inclFest  = document.getElementById('chkFestivals').checked;
 
-  const lenSpec = !limits
-    ? '길이 제한 없음 — 원문 내용 전체 번역 필수 (작품명·감독명 정보 누락 불가)'
-    : selectedDirection === 'ko-en'
-      ? `영문 ${limits.enChar}자 이하 · ${limits.enWord}단어 이하`
-      : `국문 ${limits.ko}자 이하`;
+// 정적 블록: 글로서리·가이드·예시·출력형식 — cache_control 적용 대상
+// D-1: proper-nouns CSV → 카테고리별 JSON 최소화
+function csvToCompactJson(csvText) {
+  const SKIP_CATS = new Set(['전화번호', '주소', '가격']);
+  const lines = csvText.trim().split('\n').slice(1);
+  const result = {};
+  for (const line of lines) {
+    const parts = line.split(',');
+    const [category, ko, en] = parts;
+    if (!category || !ko || !en) continue;
+    const cat = category.trim(), k = ko.trim(), e = en.trim();
+    if (SKIP_CATS.has(cat)) continue;
+    if (!result[cat]) result[cat] = {};
+    result[cat][k] = e;
+  }
+  return JSON.stringify(result, null, 0);
+}
 
-  const festSection = inclFest ? `\n\n## 참조 자료 5: 해외 영화제·학교 명칭 (festivals-schools.csv)\n\`\`\`\n${festivalsData}\n\`\`\`` : '';
+// B-1: 선택된 유형×방향에 맞는 tm-examples 섹션만 추출
+function getFilteredExamples() {
+  const sectionMap = {
+    'synopsis-en-ko': '## 시놉시스 · 영 → 한',
+    'synopsis-ko-en': '## 시놉시스 · 한 → 영',
+    'note-en-ko':     '## 프로그램 노트 · 영 → 한',
+    'note-ko-en':     '## 프로그램 노트 · 한 → 영',
+    'bio-en-ko':      '## 바이오 · 영 → 한',
+    'bio-ko-en':      '## 바이오 · 한 → 영',
+    'section-ko-en':  '## 섹션 서문 · 한 → 영',
+    'festival-ko-en': '## 페스티벌 프로그램 · 한 → 영',
+  };
+  const key = `${selectedType}-${selectedDirection}`;
+  const header = sectionMap[key];
+  if (!header) return '';
+  const start = tmExamples.indexOf(header);
+  if (start === -1) return '';
+  const nextSection = tmExamples.indexOf('\n## ', start + header.length);
+  const end = nextSection === -1 ? tmExamples.length : nextSection;
+  return tmExamples.slice(start, end).trim();
+}
 
+function buildStaticPrompt() {
   return `당신은 UMFF(울산울주세계산악영화제) 출판물 한↔영 **초벌 번역자**입니다.
 의미를 정확히 옮기고 자연스러운 문장을 만들되, 최종 확정은 담당자/원어민 감수의 몫입니다.
 
-## 번역 설정
-- **방향**: ${dirLabel}
-- **유형**: ${typeLabel}
-- **길이 기준**: ${lenSpec} (목표 상한. 초과 시 누락보다 초과 우선. 짧은 원문을 늘리지 말 것.)
-
 ## 절대 원칙
 1. **고정 명칭은 글로서리 먼저.** 고유명사·감독명·작품명·섹션·시상·장소·영화제·학교가 나오면 proper-nouns.csv에서 조회하고, 있으면 그 표기를 그대로 쓴다. 더 자연스러워 보여도 바꾸지 않는다.
-2. **글로서리에 없으면 [확인필요: 원문]으로 표시**한다("틀림"이 아니라 "미확정").
-3. 국문 하나에 영문이 여럿일 때(예: 게스트와의 만남 = Guest Visit / Q&A) 문맥에 맞는 것을 고르고, 애매하면 [확인필요].
+2. **글로서리에 없으면 원문 표기를 그대로 사용**한다.
+3. 국문 하나에 영문이 여럿일 때(예: 게스트와의 만남 = Guest Visit / Q&A) 문맥에 맞는 것을 고른다.
 4. **의미·정보를 임의로 더하거나 빼지 않는다.** 길이 한도 때문에 내용을 누락하지 않는다.
 5. 사람 이름이 본인 선호 영문명을 가진 경우 표준 로마자보다 우선(예: 이순걸 → Lee Soon-geol).
 6. 글로서리 오타(Festvial, Edinburg 등)는 임의로 교정하지 말고 글로서리 값을 그대로 사용한다.
 
 ---
 
-## 참조 자료 1: proper-nouns.csv (고유명사·고정 명칭 국문↔영문 대조표)
-\`\`\`
-${properNouns}
+## 참조 자료 1: proper-nouns (고유명사·고정 명칭 국문↔영문 대조표, JSON: {카테고리: {국문: 영문}})
+\`\`\`json
+${csvToCompactJson(properNouns)}
 \`\`\`
 
 ---
@@ -1071,28 +1066,43 @@ ${styleGuide}
 
 ---
 
-## 참조 자료 4: 번역 예시 (유형×방향별 few-shot)
-${tmExamples}${festSection}
-
----
-
 ## 출력 형식 (반드시 아래 구분자를 그대로 사용할 것)
 
 [SECTION:번역문]
-번역 결과 전문. 고정 명칭은 글로서리 표기 그대로, 미확정 고유명사는 [확인필요: 원문] 인라인 표시.
-[/SECTION]
-
-[SECTION:확인필요]
-유형별 나열 — 작품명: X / 인명: Y / 표기: Z  (없으면 "확인 필요 항목 없음" 한 줄만)
-[/SECTION]
-
-[SECTION:적용]
-글로서리에서 적용한 고정 명칭과, 판단이 필요했던 규칙을 간단히. (없으면 생략 가능)
+번역 결과 전문. 고정 명칭은 글로서리 표기 그대로, 글로서리에 없는 고유명사는 원문 그대로 사용.
 [/SECTION]
 
 [SECTION:길이]
 유형 / 원문 N자 / 번역문 N자 · N단어 / 한도 대비 (초과 시 표시)
 [/SECTION]`;
+}
+
+// 동적 블록: 번역 방향·유형·길이 — 매 호출마다 바뀌므로 cache_control 없음
+function buildDynamicPrompt() {
+  const dirLabel  = selectedDirection === 'ko-en' ? '한국어 → 영어' : '영어 → 한국어';
+  const typeLabel = TYPE_LABELS[selectedType];
+  const limits    = LEN_LIMITS[selectedType];
+
+  const lenSpec = !limits
+    ? '길이 제한 없음 — 원문 내용 전체 번역 필수 (작품명·감독명 정보 누락 불가)'
+    : selectedDirection === 'ko-en'
+      ? `영문 ${limits.enChar}자 이하 · ${limits.enWord}단어 이하`
+      : `국문 ${limits.ko}자 이하`;
+
+  const inclFest = document.getElementById('chkFestivals').checked;
+  const festSection = inclFest
+    ? `\n\n## 참조 자료 6: 해외 영화제·학교 명칭 (festivals-schools.csv)\n\`\`\`\n${festivalsData}\n\`\`\``
+    : '';
+
+  const exampleSection = getFilteredExamples();
+  const examplesBlock = exampleSection
+    ? `\n\n## 참조 자료 4: 번역 예시 (선택된 유형·방향)\n${exampleSection}`
+    : '';
+
+  return `## 번역 설정
+- **방향**: ${dirLabel}
+- **유형**: ${typeLabel}
+- **길이 기준**: ${lenSpec} (목표 상한. 초과 시 누락보다 초과 우선. 짧은 원문을 늘리지 말 것.)${festSection}${examplesBlock}`;
 }
 
 // ═══════════════════════════════════════════════
@@ -1192,24 +1202,27 @@ function hideStream() {
   el.textContent = '';
 }
 
-function countCheckItems(text) {
-  if (!text || text.trim() === '' || text.trim() === '확인 필요 항목 없음') return 0;
-  return text.split('\n').filter(l => l.trim()).length;
-}
-
 // ═══════════════════════════════════════════════
 //  Response parser
 // ═══════════════════════════════════════════════
 function parseResponse(raw) {
+  // 마크다운 기호(**[SECTION:...]**) 제거
+  const normalized = raw.replace(/\*+(\[(?:\/?)\s*SECTION[^\]]*\])\*+/gi, '$1');
+
   const get = (key) => {
-    const re = new RegExp(`\\[SECTION:${key}\\]([\\s\\S]*?)\\[\\/SECTION\\]`);
-    const m = raw.match(re);
-    return m ? m[1].trim() : '';
+    // 1차: 공백·대소문자 허용한 정규식
+    const re = new RegExp(`\\[SECTION\\s*:\\s*${key}\\s*\\]([\\s\\S]*?)\\[\\s*/SECTION\\s*\\]`, 'i');
+    const m = normalized.match(re);
+    if (m) return m[1].trim();
+
+    // 2차: [/SECTION] 없이 잘린 경우 — 다음 [SECTION: 또는 끝까지 캡처
+    const re2 = new RegExp(`\\[SECTION\\s*:\\s*${key}\\s*\\]([\\s\\S]*?)(?=\\[SECTION\\s*:|$)`, 'i');
+    const m2 = normalized.match(re2);
+    return m2 ? m2[1].trim() : '';
   };
+
   return {
     translation : get('번역문'),
-    checkNeeded : get('확인필요'),
-    applied     : get('적용'),
     length      : get('길이'),
   };
 }
@@ -1219,8 +1232,6 @@ function parseResponse(raw) {
 // ═══════════════════════════════════════════════
 async function runTranslation() {
   clearError();
-  hideStream();
-  document.getElementById('results').classList.remove('show');
   document.getElementById('tokenBar').classList.remove('show');
 
   const text = document.getElementById('inputText').value.trim();
@@ -1232,6 +1243,12 @@ async function runTranslation() {
     toggleKeyBar();
     return;
   }
+
+  // 결과 영역을 미리 열고 번역문 탭으로 전환 — 스트림 중에도 내용이 실시간으로 표시됨
+  document.getElementById('content0').textContent = '';
+  document.getElementById('content1').textContent = '';
+  document.getElementById('results').classList.add('show');
+  switchTab(0);
 
   const dirLabel  = selectedDirection === 'ko-en' ? '한→영' : '영→한';
   const typeLabel = TYPE_LABELS[selectedType];
@@ -1253,7 +1270,10 @@ async function runTranslation() {
         model: MODEL_CONFIG[selectedModel].id,
         max_tokens: 8000,
         stream: true,
-        system: [{ type: 'text', text: buildSystemPrompt(), cache_control: { type: 'ephemeral' } }],
+        system: [
+          { type: 'text', text: buildStaticPrompt(),  cache_control: { type: 'ephemeral' } },
+          { type: 'text', text: buildDynamicPrompt() }
+        ],
         messages: [{ role: 'user', content: userMsg }]
       })
     });
@@ -1292,7 +1312,12 @@ async function runTranslation() {
           }
           if (evt.type === 'content_block_delta' && evt.delta?.type === 'text_delta') {
             fullText += evt.delta.text;
-            showStream(fullText);
+            // [SECTION:번역문] 이후 텍스트만 실시간으로 탭에 표시
+            const m = fullText.match(/\[SECTION\s*:\s*번역문\s*\]([\s\S]*)/i);
+            if (m) {
+              document.getElementById('content0').textContent =
+                m[1].replace(/\[\/SECTION\][\s\S]*/i, '').trim() || '…';
+            }
           }
           if (evt.type === 'message_delta' && evt.usage) {
             usageData = evt.usage;
@@ -1302,7 +1327,6 @@ async function runTranslation() {
     }
 
     setLoading(false);
-    hideStream();
 
     // Token counter
     if (usageData || inputUsage) {
@@ -1312,7 +1336,7 @@ async function runTranslation() {
       const outTok     = usageData?.output_tokens                || 0;
       const p = MODEL_CONFIG[selectedModel];
       const costUSD = (inTok * p.input + cacheWrite * p.cacheWrite + cacheRead * p.cacheRead + outTok * p.output) / 1_000_000;
-      const costKRW = Math.round(costUSD * 1380);
+      const costKRW = Math.round(costUSD * 1550);
       const cacheHit = cacheRead > 0;
       document.getElementById('tokIn').textContent         = inTok.toLocaleString();
       document.getElementById('tokCacheWrite').textContent = cacheWrite > 0 ? cacheWrite.toLocaleString() : '—';
@@ -1324,20 +1348,17 @@ async function runTranslation() {
 
     const parsed = parseResponse(fullText);
 
-    document.getElementById('content0').textContent = parsed.translation || '(번역문 없음)';
-    document.getElementById('content1').textContent = parsed.checkNeeded || '확인 필요 항목 없음';
-    document.getElementById('content2').textContent = parsed.applied     || '(내용 없음)';
-    document.getElementById('content3').textContent = parsed.length      || '(내용 없음)';
-
-    const checkCount = countCheckItems(parsed.checkNeeded);
-    document.getElementById('badge1').textContent = checkCount || '';
-
-    document.getElementById('results').classList.add('show');
-    switchTab(0);
+    if (!parsed.translation && fullText) {
+      showError('출력 형식 오류 — 번역문 탭에 전체 응답을 표시합니다. 수동으로 복사하세요.');
+      document.getElementById('content0').textContent = fullText;
+    } else {
+      document.getElementById('content0').textContent = parsed.translation || '(번역문 없음)';
+    }
+    document.getElementById('content1').textContent = parsed.length || '(내용 없음)';
 
   } catch (err) {
     setLoading(false);
-    hideStream();
+    document.getElementById('results').classList.remove('show');
     showError(err.message);
   }
 }
@@ -1361,10 +1382,28 @@ function copyContent(panelIdx) {
 }
 
 // ═══════════════════════════════════════════════
+//  Model guide toggle
+// ═══════════════════════════════════════════════
+function toggleGuide() {
+  const guide = document.getElementById('modelGuide');
+  const icon  = document.getElementById('guideToggleIcon');
+  const nowVisible = guide.style.display !== 'none';
+  guide.style.display = nowVisible ? 'none' : 'flex';
+  icon.textContent = nowVisible ? '▼' : '▲';
+  localStorage.setItem('umff_guide_visible', String(!nowVisible));
+}
+
+// ═══════════════════════════════════════════════
 //  Init
 // ═══════════════════════════════════════════════
 refreshKeyStatus();
 loadGlossary();
+
+// 이전에 안내를 펼쳤던 경우 복원
+if (localStorage.getItem('umff_guide_visible') === 'true') {
+  document.getElementById('modelGuide').style.display = 'flex';
+  document.getElementById('guideToggleIcon').textContent = '▲';
+}
 </script>
 </body>
 </html>

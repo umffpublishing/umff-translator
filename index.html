@@ -706,19 +706,12 @@ const EMBEDDED_STYLE = `# UMFF 번역 스타일 가이드 (v2)
 ✗ "liberating freedom"→"해방적인 자유" / ✓ → "해방" 또는 "진정한 자유"
 
 **규칙 0-4 원문 내용 완전 보존 — 어떤 정보도 누락 금지**
-원문의 모든 정보 단위(주어·목적어·수식어·절·작품 제목·인명·수치)를 빠짐없이 번역문에 반영한다.
-특히 작품 제목이 원문의 주어일 때(X follows / X tells / X documents 등) 한국어 문장 구조를 바꾸더라도 제목을 반드시 포함한다.
-✓ "K2 – Chasing Shadows follows alpinist..." → 〈K2 – Chasing Shadows〉는 알피니스트 ...가 ...여정을 따라간다.
-✗ 잘못: 알피니스트 벤자맹 베드린은 ... (제목 누락)
-✓ "Alpine Rising summons names..." → 『Alpine Rising』은 ...이름들을 불러낸다.
-✗ 잘못: 한 세기 동안 ... 이름들을 불러내는 책이다. (제목 누락)
-
-**규칙 0-5 시간·정도 한정어 보존**
-yet / still / already / even / only / last / first / ever 등 시간·정도·초점 부사는 반드시 번역한다.
-✗ "his most ambitious challenge yet" → "가장 야심 찬 도전"  (yet = 지금껏 누락)
-✓ → 지금껏 가장 야심 찬 도전
-✗ "the last traditional gold miners" → "전통식 금 채굴자들"  (last 누락)
-✓ → 마지막 전통식 금 채굴자들
+a) 작품 제목이 원문의 주어일 때(X follows / X tells / X documents 등) 한국어 구조를 바꾸더라도 제목 포함.
+✓ 〈K2 – Chasing Shadows〉는 알피니스트 ...가 ...여정을 따라간다.  ✗ 알피니스트 벤자맹 베드린은 ... (제목 누락)
+✓ 『Alpine Rising』은 ...이름들을 불러낸다.  ✗ 한 세기 동안 ... (제목 누락)
+b) yet / still / last / only / already / ever 등 시간·정도 한정어 누락 금지.
+✗ "his most ambitious challenge yet" → "가장 야심 찬 도전"  ✓ → 지금껏 가장 야심 찬 도전
+✗ "the last traditional gold miners" → "전통식 금 채굴자들"  ✓ → 마지막 전통식 금 채굴자들
 
 ## 1. 영→한
 
@@ -726,11 +719,11 @@ yet / still / already / even / only / last / first / ever 등 시간·정도·�
 - 규칙 1: 관계절·분사구 → 앞당긴 관형절. 예) "Emin, in his twilight years" → "황혼기에 접어든 에민"
 - 규칙 2: 영어 단문 나열 → ~고/~며/~지만/~는데/~면서로 연결. 말줄임표: 아래 점 3개(...)만 사용.
 - 규칙 3: 영어 시제 무관, 한국어 현재형 유지.
-- 규칙 4: 한국 캐릭터명 + 배우 실명 패턴에만 적용 — 한글 캐릭터명(배우 실명) 병기. 예) 남상(다야항 라이). 서양 인명 음역에는 적용 금지(→ §5-1).
-- 규칙 4-1: 영어 콜론(:) 구조 → 한국어 두 문장 분리. 콜론 앞을 첫 문장으로 끊고 콜론 이하를 별도 문장으로 처리. 수식절 이중 적층 금지.
-  ✓ "challenge yet: a fast, oxygen-free climb of K2" → "지금껏 가장 야심 찬 도전에 나선다. K2를 무산소로, 빠르게 오르는 것이다."
-  ✗ "K2를 산소 없이 빠르게 오르는, 가장 야심 찬 도전에 나서는 여정을 따라간다." (수식절 중복)
-- 규칙 4-2: 등산·산악 전문어 사용. oxygen-free→무산소(✗산소 없이) / speed ascent→속도 등반 / summit push→정상 공략 / alpine style→알파인 스타일 / base camp→베이스캠프
+- 규칙 4: 한국 캐릭터명 + 배우 실명 패턴에만 적용 — 한글 캐릭터명(배우 실명) 병기. 예) 남상(다야항 라이). 서양 인명 음역 금지(→ notation-rules.md 이름 표기).
+- 규칙 4-1: 영어 콜론(:) 구조 → 한국어 두 문장 분리. 수식절 이중 적층 금지.
+  ✓ "challenge yet: a fast, oxygen-free climb" → "지금껏 가장 야심 찬 도전에 나선다. K2를 무산소로, 빠르게 오르는 것이다."
+  ✗ "K2를 산소 없이 빠르게 오르는, 가장 야심 찬 도전에 나서는 여정" (수식절 중복)
+  등산 전문어 → notation-rules.md 등산·산악 전문 용어 참조.
 
 ### 1-2. 프로그램 노트
 - 규칙 5: 감독 노트(1인칭) → 한국어도 1인칭 유지. 주어 반복 불필요.
@@ -820,22 +813,14 @@ yet / still / already / even / only / last / first / ever 등 시간·정도·�
 소스에 《》·〈〉로 쓰인 도서명은 번역 시 『』로 정규화. 영문 도서명은 항상 이탤릭.
 
 ## 5. 고유명사 표기
-글로서리에 등재된 인명은 학습 데이터 표기와 달라도 글로서리 표기를 절대 우선한다.
-예) 보이테크 쿠르티카 → Wojciech Kurtyka (Voytek 등 비공식·약칭 표기 사용 금지)
-- 외국 인명(글로서리 등재): 원어 발음 기준, 현행 외래어 표기법 준수.
-- **외국 인명(글로서리 미등재): 원문 그대로 유지. 음역하지 않는다.**
-  예) Benjamin Védrines → Benjamin Védrines (글로서리 없으면 원문 그대로)
-  ✗ 잘못: Benjamin Védrines → 벤자맹 베드린 (음역 금지)
-- 한국 인명 영문: 성+공백+이름, 이름 음절 하이픈. 예) Bae Chang-ho / Um Hong-gil. 본인 영문명 있으면 우선.
-- 산 이름·지명: TM·시트 우선, 없으면 외래어표기법. 예) Denali→드날리 / Chamonix→샤모니
-표기법 세칙은 notation-rules.md 참조.`;
+인명·지명·산악 전문 용어 표기는 notation-rules.md 이름 표기 / 등산·산악 전문 용어 섹션 참조.`;
 
 const EMBEDDED_NOTATION = `# 표기 규칙 (Notation Rules)
 
 ## 영화 제목 표기
-- 영화 제목은 꺾쇠 < >를 사용하고, 영문 제목은 이탤릭체로 쓴다. (예: <화양연화> / *In the Mood for Love*)
-- 국영문 병기 시에는 꺾쇠 하나 안에 한글·영문을 함께 넣는다. (예: <영원과 하루 Eternity and a Day>)
-- 제목+감독+연도 병기 시: <화양연화>(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
+- 영화 제목은 꺾쇠 〈 〉를 사용하고, 영문 제목은 이탤릭체로 쓴다. (예: 〈화양연화〉 / *In the Mood for Love*)
+- 국영문 병기 시에는 꺾쇠 하나 안에 한글·영문을 함께 넣는다. (예: 〈영원과 하루 Eternity and a Day〉)
+- 제목+감독+연도 병기 시: 〈화양연화〉(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
 
 ## 작품 정보 표기
 - 표기 순서: 제작국가 | 제작연도 | 러닝타임 | 색채 | 카테고리 | 관람 등급
@@ -845,16 +830,31 @@ const EMBEDDED_NOTATION = `# 표기 규칙 (Notation Rules)
 - 색채: Color / B&W. 프리미어: World / International / Asian / Korean Premiere
 
 ## 이름 표기
-- 외국인 이름은 현지 발음에 가깝게, 현행 외래어 표기법 준수.
-- 한자식 이름은 성 앞에 대문자. 영문식 이름은 성 뒤에.
-- 한국·중국 이름은 성과 이름을 붙여서 명기한다.
+
+### 외국 인명 한글 표기 (영→한)
+- 글로서리 등재 인명: 글로서리 표기를 절대 우선한다.
+  예) 보이테크 쿠르티카 → Wojciech Kurtyka (비공식 표기 사용 금지)
+- **글로서리 미등재 인명: 원문 그대로 유지. 음역하지 않는다.**
+  예) Benjamin Védrines → Benjamin Védrines (✗ 벤자맹 베드린으로 음역 금지)
+- 등재 인명 음역 기준: 원어 발음 기준, 현행 외래어 표기법 준수.
+  예) Wanda Rutkiewicz → 반다 루트키에비츠
+
+### 한국 인명 영문 로마자 (한→영)
+- 성 + 공백 + 이름, 이름 음절 사이 하이픈. 본인 영문명 있으면 우선.
+  예) 배창호 → Bae Chang-ho / 엄홍길 → Um Hong-gil
+- 한자식: 성 앞. 영문식: 성 뒤.
 - 별명·애칭: 첫 언급 시 작은따옴표 ' ', 이후 부호 없음. 예) Francisco Marín 'Novato'
+
+### 산 이름·지명
+- proper-nouns.csv 우선, 없으면 외래어 표기법.
+  예) Denali→드날리 / Chamonix→샤모니
 
 ## 서적·기타 매체 표기
 - 도서: 겹낫표 『 』(국문), 이탤릭(영문), 저자명 ( ) 안에.
 - 논문·정기간행물·TV: 낫표 「 」(국문), 이탤릭(영문).
 - 전시: 《 》(국영문 동일). 음반: 낫표 「 」, 곡명은 작은따옴표 ' '.
 - 공연: 국문 작은따옴표 ' ', 영문 이탤릭(따옴표 없이 첫 글자 대문자).
+- 소스에서 도서를 《 》·〈 〉로 쓴 경우 번역 시 『 』로 정규화.
 
 ## 문장부호
 - 대화·정확 인용: 큰따옴표 " ". 의역·강조어: 작은따옴표 ' '.
@@ -870,7 +870,14 @@ const EMBEDDED_NOTATION = `# 표기 규칙 (Notation Rules)
 
 ## 학교·단체·회사
 - 한글 표기는 띄어쓰기 없이 붙여 쓴다. 예) 울산울주세계산악영화제조직위원회
-- 회사 공식 표기: Co. / Inc. / Ltd. / Co.,Ltd.`;
+- 회사 공식 표기: Co. / Inc. / Ltd. / Co.,Ltd.
+
+## 등산·산악 전문 용어 (영→한)
+일반 표현 대신 한국 등산계 표준어를 사용한다.
+oxygen-free / without oxygen → 무산소 (✗ 산소 없이)
+speed ascent → 속도 등반 / summit push → 정상 공략
+alpine style → 알파인 스타일 / base camp → 베이스캠프
+fixed rope → 고정 로프 / technical climbing → 기술 등반`;
 
 const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
 

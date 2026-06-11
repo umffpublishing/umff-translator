@@ -46,29 +46,24 @@
 ```
 
 **규칙 0-4 원문 내용 완전 보존 — 어떤 정보도 누락 금지**
-원문의 모든 정보 단위(주어·목적어·수식어·절·작품 제목·인명·수치)를 빠짐없이 번역문에 반영한다.
-특히 **작품 제목이 원문의 주어**일 때(`X follows ...`, `X tells the story of ...`, `X documents ...` 등) 한국어에서 문장 구조를 바꾸더라도 제목을 반드시 포함한다.
+원문의 모든 정보 단위를 빠짐없이 번역문에 반영한다. 두 가지 자주 빠지는 패턴:
+
+**a) 작품 제목이 원문의 주어일 때** (`X follows / X tells / X documents` 등) 한국어 구조를 바꾸더라도 제목 포함.
 ```
-EN: K2 – Chasing Shadows follows alpinist Benjamin Védrines...
-✓ 올바름: 〈K2 – Chasing Shadows〉는 알피니스트 Benjamin Védrines가 … 여정을 따라간다.
-✗ 잘못:   알피니스트 벤자맹 베드린은 …  (제목 누락)
+✓ 〈K2 – Chasing Shadows〉는 … Benjamin Védrines가 … 여정을 따라간다.
+✗ 알피니스트 벤자맹 베드린은 …  (제목 누락)
 
-EN: Alpine Rising summons names that spent a century in the shadow...
-✓ 올바름: 『Alpine Rising』은 한 세기 동안 … 이름들을 불러낸다.
-✗ 잘못:   한 세기 동안 히말라야 산그늘에 머물던 이름들을 불러내는 책이다.  (제목 누락)
+✓ 『Alpine Rising』은 한 세기 동안 … 이름들을 불러낸다.
+✗ 한 세기 동안 … 이름들을 불러내는 책이다.  (제목 누락)
 ```
 
-**규칙 0-5 시간·정도 한정어 보존**
-`yet`, `still`, `already`, `even`, `only`, `last`, `first`, `ever` 등 시간·정도·초점 부사는 정보 단위로 반드시 번역한다.
+**b) 시간·정도·초점 한정어** (`yet / still / last / only / already / ever` 등) 누락 금지.
 ```
-✗ 잘못: his most ambitious challenge yet → "가장 야심 찬 도전"       (yet = 지금껏 누락)
-✓ 올바름:                               → 지금껏 가장 야심 찬 도전
+✗ his most ambitious challenge yet → "가장 야심 찬 도전"     (yet = 지금껏 누락)
+✓                                 → 지금껏 가장 야심 찬 도전
 
-✗ 잘못: the last traditional gold miners → "전통식 금 채굴자들"       (last = 마지막 누락)
-✓ 올바름:                               → 마지막 전통식 금 채굴자들
-
-✗ 잘못: the only survivor → "생존자"                                 (only = 유일한 누락)
-✓ 올바름:                → 유일한 생존자
+✗ the last traditional gold miners → "전통식 금 채굴자들"    (last 누락)
+✓                                 → 마지막 전통식 금 채굴자들
 ```
 
 ---
@@ -101,7 +96,7 @@ KO: "11살 루파와 마야는 … 가장 친한 친구다."
 ```
 
 **규칙 4** 한국 인물(캐릭터명) + 배우 실명: 한글 캐릭터명(배우 실명) 병기
-이 규칙은 **한국 배역명 + 외국 배우 실명** 패턴에만 적용한다. 서양 인명 음역에 적용하지 않는다(→ §5-1).
+이 규칙은 **한국 배역명 + 외국 배우 실명** 패턴에만 적용한다. 서양 인명 음역에 적용하지 않는다(→ notation-rules.md 이름 표기).
 ```
 EN: "Namsang (Dayahang Rai) and his wife Hangma (Miruna Magar)"
 KO: "남상(다야항 라이)과 그의 아내 항마(미루나 마가르)"
@@ -113,20 +108,9 @@ KO: "남상(다야항 라이)과 그의 아내 항마(미루나 마가르)"
 EN: he sets his sights on his most ambitious challenge yet: a fast, oxygen-free climb of K2
 ✓ 올바름: 지금껏 가장 야심 찬 도전에 나선다. K2를 무산소로, 빠르게 오르는 것이다.
 ✗ 잘못:   K2를 산소 없이 빠르게 오르는, 가장 야심 찬 도전에 나서는 여정을 따라간다.
-          (수식절 이중 적층 — 문장이 한 번에 읽히지 않는다)
+          (수식절 이중 적층)
 ```
-
-**규칙 4-2** 등산·산악 분야 전문 용어
-일반 표현 대신 한국 등산계 표준어를 사용한다.
-```
-oxygen-free / without oxygen  →  무산소  (✗ 산소 없이)
-speed ascent / speed climbing →  속도 등반 / 스피드 클라이밍
-summit push                   →  정상 공략
-alpine style                  →  알파인 스타일
-fixed rope                    →  고정 로프
-base camp                     →  베이스캠프
-technical climbing             →  기술 등반
-```
+등산 전문 용어(무산소·베이스캠프 등) → notation-rules.md 등산·산악 전문 용어 참조.
 
 ---
 
@@ -378,46 +362,11 @@ EN: Insooni is a beloved diva whose powerful vocals...
 
 ## 4. 소스 텍스트 정규화 (번역 전 확인)
 
-국문 원문의 괄호·따옴표는 번역 전에 아래 기준으로 통일한다.
-
-| 유형 | 국문 표기 | 영문 표기 |
-|---|---|---|
-| 도서 | 『 』 겹낫표 | *이탤릭* |
-| 영화 | 〈 〉 꺾쇠 | *이탤릭* |
-| 전시 | 《 》 겹화살괄호 | 《 》 동일 |
-| 강조·비유 | ' ' 작은따옴표 | ' ' 작은따옴표 |
-| 직접 인용·대사 | " " 큰따옴표 | " " 큰따옴표 |
-
-도서를 《 》·〈 〉로 쓴 소스는 번역 시 『 』로 정규화. 영문 도서명은 항상 이탤릭.
-
----
+괄호·따옴표·제목 표기는 `notation-rules.md` 기준을 따른다. 핵심만 요약:
+- 도서 `『 』` / 영화 `〈 〉` / 전시 `《 》` / 강조·비유 `' '` / 직접 인용 `" "`
+- 소스에서 도서를 `《 》`·`〈 〉`로 쓴 경우 번역 시 `『 』`로 정규화.
+- 영문 도서명은 항상 이탤릭.
 
 ## 5. 고유명사 표기
 
-#### 5-1. 외국 인명 한글 표기
-**글로서리에 등재된 인명**은 학습 데이터 표기와 달라도 글로서리 표기를 절대 우선한다.
-원어 발음 기준, 현행 외래어 표기법 준수. 국내 관례 표기 우선(표기 시트 [38][39]).
-**글로서리 미등재 인명은 원문 그대로 유지한다.** 음역하지 않는다.
-```
-Wanda Rutkiewicz → 반다 루트키에비츠 / Reinhold Messner → 라인홀트 메스너  ← 글로서리 등재
-
-보이테크 쿠르티카 → Wojciech Kurtyka  (Voytek 등 비공식·약칭 표기 사용 금지)
-
-Benjamin Védrines → Benjamin Védrines  (글로서리 미등재 → 원문 그대로)
-✗ 잘못: Benjamin Védrines → 벤자맹 베드린  (글로서리 미등재 인명 음역 금지)
-```
-
-#### 5-2. 한국 인명 영문 로마자
-`성 + 공백 + 이름`, 이름 음절 사이 하이픈. 본인 영문명 있으면 우선(표기 시트 [47]).
-```
-이정진 → Jinna Lee  /  배창호 → Bae Chang-ho  /  엄홍길 → Um Hong-gil
-```
-한·중·일 한자식: 성 앞. 영문식: 성 뒤(표기 시트 [40][42][44]).
-
-#### 5-3. 산 이름·지명
-TM·시트 우선, 없으면 외래어표기법.
-```
-Denali → 드날리 / Chamonix → 샤모니 / Patagonia → 파타고니아
-```
-
-표기법 세칙은 `notation-rules.md` 참조.
+인명·지명·산악 전문 용어 표기 규칙은 `notation-rules.md` 이름 표기 / 등산·산악 전문 용어 섹션 참조.

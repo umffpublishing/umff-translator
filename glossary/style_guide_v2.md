@@ -57,13 +57,33 @@
 ✗ 한 세기 동안 … 이름들을 불러내는 책이다.  (제목 누락)
 ```
 
-**b) 시간·정도·초점 한정어** (`yet / still / last / only / already / ever` 등) 누락 금지.
+**b) 시간·정도·초점 한정어** (`yet / still / last / only / already / ever / often` 등) 누락 금지.
 ```
 ✗ his most ambitious challenge yet → "가장 야심 찬 도전"     (yet = 지금껏 누락)
 ✓                                 → 지금껏 가장 야심 찬 도전
 
 ✗ the last traditional gold miners → "전통식 금 채굴자들"    (last 누락)
 ✓                                 → 마지막 전통식 금 채굴자들
+
+✗ the quiet unease that often drives people to extremes → "사람을 극단으로 몰아가는 조용한 불안"  (often 누락)
+✓                                                      → 때로 사람을 극단으로 내모는 조용한 불안
+```
+
+**규칙 0-5 번역체 회피 (영→한)**
+직역 구조·수동태를 한국어 자연 문체로 바꾼다.
+
+| 번역체 패턴 | 수정 방향 |
+|---|---|
+| `~에 의해 드러났다 / ~에 의해 만들어졌다` | 능동으로 재구성: `~가 꺼내 보이다 / ~가 드러나다` |
+| `raw → 순수한` (의미 불일치 직역) | `날것의 / 원초적인` |
+| `reckoning → 성찰` (강도 순화) | `자기 직면 / 내면의 청산` |
+| 영어 단문 나열을 하나의 긴 복합문으로 묶기 | 원문 단문 구조 유지 또는 짧게 분리 |
+```
+✗ 잘못: 예상치 못한 정직함과 명료함으로 Benjamin 자신에 의해 드러났다.
+✓ 올바름: Benjamin 스스로가 예상치 못한 솔직함과 명료함으로 꺼내 보이면서.
+
+✗ 잘못: raw physical achievement → 순수한 신체적 성취
+✓ 올바름: raw physical achievement → 날것의 신체 성취
 ```
 
 ---

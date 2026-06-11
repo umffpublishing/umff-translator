@@ -709,9 +709,17 @@ const EMBEDDED_STYLE = `# UMFF 번역 스타일 가이드 (v2)
 a) 작품 제목이 원문의 주어일 때(X follows / X tells / X documents 등) 한국어 구조를 바꾸더라도 제목 포함.
 ✓ 〈K2 – Chasing Shadows〉는 알피니스트 ...가 ...여정을 따라간다.  ✗ 알피니스트 벤자맹 베드린은 ... (제목 누락)
 ✓ 『Alpine Rising』은 ...이름들을 불러낸다.  ✗ 한 세기 동안 ... (제목 누락)
-b) yet / still / last / only / already / ever 등 시간·정도 한정어 누락 금지.
+b) yet / still / last / only / already / ever / often 등 시간·정도 한정어 누락 금지.
 ✗ "his most ambitious challenge yet" → "가장 야심 찬 도전"  ✓ → 지금껏 가장 야심 찬 도전
 ✗ "the last traditional gold miners" → "전통식 금 채굴자들"  ✓ → 마지막 전통식 금 채굴자들
+✗ "unease that often drives people to extremes" → "사람을 극단으로 몰아가는"  ✓ → 때로 사람을 극단으로 내모는
+
+**규칙 0-5 번역체 회피 (영→한)**
+직역 구조·수동태를 한국어 자연 문체로 바꾼다.
+✗ ~에 의해 드러났다 → ✓ Benjamin 스스로가 꺼내 보이면서 (능동 재구성)
+✗ raw→순수한 (의미 불일치) → ✓ 날것의 / 원초적인
+✗ reckoning→성찰 (강도 순화) → ✓ 자기 직면 / 내면의 청산
+✗ 영어 단문을 하나의 긴 복합문으로 묶기 → ✓ 원문 단문 구조 유지 또는 짧게 분리
 
 ## 1. 영→한
 
@@ -908,6 +916,10 @@ const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
 - EN: The man stands on the mudflat. On his way home, he realizes that he is dead. Lost in enduring solitude and confusion, he encounters a psychopomp. "Bardo" begins on the mudflat, passes through the city, and ends at the mountain ridge. This film follows the man's story from the shore to the mountaintop, a long journey toward embracing one being's death.
 
 ## 프로그램 노트 · 영→한
+
+**예시 (K2 – Chasing Shadows, 감독 노트)** ← 1인칭 복수 유지 / raw→날것의 / often→때로 / reckoning→자기 직면 / ~에 의해 수동태 금지 / 단문 분리
+- EN: When we first heard of Benjamin Védrines and looked him up online, all we saw were headlines: broken speed records, bold solo ascents, raw physical achievement. He was clearly an extraordinary athlete. But the somehow blunt question quickly arose — he's fast, he's strong, but does that alone justify making a film about him? Then we met in person. And in that first conversation, layers began to peel away, revealing more than the stereotyped persona of a record-breaking machine. The contradictions, the questioning, the vulnerability, the quiet unease that often drives people to extremes. Everything an online list of accomplishments can't capture was right there, revealed with unexpected honesty and clarity by Benjamin himself. Benjamin's story goes well beyond performance. This is a story of inner struggle, of reckoning — one that came into sharper focus with each step he took toward K2.
+- KO: Benjamin Védrines를 처음 알게 됐을 때, 온라인 검색에서 돌아오는 건 헤드라인뿐이었다. 속도 신기록, 대담한 단독 등반, 날것의 신체 성취. 비범한 운동선수라는 건 분명했다. 하지만 다소 날 선 의문도 따라왔다. 빠르고 강하다는 것, 그것만으로 영화를 만들 이유가 될 수 있을까? 그러다 직접 만났다. 첫 대화에서 켜켜이 쌓인 막이 하나씩 벗겨지기 시작했고, 신기록 경신 기계라는 상투적인 이미지 너머의 무언가가 드러났다. 모순, 회의, 연약함 — 그리고 때로 사람을 극단으로 내모는 조용한 불안. 그 어떤 성취 목록에도 담기지 않을 것들이 거기 있었다. Benjamin 스스로가, 예상치 못한 솔직함과 명료함으로 꺼내 보이면서. Benjamin의 이야기는 성과를 훌쩍 넘어선다. 내면의 투쟁이자 자기 직면의 이야기 — K2를 향해 내딛는 걸음마다 더욱 선명해진.
 
 **예시 (Placekeepers)**
 - EN: In remote Tusheti, Georgia, a dwindling highland community grapples with rural depopulation, intergenerational change, and Soviet memory—offering a rare glimpse into alternative ways of living, collective resilience, and an uncertain path into the future.

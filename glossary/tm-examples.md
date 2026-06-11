@@ -39,6 +39,11 @@
 
 ## 프로그램 노트 · 영 → 한
 
+**예시 (K2 – Chasing Shadows, 감독 노트)** ← 1인칭 복수 유지 / raw→날것의 / often→때로 / reckoning→자기 직면 / ~에 의해 수동태 금지 / 단문 분리
+
+- EN: When we first heard of Benjamin Védrines and looked him up online, all we saw were headlines: broken speed records, bold solo ascents, raw physical achievement. He was clearly an extraordinary athlete. But the somehow blunt question quickly arose — he's fast, he's strong, but does that alone justify making a film about him? Then we met in person. And in that first conversation, layers began to peel away, revealing more than the stereotyped persona of a record-breaking machine. The contradictions, the questioning, the vulnerability, the quiet unease that often drives people to extremes. Everything an online list of accomplishments can't capture was right there, revealed with unexpected honesty and clarity by Benjamin himself. Benjamin's story goes well beyond performance. This is a story of inner struggle, of reckoning — one that came into sharper focus with each step he took toward K2.
+- KO: Benjamin Védrines를 처음 알게 됐을 때, 온라인 검색에서 돌아오는 건 헤드라인뿐이었다. 속도 신기록, 대담한 단독 등반, 날것의 신체 성취. 비범한 운동선수라는 건 분명했다. 하지만 다소 날 선 의문도 따라왔다. 빠르고 강하다는 것, 그것만으로 영화를 만들 이유가 될 수 있을까? 그러다 직접 만났다. 첫 대화에서 켜켜이 쌓인 막이 하나씩 벗겨지기 시작했고, 신기록 경신 기계라는 상투적인 이미지 너머의 무언가가 드러났다. 모순, 회의, 연약함 — 그리고 때로 사람을 극단으로 내모는 조용한 불안. 그 어떤 성취 목록에도 담기지 않을 것들이 거기 있었다. Benjamin 스스로가, 예상치 못한 솔직함과 명료함으로 꺼내 보이면서. Benjamin의 이야기는 성과를 훌쩍 넘어선다. 내면의 투쟁이자 자기 직면의 이야기 — K2를 향해 내딛는 걸음마다 더욱 선명해진.
+
 **예시 (Placekeepers)**
 
 - KO: 조지아의 투셰티, 쇠퇴하고 있는 고산지대 공동체는 농촌 인구 감소, 세대 간 변화, 소련 체제의 잔재라는 어려움을 겪고 있다. 동시에 대안적 생활 방식과 집단 회복력, 미래로 이어지는 불확실한 길을 엿볼 수 있는 기회를 제공한다.

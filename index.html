@@ -607,7 +607,14 @@ const EMBEDDED_CSV = `구분,국문,영문,비고
 주소,"44952 울산광역시 울주군 알프스온천5길 103-8 영상체험관 B1, 울산울주세계산악영화제 사무국","Ulsan Ulju Mountain Film Festival office, B1, Experience House, 103-8 Alpeuseuoncheon 5-gil, Ulju-gun, Ulsan, Korea 44952",
 전화번호,052 248 6450,+82 52 248 6450,
 기관,국립밀양등산학교,National Miryang Mountaineering School,
-기관,국립산악박물관,National Mountain Museum,`;
+기관,국립산악박물관,National Mountain Museum,
+인명,엘리자베스 홀리,Elizabeth Hawley,
+인명,버나데트 맥도날드,Bernadette McDonald,
+인명,보이테크 쿠르티카,Wojciech Kurtyka,
+용어,셰르파,Sherpa,히말라야 민족·공동체명
+용어,보티야,Bhotia,히말라야 민족·공동체명
+용어,발티,Balti,히말라야 민족·공동체명
+용어,라다키,Ladakhi,히말라야 민족·공동체명`;
 
 const EMBEDDED_FESTIVALS = `구분,국문,영문,비고
 해외영화제,핫독국제다큐멘터리영화제,Hot Docs International Documentary Film Festival,
@@ -679,60 +686,113 @@ const EMBEDDED_STYLE = `# UMFF 번역 스타일 가이드 (v2)
 출처 우선순위: proper-nouns.csv > notation-rules.md > 본 가이드
 
 ## 0. 공통 원칙 (모든 방향·유형에 적용)
-- 규칙 0-1 강도 보존: 원문의 강한 표현을 임의로 순화하지 않는다. 강한 동사는 그대로 옮긴다. ✗ "부서진다" → "무너질 듯" (순화 금지) / ✓ "부서진다" → shatters / breaks apart
-- 규칙 0-2 수식어 완전 보존: 형용사·부사 수식어는 문법적으로 불가능하지 않은 한 모두 옮긴다. ✗ "painful struggle" → "투쟁" (수식어 누락 금지) / ✓ "painful struggle" → "고통스러운 투쟁"
-- 규칙 0-3 동어반복 해소(영→한): 의미 겹치는 수식어 쌓임은 하나로 합치거나 동사로 풀어 동어반복을 피한다. ✗ "liberating freedom" → "해방적인 자유" / ✓ → "해방" 또는 "진정한 자유"
+
+**규칙 0-1 강도(intensity) 보존**
+원문의 강한 표현·어조를 임의로 순화하거나 과장하지 않는다.
+✗ 순화: "부서진다"→"무너질 듯" / collapses→"흔들린다"
+✗ 과잉: 도전→struggle (올바름: challenge/pursuit)
+✗ 의미 왜곡: 좌절→defeat (defeat=패배, 다른 단어)
+✗ 과잉: 좌절→despair (despair=절망, 강도 초과) → 올바름: frustration/setback/disappointment
+✗ 과잉: 잊힌→erased (올바름: forgotten)
+✗ 추가: 원문에 없는 단어·수식어 삽입 금지. 예) devastation / triumphs of / biting wind
+
+**규칙 0-2 수식어·절 완전 보존**
+형용사·부사뿐 아니라 동기·이유·목적 구·절도 생략 금지.
+✗ "진짜 삶을 찾아 네팔에 거주하면서" → "relocated to Nepal" (동기 절 누락)
+✓ "in search of a real life, moved to Nepal"
+
+**규칙 0-3 동어반복 해소 (영→한)**
+의미 겹치는 수식어는 하나로 합치거나 동사로 풀어 동어반복을 피한다.
+✗ "liberating freedom"→"해방적인 자유" / ✓ → "해방" 또는 "진정한 자유"
+
+**규칙 0-4 원문 내용 완전 보존 — 어떤 정보도 누락 금지**
+원문의 모든 정보 단위(주어·목적어·수식어·절·작품 제목·인명·수치)를 빠짐없이 번역문에 반영한다.
+특히 작품 제목이 원문의 주어일 때(X follows / X tells / X documents 등) 한국어 문장 구조를 바꾸더라도 제목을 반드시 포함한다.
+✓ "K2 – Chasing Shadows follows alpinist..." → 〈K2 – Chasing Shadows〉는 알피니스트 ...가 ...여정을 따라간다.
+✗ 잘못: 알피니스트 벤자맹 베드린은 ... (제목 누락)
+✓ "Alpine Rising summons names..." → 『Alpine Rising』은 ...이름들을 불러낸다.
+✗ 잘못: 한 세기 동안 ... 이름들을 불러내는 책이다. (제목 누락)
 
 ## 1. 영→한
 
 ### 1-1. 시놉시스
-- 규칙 1: 관계절·분사구 → 앞당긴 관형절. 예) "newly married and pregnant Pema" → "결혼한 지 얼마 되지 않은 임산부 페마"
-- 규칙 2: 영어 단문 나열 → ~고, ~며, ~지만, ~는데, ~면서로 연결 (흐름이 자연스러울 때만). 말줄임표: 아래 점 3개(...)만 사용.
-- 규칙 3: 영어 시제 무관하게 한국어 현재형 유지.
-- 규칙 4: 외국 인명 첫 등장: 한글(영문) 병기, 이후 한글만. 예) 남상(다야항 라이)
+- 규칙 1: 관계절·분사구 → 앞당긴 관형절. 예) "Emin, in his twilight years" → "황혼기에 접어든 에민"
+- 규칙 2: 영어 단문 나열 → ~고/~며/~지만/~는데/~면서로 연결. 말줄임표: 아래 점 3개(...)만 사용.
+- 규칙 3: 영어 시제 무관, 한국어 현재형 유지.
+- 규칙 4: 외국 인명 첫 등장 한글(영문) 병기, 이후 한글만. 예) 남상(다야항 라이)
 
 ### 1-2. 프로그램 노트
 - 규칙 5: 감독 노트(1인칭) → 한국어도 1인칭 유지. 주어 반복 불필요.
 - 규칙 6: 3인칭 노트 — "This film" 등 반복 주어 첫 문장 이후 생략.
-- 규칙 7: 노트 마지막 문장 명사형 허용. 예) "역동적이고 몰입감 있는 카메라 무빙이 만들어내는 짜릿한 속도감이 가히 환상적인 영화."
-- 규칙 8: 직접 인용·대사 → 큰따옴표. 의역 인용·강조어 → 작은따옴표. "영어 큰따옴표 무조건 작은따옴표 변환"은 틀림.
+- 규칙 7: 마지막 문장 명사형 허용. 예) "짜릿한 속도감이 가히 환상적인 영화."
+- 규칙 8 따옴표: 직접 인용·대사→큰따옴표. 의역 인용·강조어·비유 표현→작은따옴표. 국문 작은따옴표→영문도 작은따옴표.
+  예) KO: 낙엽을 '폴란드 망명정부의 지폐'라고 → EN: 'banknotes of the Polish government-in-exile' ✓ / "banknotes of..." ✗
+  예) KO: '영혼의 해방'이자 '고도의 예술' → EN: 'liberation of the soul' and 'the highest art form' ✓
 
 ### 1-3. 바이오
-- 규칙 9: 이름 생략, 국적+직함으로 시작. 예) "덴마크 출신의 영화감독이자 예술가로..." / "[활동지] 기반의 [직함]" / "[직함] 겸 [직함]"
+- 규칙 9: 이름 생략, 국적+직함으로 시작. 예) "덴마크 출신의 영화감독이자 예술가로..." / "[직함] 겸 [직함]"
 - 규칙 10: 현재완료·과거형 → 한국어 현재형.
-- 규칙 11: 국문 작품명 꺾쇠 <작품명>, 영문 이탤릭. 병기 시 꺾쇠 하나: <한글제목 English Title>. 예) <영원과 하루 Eternity and a Day>
+- 규칙 11: 국문 작품명 꺾쇠〈〉, 영문 이탤릭. 병기: 〈영원과 하루 Eternity and a Day〉
 
 ## 2. 한→영
 
+### 한→영 공통 원칙
+
+**원문 충실도 우선**
+원문에 없는 이미지·수식어·극적 어휘 추가 금지. 원문이 담백하면 번역도 담백하게.
+✗ 경계→"razor's edge" / ✗ 잊힌→"erased" / ✗ 폴란드인들의 대자유→"a great freedom uniquely their own"
+✓ boundary/edge / forgotten / their great freedom
+
+**어휘 등급(register)**
+프로그램북에 맞는 자연스럽고 명확한 어휘 선택. 라틴어 차용어·격식 과잉 표현 지양.
+✗ 역저→magnum opus → ✓ monumental work
+✗ 기록자→chronicler (편년사가 뉘앙스) → ✓ record-keeper
+✗ 끈질긴→tireless (지칠 줄 모르는) → ✓ persistent/relentless
+✗ 사료→historical records (너무 포괄적) → ✓ archival sources/archival research
+
+**숫자 표기**
+본문 내 숫자는 문자로 풀어 쓴다. 연도·정밀 수치는 예외.
+✗ 60여 년→"60 years" / ✓ "more than sixty years"
+✗ 2백만→"2 million" / ✓ "two million"
+예외: 1947년→1947 / 8,000m / 50+ awards
+
 ### 2-1. 시놉시스
-- 규칙 12: 시간·장소 맥락 → 문두 부사구. 예) "6.25 전쟁으로 부모를 잃은" → "During the Korean War, ... lose their parents"
-- 규칙 13: 시간 전환 → 전환사 명시 (Years later / Meanwhile / Eventually / After / Only then).
-- 규칙 14: 관형절 → 관계절(who/which/that) 또는 분사구문.
+- 규칙 12: 시간·장소 맥락 → 문두 부사구. 예) "6.25 전쟁으로 부모를 잃은" → "During the Korean War, ...lose their parents"
+- 규칙 13: 시간 전환 → Years later / Meanwhile / Eventually / After / Only then
+- 규칙 14: 관형절 → who/which/that 또는 분사구문.
 - 규칙 15: 한국어 현재형 → 영어 현재 시제(historical present) 유지.
-- 규칙 16: 고유어 처리 — 음차 유지(막걸리→makgeolli) 또는 풀어서 설명(외가→maternal relatives). 한 작품 내 일관 유지.
+- 규칙 16: 고유어 — 음차(막걸리→makgeolli) 또는 풀어서(외가→maternal relatives).
 
 ### 2-2. 프로그램 노트
-- 규칙 17: 3인칭 노트 → "This film..." 또는 "The film..."으로 시작.
-- 규칙 18: 1인칭(나/우리) → I/we 유지. 생략 주어도 명시.
-- 규칙 19: 한국어 긴 복문 → 영어 2~3문장으로 분리.
+- 규칙 17: 3인칭 노트 → 원문 주어에 맞게 시작.
+  영화: "This film..." / "The film..."
+  도서·전시 패널 등 비영화 텍스트: 제목 이탤릭으로 시작. "This film" / "This book" 모두 금지. 문장 구조를 바꾸더라도 제목 유지.
+  ✓ "*WINTER 8000* explores …"
+  ✗ "This film explores …" (도서를 film으로)
+  ✗ "This book covers …" (제목→This book 대체 금지)
+  ✗ "This film is based on *Art of Freedom*" (책 자체가 주어인데 film 삽입 금지)
+- 규칙 18: 1인칭(나/우리) → I/we 유지. 필자의 1인칭 회상·논평도 동일 인칭 유지.
+  ✓ "I could not help but think of Korea's own mountaineering world."
+  ✗ "one cannot help but think of..."
+- 규칙 19: 긴 복문 → 2~3문장으로 분리.
 
 ### 2-3. 바이오
-- 규칙 20: 감독 이름을 주어로 시작 (규칙 9와 반대). 예) "Bae Chang-ho made his directorial debut..."
-- 규칙 21: 완료 사실 → 현재완료 (has won / has directed / has appeared).
-- 규칙 22: 한국 영화 제목 → 꺾쇠 없이 영문 번역 제목(이탤릭). 예) <꼬방동네 사람들> → People in the Slum
+- 규칙 20: 감독 이름을 주어로 시작. 예) "Bae Chang-ho made his directorial debut..."
+- 규칙 21: 완료 사실 → 현재완료 (has won / has directed).
+- 규칙 22: 한국 영화 제목 → 꺾쇠 없이 이탤릭. 예) *People in the Slum*
 
 ### 2-4. 섹션 서문
-- 규칙 23: 섹션명 영문 큰따옴표. '자연' → "Nature". 도입 동사: presents / features / is composed of.
-- 규칙 24: 비슷한 작품 주제별 단락으로 묶기. 세미콜론·연결사(while/also/in addition) 허용.
-- 규칙 25: 귀속 표시 — ― 프로그래머 이정진 → ― Jinna Lee, Programmer / ― 트렌토영화제 로잔나 스테딜레 → ― Rosanna Stedile, Trento Film Festival
-- 규칙 26: * 각주 포함 전문 번역. 기관명은 글로서리 확정 표기 사용.
+- 규칙 23: 섹션명 → 영문 큰따옴표. '자연'→"Nature". 도입 동사: presents/features/is composed of.
+- 규칙 24: 비슷한 작품 주제별 단락. 세미콜론·연결사(while/also/in addition) 허용.
+- 규칙 25: 귀속 표시 — ― 이정진 → ― Jinna Lee, Programmer
+- 규칙 26: * 각주 포함 전문 번역.
 - 규칙 27: 길이 제한 없음. 작품명·감독명·정보 누락 불가.
 
 ### 2-5. 페스티벌 프로그램
-- 규칙 28: 청유·권유 → 영어 명령형·청유형. 예) "함께해요!" → "Join us!" / "초대합니다" → "invites you"
-- 규칙 29: 불릿 구조 유지. 준비물→Items to Bring / 유의 사항→Notes / 프로그램→Program
-- 규칙 30: 공연·행사 소개 — 아티스트 이름 생략 금지 (바이오 규칙 9와 다름).
-- 규칙 31: 길이 제한 없음. 원문 정보 전부 유지.
+- 규칙 28: 청유·권유 → 영어 명령형. 예) "초대합니다"→"invites you"
+- 규칙 29: 불릿 구조 유지. 준비물→Items to Bring / 유의 사항→Notes
+- 규칙 30: 공연·행사 — 아티스트 이름 생략 금지.
+- 규칙 31: 길이 제한 없음. 내용 누락 불가.
 
 ## 3. 길이 기준
 | 콘텐츠 | 국문 | 영문 글자 | 영문 단어 |
@@ -741,14 +801,22 @@ const EMBEDDED_STYLE = `# UMFF 번역 스타일 가이드 (v2)
 | 프로그램 노트 | 150자 | 260자 | 35단어 |
 | 바이오 | 110자 | 260자 | 50단어 |
 | 섹션 서문 | — | — | — |
-목표 상한. 내용 누락보다 초과를 우선 허용. 짧은 원문을 한도까지 늘리지 않는다.
+| 도서 전시 패널 | — | — | — |
+내용 누락보다 한도 초과를 우선 허용. 짧은 원문을 한도까지 늘리지 말 것.
 
-## 4. 고유명사 표기
-- 외국 인명: 원어 발음 기준, 현행 외래어 표기법 준수.
+## 4. 소스 텍스트 정규화
+도서=『』/ 영화=〈〉/ 전시=《》/ 강조·비유=' '/ 직접인용=" "
+소스에 《》·〈〉로 쓰인 도서명은 번역 시 『』로 정규화. 영문 도서명은 항상 이탤릭.
+
+## 5. 고유명사 표기
+글로서리에 등재된 인명은 학습 데이터 표기와 달라도 글로서리 표기를 절대 우선한다.
+예) 보이테크 쿠르티카 → Wojciech Kurtyka (Voytek 등 비공식·약칭 표기 사용 금지)
+- 외국 인명(글로서리 등재): 원어 발음 기준, 현행 외래어 표기법 준수.
+- **외국 인명(글로서리 미등재): 원문 그대로 유지. 음역하지 않는다.**
+  예) Benjamin Védrines → Benjamin Védrines (글로서리 없으면 원문 그대로)
+  ✗ 잘못: Benjamin Védrines → 벤자맹 베드린 (음역 금지)
 - 한국 인명 영문: 성+공백+이름, 이름 음절 하이픈. 예) Bae Chang-ho / Um Hong-gil. 본인 영문명 있으면 우선.
-- 한·중·일 한자식: 성 앞. 영문식: 성 뒤.
-- 산 이름·지명: TM·시트 우선, 없으면 외래어표기법.
-
+- 산 이름·지명: TM·시트 우선, 없으면 외래어표기법. 예) Denali→드날리 / Chamonix→샤모니
 표기법 세칙은 notation-rules.md 참조.`;
 
 const EMBEDDED_NOTATION = `# 표기 규칙 (Notation Rules)

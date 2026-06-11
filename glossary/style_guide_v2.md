@@ -58,6 +58,19 @@ EN: Alpine Rising summons names that spent a century in the shadow...
 ✗ 잘못:   한 세기 동안 히말라야 산그늘에 머물던 이름들을 불러내는 책이다.  (제목 누락)
 ```
 
+**규칙 0-5 시간·정도 한정어 보존**
+`yet`, `still`, `already`, `even`, `only`, `last`, `first`, `ever` 등 시간·정도·초점 부사는 정보 단위로 반드시 번역한다.
+```
+✗ 잘못: his most ambitious challenge yet → "가장 야심 찬 도전"       (yet = 지금껏 누락)
+✓ 올바름:                               → 지금껏 가장 야심 찬 도전
+
+✗ 잘못: the last traditional gold miners → "전통식 금 채굴자들"       (last = 마지막 누락)
+✓ 올바름:                               → 마지막 전통식 금 채굴자들
+
+✗ 잘못: the only survivor → "생존자"                                 (only = 유일한 누락)
+✓ 올바름:                → 유일한 생존자
+```
+
 ---
 
 ## 1. 영→한
@@ -87,10 +100,32 @@ EN: "Rupa and Maya (11) are best friends..."
 KO: "11살 루파와 마야는 … 가장 친한 친구다."
 ```
 
-**규칙 4** 외국 인명 첫 등장: 한글(영문) 병기, 이후 한글만
+**규칙 4** 한국 인물(캐릭터명) + 배우 실명: 한글 캐릭터명(배우 실명) 병기
+이 규칙은 **한국 배역명 + 외국 배우 실명** 패턴에만 적용한다. 서양 인명 음역에 적용하지 않는다(→ §5-1).
 ```
 EN: "Namsang (Dayahang Rai) and his wife Hangma (Miruna Magar)"
 KO: "남상(다야항 라이)과 그의 아내 항마(미루나 마가르)"
+```
+
+**규칙 4-1** 영어 콜론(`:`) 구조 → 한국어 두 문장 분리
+콜론이 긴 동격·설명절을 이끄는 경우, 콜론 앞을 첫 문장으로 끊고 콜론 이하를 별도 문장으로 처리한다. 수식절을 겹쳐 쌓지 않는다.
+```
+EN: he sets his sights on his most ambitious challenge yet: a fast, oxygen-free climb of K2
+✓ 올바름: 지금껏 가장 야심 찬 도전에 나선다. K2를 무산소로, 빠르게 오르는 것이다.
+✗ 잘못:   K2를 산소 없이 빠르게 오르는, 가장 야심 찬 도전에 나서는 여정을 따라간다.
+          (수식절 이중 적층 — 문장이 한 번에 읽히지 않는다)
+```
+
+**규칙 4-2** 등산·산악 분야 전문 용어
+일반 표현 대신 한국 등산계 표준어를 사용한다.
+```
+oxygen-free / without oxygen  →  무산소  (✗ 산소 없이)
+speed ascent / speed climbing →  속도 등반 / 스피드 클라이밍
+summit push                   →  정상 공략
+alpine style                  →  알파인 스타일
+fixed rope                    →  고정 로프
+base camp                     →  베이스캠프
+technical climbing             →  기술 등반
 ```
 
 ---

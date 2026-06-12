@@ -291,37 +291,6 @@
     }
     .model-btn:hover { border-color: #aaa; color: var(--text); }
     .model-btn.active-sonnet { border-color: var(--teal); color: var(--teal); background: #eef7f9; font-weight: 700; }
-    .model-btn.active-opus   { border-color: #7a4fa8; color: #7a4fa8; background: #f5f0ff; font-weight: 700; }
-
-    /* ─── Model guide ─── */
-    .guide-toggle-row {
-      display: flex; justify-content: flex-end;
-      margin-bottom: 6px;
-    }
-    .btn-guide-toggle {
-      background: none; border: none;
-      color: var(--muted); font-size: .76rem;
-      cursor: pointer; padding: 2px 0;
-      display: flex; align-items: center; gap: 4px;
-      letter-spacing: .01em;
-    }
-    .btn-guide-toggle:hover { color: var(--text); }
-
-    .model-guide {
-      display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
-    }
-    .model-guide-card {
-      flex: 1; min-width: 220px;
-      border-radius: 10px; padding: 14px 16px;
-      font-size: .8rem; line-height: 1.7;
-    }
-    .model-guide-card.sonnet { background: #eef7f9; border: 1px solid #a8dccb; }
-    .model-guide-card.opus   { background: #f5f0ff; border: 1px solid #c9b8f5; }
-    .model-guide-title { font-weight: 700; font-size: .85rem; margin-bottom: 6px; }
-    .model-guide-card.sonnet .model-guide-title { color: var(--teal); }
-    .model-guide-card.opus   .model-guide-title { color: #5b2be0; }
-    .guide-good  { color: #2a7d5f; }
-    .guide-bad   { color: #b04030; }
 
     /* ─── Glossary notice ─── */
     .glossary-notice {
@@ -394,45 +363,11 @@
     <div class="model-row">
       <label>모델</label>
       <button class="model-btn active-sonnet" id="btnSonnet" onclick="selectModel('sonnet')">Sonnet 4.6</button>
-      <button class="model-btn"               id="btnOpus"   onclick="selectModel('opus')">Opus 4.8</button>
     </div>
 
     <div class="input-footer">
       <span class="char-count" id="charCount">0자</span>
       <button class="btn-run" id="runBtn" onclick="runTranslation()">번역 시작</button>
-    </div>
-  </div>
-
-  <!-- Model guide -->
-  <div class="guide-toggle-row">
-    <button class="btn-guide-toggle" id="guideToggleBtn" onclick="toggleGuide()">
-      모델 안내 <span id="guideToggleIcon">▼</span>
-    </button>
-  </div>
-  <div class="model-guide" id="modelGuide" style="display:none">
-    <div class="model-guide-card sonnet">
-      <div class="model-guide-title">Sonnet 4.6 — 정확 · 기본값</div>
-      <span class="guide-good">✔ 유리한 경우</span><br>
-      시놉시스·노트·바이오 모든 유형<br>
-      고유명사가 적당히 있는 일반 번역<br>
-      빠른 초벌 확인이 필요할 때<br>
-      반복·대량 작업<br>
-      <br>
-      <span class="guide-bad">✘ 불리한 경우</span><br>
-      모호한 표현·판단 분기가 많을 때<br>
-      최종 인쇄 직전 고품질 검수
-    </div>
-    <div class="model-guide-card opus">
-      <div class="model-guide-title">Opus 4.8 — 최고품질 · A/B 비교용</div>
-      <span class="guide-good">✔ 유리한 경우</span><br>
-      고유명사가 밀집된 까다로운 원고<br>
-      모호한 표현이 많아 판단이 중요할 때<br>
-      최종 인쇄 직전 검수<br>
-      Sonnet 결과가 만족스럽지 않을 때<br>
-      <br>
-      <span class="guide-bad">✘ 불리한 경우</span><br>
-      빠른 피드백이 우선일 때<br>
-      비용 절약이 중요할 때 (약 1.67배)
     </div>
   </div>
 
@@ -720,6 +655,9 @@ b) yet / still / last / only / already / ever / often 등 시간·정도 한정�
 ✗ raw→순수한 (의미 불일치) → ✓ 날것의 / 원초적인
 ✗ reckoning→성찰 (강도 순화) → ✓ 자기 직면 / 내면의 청산
 ✗ 영어 단문을 하나의 긴 복합문으로 묶기 → ✓ 원문 단문 구조 유지 또는 짧게 분리
+✗ 동격·관계절 이식: "환경 운동가이던 어머니가 세상을 떠난 후 이사한다" → ✓ "어머니를 잃은 알마는 이사한다" (문장 분리 또는 주어 재구성)
+✗ ~에 관한/~에 대한 전치사 직역: "연대와 용서에 관한 갈등" → ✓ "연대와 용서의 문제로 번져간다"
+✗ 동사구 직역: "자유를 가져다줄 것인가 / 시련과 마주해야 한다" → ✓ "자유가 찾아올 것인가 / 시련을 넘어야 한다"
 
 ## 1. 영→한
 
@@ -905,6 +843,14 @@ const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
 - EN: Based in the multi-cultural settings of Eastern hills of Nepal, film takes us on a journey filled with the warmth of love and human connections. The film follows Dharanidhar Kafle, a skilled mason who has inherited his craft from his father. Dharani frequently visits his father's soul friend in the highlands where he reconnects with his childhood crush, Phool Gurung.
 - KO: 네팔 동부 구릉지대의 다문화적 배경 속에서 펼쳐지는 이 영화는, 사랑과 사람이 주는 따스함이 가득 찬 여정으로 우리를 초대한다. 아버지로부터 기술을 물려받은 숙련된 석공 다라니다르 카플레. 그는 종종 아버지의 절친한 친구를 찾아 구릉지대로 향하고, 그곳에서 어린 시절 짝사랑했던 풀 구룽과 재회하게 된다.
 
+**예시 (볼리비아 최고 고도 광산)** ← 관형절→파편 명사구 / 동사 이미지화(쌓이다) / 단문 분리
+- EN: A visual look at the world of the inhabitants of the highest mine in Bolivia, whose deaths weigh as much as the mined silver, exploring the limits of human endurance, spirituality, and the cost of human labor.
+- KO: 볼리비아 최고(最高) 고도의 광산에서 살아가는 사람들의 세계를 시각적으로 담아낸 작품. 채굴된 은만큼이나 무겁게 쌓이는 죽음, 인간 인내의 한계, 영성, 그리고 인간 노동의 대가를 탐구한다.
+
+**예시 (북마케도니아 목동 형제자매)** ← 파편 문장 활용(여덟 살~무리다) / 어휘 격상(곱씹다) / 완전 문장→명사형 단문
+- EN: In the heart of the mountains of North Macedonia, surrounded by a flock of six hundred sheep guarded by imposing Charplanina dogs, stands a shelter. Children's laughter echoes from the precarious shelter. They are a group of shepherd siblings, aged eight to twenty. When they are not working, they play and ponder the meaning of life. Is their future really here?
+- KO: 북마케도니아의 험준한 산 속, 위풍당당한 샤르플라니나 개들이 지키는 600마리의 양 떼 사이로 하나의 대피소가 서 있다. 그 낡은 대피소에서 아이들의 웃음소리가 울려 퍼진다. 여덟 살부터 스무 살까지, 목동 형제자매들의 무리다. 일을 하지 않을 때면 이들은 함께 뛰놀고 삶의 의미를 곱씹는다. 그들의 미래는 정말 이곳에 있는 걸까?
+
 ## 시놉시스 · 한→영
 
 **예시 (Mind Over Matter)**
@@ -1021,14 +967,6 @@ const MODEL_CONFIG = {
     cacheWrite: 3.75,
     cacheRead:  0.30,
     output:     15.00,
-  },
-  opus: {
-    id:         'claude-opus-4-8',
-    label:      'Opus 4.8',
-    input:      5.00,
-    cacheWrite: 6.25,
-    cacheRead:  0.50,
-    output:     25.00,
   },
 };
 
@@ -1229,7 +1167,6 @@ function selectType(type) {
 function selectModel(key) {
   selectedModel = key;
   document.getElementById('btnSonnet').className = 'model-btn' + (key === 'sonnet' ? ' active-sonnet' : '');
-  document.getElementById('btnOpus').className   = 'model-btn' + (key === 'opus'   ? ' active-opus'   : '');
 }
 
 // ═══════════════════════════════════════════════
@@ -1482,18 +1419,6 @@ function copyContent(panelIdx) {
     btn.textContent = '복사 실패';
     setTimeout(() => { btn.textContent = '번역문 복사'; }, 2000);
   });
-}
-
-// ═══════════════════════════════════════════════
-//  Model guide toggle
-// ═══════════════════════════════════════════════
-function toggleGuide() {
-  const guide = document.getElementById('modelGuide');
-  const icon  = document.getElementById('guideToggleIcon');
-  const nowVisible = guide.style.display !== 'none';
-  guide.style.display = nowVisible ? 'none' : 'flex';
-  icon.textContent = nowVisible ? '▼' : '▲';
-  localStorage.setItem('umff_guide_visible', String(!nowVisible));
 }
 
 // ═══════════════════════════════════════════════

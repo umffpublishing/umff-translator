@@ -23,6 +23,16 @@
 - KO: 네팔 동부 구릉지대의 다문화적 배경 속에서 펼쳐지는 이 영화는, 사랑과 사람이 주는 따스함이 가득 찬 여정으로 우리를 초대한다. 아버지로부터 기술을 물려받은 숙련된 석공 다라니다르 카플레. 그는 종종 아버지의 절친한 친구를 찾아 구릉지대로 향하고, 그곳에서 어린 시절 짝사랑했던 풀 구룽과 재회하게 된다.
 - EN: Based in the multi-cultural settings of Eastern hills of Nepal, film takes us on a journey filled with the warmth of love and human connections. The film follows Dharanidhar Kafle, a skilled mason who has inherited his craft from his father. Dharani frequently visits his father's soul friend in the highlands where he reconnects with his childhood crush, Phool Gurung.
 
+**예시 (볼리비아 최고 고도 광산)** ← 관형절→파편 명사구 / 동사 이미지화(쌓이다) / 단문 분리
+
+- EN: A visual look at the world of the inhabitants of the highest mine in Bolivia, whose deaths weigh as much as the mined silver, exploring the limits of human endurance, spirituality, and the cost of human labor.
+- KO: 볼리비아 최고(最高) 고도의 광산에서 살아가는 사람들의 세계를 시각적으로 담아낸 작품. 채굴된 은만큼이나 무겁게 쌓이는 죽음, 인간 인내의 한계, 영성, 그리고 인간 노동의 대가를 탐구한다.
+
+**예시 (북마케도니아 목동 형제자매)** ← 파편 문장 활용(여덟 살~무리다) / 어휘 격상(곱씹다) / 완전 문장→명사형 단문
+
+- EN: In the heart of the mountains of North Macedonia, surrounded by a flock of six hundred sheep guarded by imposing Charplanina dogs, stands a shelter. Children's laughter echoes from the precarious shelter. They are a group of shepherd siblings, aged eight to twenty. When they are not working, they play and ponder the meaning of life. Is their future really here?
+- KO: 북마케도니아의 험준한 산 속, 위풍당당한 샤르플라니나 개들이 지키는 600마리의 양 떼 사이로 하나의 대피소가 서 있다. 그 낡은 대피소에서 아이들의 웃음소리가 울려 퍼진다. 여덟 살부터 스무 살까지, 목동 형제자매들의 무리다. 일을 하지 않을 때면 이들은 함께 뛰놀고 삶의 의미를 곱씹는다. 그들의 미래는 정말 이곳에 있는 걸까?
+
 
 ## 시놉시스 · 한 → 영
 

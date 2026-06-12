@@ -404,6 +404,34 @@ EN: Insooni is a beloved diva whose powerful vocals...
 
 ---
 
+### 2-6. 도서·전시 패널
+
+도서 소개 패널, 기관·단체 소개 패널, 사진·작품 설명 패널 등 전시 성격의 텍스트.
+
+**규칙 32** 도서명 이탤릭으로 시작. "This book" / "This film" 대체 금지 (→ 규칙 17과 동일 원칙).
+```
+KO: 『Alpine Rising』은 한 세기 동안 … 이름들을 불러내는 책이다.
+EN: *Alpine Rising* summons the names …   ✓
+EN: This book summons the names …         ✗  (제목 → This book 대체 금지)
+```
+
+**규칙 33** 필자 1인칭(큐레이터·프로그래머 목소리) 유지 (→ 규칙 18과 동일 원칙).
+```
+KO: 한국의 산악계를 떠올리지 않을 수 없었다.
+EN: I could not help but think of Korea's own mountaineering world.   ✓
+EN: One cannot help but think …   ✗  (비인칭 변환 금지)
+```
+
+**규칙 34** 역사 사실·창립연도·인명·기관명 정확히 보존. 글로서리 확정 표기 우선.
+```
+KO: 1945년 조국 광복과 더불어 … 두 번째로 설립된 사회단체
+EN: the second social organization founded after Korea's liberation in 1945   ✓
+```
+
+**규칙 35** 길이 제한 없음. 제목·저자·연도·기관명 누락 불가.
+
+---
+
 ## 3. 길이 기준
 
 | 콘텐츠 | 국문 | 영문 글자 | 영문 단어 |
@@ -412,7 +440,7 @@ EN: Insooni is a beloved diva whose powerful vocals...
 | 프로그램 노트 | 150자 | 260자 | 35단어 |
 | 바이오 | 110자 | 260자 | 50단어 |
 | 섹션 서문 | — | — | — |
-| 도서 전시 패널 | — | — | — |
+| 도서·전시 패널 | — | — | — |
 
 원문 정보량이 많아 한도를 넘기면 **내용 누락보다 한도 초과를 우선 허용**. 짧은 원문을 한도까지 늘리지 말 것.
 

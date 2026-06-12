@@ -343,8 +343,9 @@
       <button class="sel-btn sel-type active" id="btnSynopsis" onclick="selectType('synopsis')">시놉시스</button>
       <button class="sel-btn sel-type"        id="btnNote"     onclick="selectType('note')">프로그램 노트</button>
       <button class="sel-btn sel-type"        id="btnBio"      onclick="selectType('bio')">바이오</button>
-      <button class="sel-btn sel-type"        id="btnSection"  onclick="selectType('section')">섹션 서문</button>
-      <button class="sel-btn sel-type"        id="btnFestival" onclick="selectType('festival')">페스티벌 이벤트</button>
+      <button class="sel-btn sel-type"        id="btnSection"    onclick="selectType('section')">섹션 서문</button>
+      <button class="sel-btn sel-type"        id="btnExhibition" onclick="selectType('exhibition')">도서·전시 패널</button>
+      <button class="sel-btn sel-type"        id="btnFestival"   onclick="selectType('festival')">페스티벌 이벤트</button>
     </div>
 
     <div class="card-label">원문</div>
@@ -750,6 +751,13 @@ b) yet / still / last / only / already / ever / often 등 시간·정도 한정�
 - 규칙 30: 공연·행사 — 아티스트 이름 생략 금지.
 - 규칙 31: 길이 제한 없음. 내용 누락 불가.
 
+### 2-6. 도서·전시 패널
+도서 소개, 기관·단체 소개, 사진·작품 설명 등 전시 성격 텍스트.
+- 규칙 32: 도서명 이탤릭 시작. "This book/This film" 대체 금지. 예) *Alpine Rising* summons …  ✓ / This book summons … ✗
+- 규칙 33: 필자 1인칭(큐레이터·프로그래머) → I/we 유지. 비인칭 변환 금지.
+- 규칙 34: 역사 사실·창립연도·인명·기관명 정확히 보존.
+- 규칙 35: 길이 제한 없음. 제목·저자·연도·기관명 누락 불가.
+
 ## 3. 길이 기준
 | 콘텐츠 | 국문 | 영문 글자 | 영문 단어 |
 |---|---|---|---|
@@ -757,7 +765,7 @@ b) yet / still / last / only / already / ever / often 등 시간·정도 한정�
 | 프로그램 노트 | 150자 | 260자 | 35단어 |
 | 바이오 | 110자 | 260자 | 50단어 |
 | 섹션 서문 | — | — | — |
-| 도서 전시 패널 | — | — | — |
+| 도서·전시 패널 | — | — | — |
 내용 누락보다 한도 초과를 우선 허용. 짧은 원문을 한도까지 늘리지 말 것.
 
 ## 4. 소스 텍스트 정규화
@@ -977,19 +985,21 @@ const MODEL_CONFIG = {
 };
 
 const TYPE_LABELS = {
-  synopsis: '시놉시스',
-  note:     '프로그램 노트',
-  bio:      '바이오',
-  section:  '섹션 서문',
-  festival: '페스티벌 이벤트',
+  synopsis:   '시놉시스',
+  note:       '프로그램 노트',
+  bio:        '바이오',
+  section:    '섹션 서문',
+  exhibition: '도서·전시 패널',
+  festival:   '페스티벌 이벤트',
 };
 
 const LEN_LIMITS = {
-  synopsis: { ko: 215, enChar: 390, enWord: 70 },
-  note:     { ko: 150, enChar: 260, enWord: 35 },
-  bio:      { ko: 110, enChar: 260, enWord: 50 },
-  section:  null,
-  festival: null,
+  synopsis:   { ko: 215, enChar: 390, enWord: 70 },
+  note:       { ko: 150, enChar: 260, enWord: 35 },
+  bio:        { ko: 110, enChar: 260, enWord: 50 },
+  section:    null,
+  exhibition: null,
+  festival:   null,
 };
 
 // ═══════════════════════════════════════════════
@@ -1167,6 +1177,7 @@ function selectType(type) {
   document.getElementById('btnNote').classList.toggle('active', type === 'note');
   document.getElementById('btnBio').classList.toggle('active', type === 'bio');
   document.getElementById('btnSection').classList.toggle('active', type === 'section');
+  document.getElementById('btnExhibition').classList.toggle('active', type === 'exhibition');
   document.getElementById('btnFestival').classList.toggle('active', type === 'festival');
 }
 

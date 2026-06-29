@@ -1339,6 +1339,13 @@ function parseResponse(raw) {
   };
 }
 
+function renderMarkdown(text) {
+  return text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+
 // ═══════════════════════════════════════════════
 //  Main: run translation
 // ═══════════════════════════════════════════════
@@ -1427,8 +1434,8 @@ async function runTranslation() {
             // [SECTION:번역문] 이후 텍스트만 실시간으로 탭에 표시
             const m = fullText.match(/\[SECTION\s*:\s*번역문\s*\]([\s\S]*)/i);
             if (m) {
-              document.getElementById('content0').textContent =
-                m[1].replace(/\[\/SECTION\][\s\S]*/i, '').trim() || '…';
+              document.getElementById('content0').innerHTML =
+                renderMarkdown(m[1].replace(/\[\/SECTION\][\s\S]*/i, '').trim() || '…');
             }
           }
           if (evt.type === 'message_delta' && evt.usage) {
@@ -1464,7 +1471,7 @@ async function runTranslation() {
       showError('출력 형식 오류 — 번역문 탭에 전체 응답을 표시합니다. 수동으로 복사하세요.');
       document.getElementById('content0').textContent = fullText;
     } else {
-      document.getElementById('content0').textContent = parsed.translation || '(번역문 없음)';
+      document.getElementById('content0').innerHTML = renderMarkdown(parsed.translation || '(번역문 없음)');
     }
     document.getElementById('content1').textContent = parsed.length || '(내용 없음)';
 

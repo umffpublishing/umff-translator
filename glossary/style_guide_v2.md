@@ -426,6 +426,14 @@ EN: *Alpine Rising* summons the names …   ✓
 EN: This book summons the names …         ✗  (제목 → This book 대체 금지)
 ```
 
+**규칙 32-1** 원문에 도서명 주어 없으면 추론 추가 금지
+원문 문단이 도서명 없이 서술만 있는 경우("~을 다룬 책이다" 등), 문맥으로 어느 책인지 유추되더라도 도서명을 주어로 삽입하지 않는다. 원문 구조 그대로 옮긴다.
+```
+KO: "히말라야 등반 기록의 권위자로 알려진 엘리자베스 홀리의 삶을 다룬 책이다."
+✓ EN: "A book covering the life of Elizabeth Hawley, widely recognized as the foremost authority on Himalayan climbing records."
+✗ EN: "Keeper of the Mountains traces the life of Elizabeth Hawley…"  (도서명 추론 삽입 금지)
+```
+
 **규칙 33** 필자 1인칭(큐레이터·프로그래머 목소리) 유지 (→ 규칙 18과 동일 원칙, 예시도 동일).
 
 **규칙 34** 역사 사실·창립연도·인명·기관명 정확히 보존. 글로서리 확정 표기 우선.

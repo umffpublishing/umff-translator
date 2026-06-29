@@ -1493,18 +1493,34 @@ async function runTranslation() {
 //  Copy button
 // ═══════════════════════════════════════════════
 function copyContent(panelIdx) {
-  const text = document.getElementById(`content${panelIdx}`).textContent;
+  const el = document.getElementById(`content${panelIdx}`);
   const btnId = `copyBtn${panelIdx}`;
-  navigator.clipboard.writeText(text).then(() => {
+  const plainText = el.textContent;
+  // innerHTML의 \n을 <br>로 변환해 Google Sheets 붙여넣기 시 줄바꿈·이탤릭 보존
+  const htmlContent = el.innerHTML.replace(/\n/g, '<br>');
+
+  const done = () => {
     const btn = document.getElementById(btnId);
     btn.textContent = '복사됨!';
     btn.classList.add('copied');
     setTimeout(() => { btn.textContent = '번역문 복사'; btn.classList.remove('copied'); }, 2000);
-  }).catch(() => {
+  };
+  const fail = () => {
     const btn = document.getElementById(btnId);
     btn.textContent = '복사 실패';
     setTimeout(() => { btn.textContent = '번역문 복사'; }, 2000);
-  });
+  };
+
+  if (navigator.clipboard.write) {
+    navigator.clipboard.write([
+      new ClipboardItem({
+        'text/html': new Blob([htmlContent], { type: 'text/html' }),
+        'text/plain': new Blob([plainText], { type: 'text/plain' }),
+      })
+    ]).then(done).catch(() => navigator.clipboard.writeText(plainText).then(done).catch(fail));
+  } else {
+    navigator.clipboard.writeText(plainText).then(done).catch(fail);
+  }
 }
 
 // ═══════════════════════════════════════════════

@@ -1345,6 +1345,7 @@ function parseResponse(raw) {
 
 function renderMarkdown(text) {
   return text
+    .replace(/\n{2,}/g, '\n')
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>');

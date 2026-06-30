@@ -151,6 +151,19 @@ Your nature awaits.
 She made her debut in 1978 as a member of the group Hee Sisters, and has since built a remarkable career with timeless hits such as At Night, Every Night, A Goose's Dream, and Father.
 Her heartfelt performances and deeply resonant messages continue to move audiences, and she remains a dynamic presence in music, television, and public service.
 
+**예시 (공연 제목 이탤릭)** ← 공연명은 반드시 이탤릭 / 꺾쇠·따옴표 사용 금지
+
+공연 제목(국문 `< >` 또는 `' '`)은 영문에서 이탤릭으로만 표기한다. 따옴표("", '') 불가.
+
+- KO: 스튜디오 감탄호는 참여형 거리 탈인형극 <알안>을 선보입니다. <알안>은 한국의 난생설화 '줄탁동기'의 의미를 바탕으로 합니다.
+- EN: Studio Gamtanho presents *Egg ALAN*, a participatory street puppet show. *Egg ALAN* is inspired by the Korean creation myth 'jultak donggi.'
+
+- KO: 창작국악그룹 모린은 <행복풍류(幸福風流)>를 통해 전통 민요와 현대적 감성이 어우러진 무대를 선보입니다.
+- EN: Creative gugak group MORE-IN presents *Haengbok Pungnyū*, a performance that weaves traditional folk songs with contemporary sensibility.
+
+✗ 잘못: `"Egg ALAN"` / `'Egg ALAN'` / `Egg ALAN` (이탤릭 없음)
+✓ 올바름: `*Egg ALAN*`
+
 **예시 (자연에서 채우다 — 안내문 불릿 구조)**
 
 - KO:

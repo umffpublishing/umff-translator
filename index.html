@@ -1508,21 +1508,38 @@ function copyContent(panelIdx) {
     setTimeout(() => { btn.textContent = '번역문 복사'; }, 2000);
   };
 
-  // 1순위: 요소를 직접 선택해 복사 — 브라우저가 HTML 포맷(이탤릭 등)을 클립보드에 그대로 넣음
+  // <em> → inline style: Google Sheets는 시맨틱 태그보다 인라인 스타일을 더 안정적으로 인식
+  const richHtml = el.innerHTML
+    .replace(/<em>/g, '<span style="font-style:italic">')
+    .replace(/<\/em>/g, '</span>')
+    .replace(/<strong>/g, '<span style="font-weight:bold">')
+    .replace(/<\/strong>/g, '</span>')
+    .replace(/\n/g, '<br>');
+  const plain = el.textContent;
+
+  // 1순위: contenteditable 임시 요소 + execCommand
+  // 일반 div와 달리 contenteditable에서 복사하면 브라우저가 HTML 포맷을 클립보드에 올림
+  const tmp = document.createElement('div');
+  tmp.contentEditable = 'true';
+  tmp.style.cssText = 'position:fixed;top:-9999px;left:-9999px;white-space:pre-wrap';
+  tmp.innerHTML = richHtml;
+  document.body.appendChild(tmp);
   try {
     const range = document.createRange();
-    range.selectNodeContents(el);
+    range.selectNodeContents(tmp);
     const sel = window.getSelection();
     sel.removeAllRanges();
     sel.addRange(range);
     const ok = document.execCommand('copy');
     sel.removeAllRanges();
+    document.body.removeChild(tmp);
     if (ok) { done(); return; }
-  } catch (e) {}
+  } catch (e) {
+    document.body.removeChild(tmp);
+  }
 
   // 2순위: ClipboardItem API (HTTPS 필요)
-  const html = `<html><body>${el.innerHTML.replace(/\n/g, '<br>')}</body></html>`;
-  const plain = el.textContent;
+  const html = `<html><body>${richHtml}</body></html>`;
   if (navigator.clipboard.write) {
     navigator.clipboard.write([new ClipboardItem({
       'text/html': new Blob([html], { type: 'text/html' }),

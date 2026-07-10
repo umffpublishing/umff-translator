@@ -86,7 +86,7 @@ CSV 형식: `구분,국문,영문,비고` (UTF-8로 저장).
   - 블록 1 (정적): 역할·원칙·글로서리·스타일가이드·예시·출력형식 → `cache_control: { type: 'ephemeral' }` 적용
   - 블록 2 (동적): 번역 방향·유형·길이 기준 → cache_control 없음
   - **순서가 핵심**: 정적 블록이 먼저여야 방향/유형이 바뀌어도 캐시가 유지된다.
-- 모델: `claude-sonnet-4-6`(기본) / `claude-opus-4-8`(고품질). 모델 ID·가격은 변동되므로 확인 후 `MODEL_CONFIG` 갱신.
+- 모델: `claude-sonnet-5`(기본) / `claude-opus-4-8`(고품질). 모델 ID·가격은 변동되므로 확인 후 `MODEL_CONFIG` 갱신.
 - `max_tokens: 8000`.
 
 **보안**

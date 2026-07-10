@@ -1300,13 +1300,40 @@ async function loadGlossary() {
 
 // 정적 블록: 글로서리·가이드·예시·출력형식 — cache_control 적용 대상
 // D-1: proper-nouns CSV → 카테고리별 JSON 최소화
+// RFC4180 방식으로 한 줄을 필드 배열로 분리 (따옴표로 감싼 필드 안의 콤마·이스케이프된 "" 처리)
+function parseCsvLine(line) {
+  const result = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (line[i + 1] === '"') { cur += '"'; i++; }
+        else { inQuotes = false; }
+      } else {
+        cur += ch;
+      }
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === ',') {
+      result.push(cur);
+      cur = '';
+    } else {
+      cur += ch;
+    }
+  }
+  result.push(cur);
+  return result;
+}
+
 function csvToCompactJson(csvText) {
   const SKIP_CATS = new Set(['전화번호', '주소', '가격']);
   const lines = csvText.trim().split('\n').slice(1);
   const result = {};
   for (const line of lines) {
-    const parts = line.split(',');
-    const [category, ko, en] = parts;
+    if (!line.trim()) continue;
+    const [category, ko, en] = parseCsvLine(line);
     if (!category || !ko || !en) continue;
     const cat = category.trim(), k = ko.trim(), e = en.trim();
     if (SKIP_CATS.has(cat)) continue;

@@ -83,7 +83,7 @@ CSV 형식: `구분,국문,영문,비고` (UTF-8로 저장).
 - 엔드포인트: `POST https://api.anthropic.com/v1/messages`, 스트리밍(`stream: true`).
 - 헤더: `x-api-key`, `anthropic-version: 2023-06-01`, `anthropic-beta: prompt-caching-2024-07-31`, `anthropic-dangerous-direct-browser-access: true`.
 - 시스템 프롬프트는 **정적 블록 + 동적 블록 두 개**로 분리한다.
-  - 블록 1 (정적): 역할·원칙·글로서리·스타일가이드·예시·출력형식 → `cache_control: { type: 'ephemeral' }` 적용
+  - 블록 1 (정적): 역할·원칙·글로서리·스타일가이드·예시·출력형식 → `cache_control: { type: 'ephemeral', ttl: '1h' }` 적용 (캐시 지속시간 1시간)
   - 블록 2 (동적): 번역 방향·유형·길이 기준 → cache_control 없음
   - **순서가 핵심**: 정적 블록이 먼저여야 방향/유형이 바뀌어도 캐시가 유지된다.
 - 모델: `claude-sonnet-5`(기본) / `claude-opus-4-8`(고품질). 모델 ID·가격은 변동되므로 확인 후 `MODEL_CONFIG` 갱신.

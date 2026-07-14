@@ -1609,7 +1609,7 @@ async function runTranslation() {
         max_tokens: 8000,
         stream: true,
         system: [
-          { type: 'text', text: buildStaticPrompt(),  cache_control: { type: 'ephemeral' } },
+          { type: 'text', text: buildStaticPrompt(),  cache_control: { type: 'ephemeral', ttl: '1h' } },
           { type: 'text', text: buildDynamicPrompt() }
         ],
         messages: [{ role: 'user', content: userMsg }]

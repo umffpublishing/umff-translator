@@ -935,153 +935,465 @@ const EMBEDDED_STYLE = `# UMFF 번역 스타일 가이드 (v2)
 
 출처 우선순위: proper-nouns.csv > notation-rules.md > 본 가이드
 
+---
+
 ## 0. 공통 원칙 (모든 방향·유형에 적용)
 
 **규칙 0-1 강도(intensity) 보존**
-원문의 강한 표현·어조를 임의로 순화하거나 과장하지 않는다.
-✗ 순화: "부서진다"→"무너질 듯" / collapses→"흔들린다"
-✗ 과잉: 도전→struggle (올바름: challenge/pursuit)
-✗ 의미 왜곡: 좌절→defeat (defeat=패배, 다른 단어)
-✗ 과잉: 좌절→despair (despair=절망, 강도 초과) → 올바름: frustration/setback/disappointment
-✗ 과잉: 잊힌→erased (올바름: forgotten)
-✗ 추가: 원문에 없는 단어·수식어 삽입 금지. 예) devastation / triumphs of / biting wind
+원문의 강한 표현·어조를 임의로 순화하거나 과장하지 않는다. 강한 동사는 그 강도 그대로 옮기고, 완곡 표현으로 축소하거나 극적 표현으로 격상하지 않는다.
+\`\`\`
+✗ 잘못(순화): 부서진다 → “무너질 듯”         ✓ 올바름: shatters / breaks apart
+✗ 잘못(순화): collapses → “흔들린다”          ✓ 올바름: 무너진다
+
+✗ 잘못(과잉): 도전 → struggle                ✓ 올바름: challenge / pursuit
+✗ 잘못(의미 왜곡): 좌절 → defeat             (defeat = 패배; 다른 단어)
+✗ 잘못(과잉):     좌절 → despair             (despair = 절망; 강도 초과)
+✓ 올바름: frustration / setback / disappointment
+✗ 잘못(과잉): 잊힌 → erased                  ✓ 올바름: forgotten  ← 원문에 없는 강한 단어 대체 금지
+✗ 잘못(추가): 원문에 없는 수식어·단어 삽입 금지
+              예) 제2차 세계대전 → “the devastation of WWII”  (devastation 추가 금지)
+              예) 깃발로 기록됨 → “triumphs of”              (triumphs 추가 금지)
+              예) 강한 바람 → “biting wind”                  (biting 추가 금지 → strong wind)
+\`\`\`
 
 **규칙 0-2 수식어·절 완전 보존**
-형용사·부사뿐 아니라 동기·이유·목적 구·절도 생략 금지.
-✗ "진짜 삶을 찾아 네팔에 거주하면서" → "relocated to Nepal" (동기 절 누락)
-✓ "in search of a real life, moved to Nepal"
+원문의 형용사·부사 수식어뿐 아니라 동기·이유·목적을 나타내는 구·절도 임의로 생략하지 않는다.
+\`\`\`
+✗ 잘못: painful struggle → “투쟁”                            (수식어 누락)
+✓ 올바름: painful struggle → 고통스러운 투쟁
+
+✗ 잘못: brutally cold → “추운”                               (부사 누락)
+✓ 올바름: brutally cold → 살을 에는 듯 추운 / 혹독하게 차가운
+
+✗ 잘못: “진짜 삶을 찾아 네팔에 거주하면서” → “relocated to Nepal”   (동기 절 누락)
+✓ 올바름: “in search of a life truly lived, relocated to Nepal”
+\`\`\`
 
 **규칙 0-3 동어반복 해소 (영→한)**
-의미 겹치는 수식어는 하나로 합치거나 동사로 풀어 동어반복을 피한다.
-✗ "liberating freedom"→"해방적인 자유" / ✓ → "해방" 또는 "진정한 자유"
+영어에서 의미가 겹치는 수식어를 쌓을 때, 한국어에서는 하나로 합치거나 동사로 풀어 동어반복을 피한다.
+\`\`\`
+✗ 잘못: liberating freedom → “해방적인 자유”   (동어반복)
+✓ 올바름: liberating freedom → 해방 / 진정한 자유
+✗ 잘못: painful agony → “고통스러운 고통”
+✓ 올바름: painful agony → 극심한 고통 / 고통 속에서
+\`\`\`
 
 **규칙 0-4 원문 내용 완전 보존 — 어떤 정보도 누락 금지**
-a) 작품 제목이 원문의 주어일 때(X follows / X tells / X documents 등) 한국어 구조를 바꾸더라도 제목 포함.
-✓ 〈K2 – Chasing Shadows〉는 알피니스트 ...가 ...여정을 따라간다.  ✗ 알피니스트 벤자맹 베드린은 ... (제목 누락)
-✓ 『Alpine Rising』은 ...이름들을 불러낸다.  ✗ 한 세기 동안 ... (제목 누락)
-b) yet / still / last / only / already / ever / often 등 시간·정도 한정어 누락 금지.
-✗ "his most ambitious challenge yet" → "가장 야심 찬 도전"  ✓ → 지금껏 가장 야심 찬 도전
-✗ "the last traditional gold miners" → "전통식 금 채굴자들"  ✓ → 마지막 전통식 금 채굴자들
-✗ "unease that often drives people to extremes" → "사람을 극단으로 몰아가는"  ✓ → 때로 사람을 극단으로 내모는
-c) aims to / seeks to / attempts to / hopes to 등 의도·목적 조동사를 기정사실로 바꾸지 않는다.
-✗ "The film aims to showcase X" → "X를 담아낸다" (의도 표현 누락)  ✓ → X를 담아내고자 한다 / X를 그리려 한다
+원문의 모든 정보 단위를 빠짐없이 번역문에 반영한다. 두 가지 자주 빠지는 패턴:
+
+**a) 작품 제목이 원문의 주어일 때** (\`X follows / X tells / X documents\` 등) 한국어 구조를 바꾸더라도 제목 포함.
+\`\`\`
+✓ <K2: 그림자를 따라서>는 … Benjamin Védrines가 … 여정을 따라간다.
+✗ 알피니스트 벤자맹 베드린은 …  (제목 누락)
+
+✓ 『Alpine Rising』은 한 세기 동안 … 이름들을 불러낸다.
+✗ 한 세기 동안 … 이름들을 불러내는 책이다.  (제목 누락)
+\`\`\`
+
+**b) 시간·정도·초점 한정어** (\`yet / still / last / only / already / ever / often\` 등) 누락 금지.
+\`\`\`
+✗ his most ambitious challenge yet → “가장 야심 찬 도전”     (yet = 지금껏 누락)
+✓                                 → 지금껏 가장 야심 찬 도전
+
+✗ the last traditional gold miners → “전통식 금 채굴자들”    (last 누락)
+✓                                 → 마지막 전통식 금 채굴자들
+
+✗ the quiet unease that often drives people to extremes → “사람을 극단으로 몰아가는 조용한 불안”  (often 누락)
+✓                                                      → 때로 사람을 극단으로 내모는 조용한 불안
+\`\`\`
+
+**c) 의도·목적 조동사** (\`aims to / seeks to / attempts to / hopes to\` 등) 기정사실로 바꾸지 않는다.
+\`\`\`
+✗ The film aims to showcase X → “X를 담아낸다”        (aims to = 의도 표현 누락, 기정사실로 왜곡)
+✓                              → X를 담아내고자 한다 / X를 그리려 한다
+\`\`\`
 
 **규칙 0-5 번역체 회피 (영→한)**
 직역 구조·수동태를 한국어 자연 문체로 바꾼다.
-✗ ~에 의해 드러났다 → ✓ Benjamin 스스로가 꺼내 보이면서 (능동 재구성)
-✗ raw→순수한 (의미 불일치) → ✓ 날것의 / 원초적인
-✗ reckoning→성찰 (강도 순화) → ✓ 자기 직면 / 내면의 청산
-✗ 영어 단문을 하나의 긴 복합문으로 묶기 → ✓ 원문 단문 구조 유지 또는 짧게 분리
-✗ 동격·관계절 이식: "환경 운동가이던 어머니가 세상을 떠난 후 이사한다" → ✓ "어머니를 잃은 알마는 이사한다" (문장 분리 또는 주어 재구성)
-✗ ~에 관한/~에 대한 전치사 직역: "연대와 용서에 관한 갈등" → ✓ "연대와 용서의 문제로 번져간다"
-동사+목적어 관용구 직역(brings X / faces X / inspire X to Y / call upon lessons) → 한국어 자동사·관용구로 재구성
-✗ "자유를 가져다줄 것인가 / 시련과 마주해야 한다" → ✓ "자유가 찾아올 것인가 / 시련을 넘어야 한다"
-✗ "마을 사람들에게 영감을 불어넣어 대회를 만들어낸다" → ✓ "마을 사람들과 뜻을 모아 대회를 만든다"
-✗ "그 교훈을 다시 한번 되새겨야 한다" → ✓ "그 가르침을 다시 마음에 새겨야 한다"
 
-규칙 0-7 단락 구조 보존 — 빈 줄 추가 금지
-원문의 줄바꿈 횟수를 그대로 유지한다. 원문이 줄바꿈 한 번으로 단락을 구분하면 번역문도 줄바꿈 한 번만 사용한다. 원문에 없는 빈 줄(줄바꿈 두 번)을 삽입하지 않는다.
+| 번역체 패턴 | 수정 방향 |
+|---|---|
+| \`~에 의해 드러났다 / ~에 의해 만들어졌다\` | 능동으로 재구성: \`~가 꺼내 보이다 / ~가 드러나다\` |
+| \`raw → 순수한\` (의미 불일치 직역) | \`날것의 / 원초적인\` |
+| \`reckoning → 성찰\` (강도 순화) | \`자기 직면 / 내면의 청산\` |
+| 영어 단문 나열을 하나의 긴 복합문으로 묶기 | 원문 단문 구조 유지 또는 짧게 분리 |
+| 영어 동격·관계절 이식 (\`her mother, an activist, passes away\`) | 앞에 관형절로 쌓지 않는다. 문장 분리 또는 주어 재구성 |
+| \`~에 관한 / ~에 대한\` 전치사 직역 | \`~의 문제로\` / \`~를 둘러싼\` / 서술어로 풀기 |
+| 영어 동사+목적어 관용구 직역 (\`brings X\`, \`faces X\`, \`inspire X to Y\`, \`call upon lessons\` 등) | 한국어 자동사·관용구로 재구성: \`찾아오다\`/\`맞닥뜨리다\`/\`넘어야 한다\`/\`뜻을 모으다\`/\`마음에 새기다\` 등 |
+\`\`\`
+✗ 잘못: 예상치 못한 정직함과 명료함으로 Benjamin 자신에 의해 드러났다.
+✓ 올바름: Benjamin 스스로가 예상치 못한 솔직함과 명료함으로 꺼내 보이면서.
 
-규칙 0-6 의역 허용 범위 — 페스티벌 이벤트 제외
-시놉시스·프로그램 노트·바이오·섹션 서문·도서 패널: 원문 의미·강도를 유지하는 범위 내에서 문학적 어휘 선택과 문장 재구성 허용.
-페스티벌 이벤트(규칙 28~31)는 정보 전달 목적이므로 직역 원칙 유지.
-허용: ponder→곱씹다 / whose deaths weigh→무겁게 쌓이는 죽음 / 파편 문장 사용
-금지(의역 허용 시에도): 원문에 없는 이미지·개념 추가(규칙 0-1) / 정보 누락(규칙 0-4) / 강도 왜곡(규칙 0-1)
+✗ 잘못: raw physical achievement → 순수한 신체적 성취
+✓ 올바름: raw physical achievement → 날것의 신체 성취
+
+✗ 잘못: 환경 운동가이자 사진기자였던 어머니가 세상을 떠난 후 새 동네로 이사한다.
+        (← “after her mother, an activist, passes away” 동격절 이식)
+✓ 올바름: 어머니를 잃은 알마는 아버지와 함께 새 동네로 이사한다.
+
+✗ 잘못: 연대와 용서에 관한 갈등으로 번져간다
+✓ 올바름: 연대와 용서의 문제로 번져간다
+
+✗ 잘못: 그토록 오래 기다려온 자유를 가져다줄 것인가 / 더 많은 시련과 마주해야 한다
+✓ 올바름: 그토록 기다려온 자유가 찾아올 것인가 / 더 많은 시련을 넘어야 한다
+
+✗ 잘못: 마을 사람들에게 영감을 불어넣어 자체적인 스키 대회를 만들어낸다
+✓ 올바름: 마을 사람들과 뜻을 모아 자체적인 스키 대회를 만든다
+
+✗ 잘못: 그들은 그 교훈을 다시 한번 되새겨야 한다
+✓ 올바름: 그들은 그 가르침을 다시 마음에 새겨야 한다
+\`\`\`
+
+**규칙 0-7 단락 구조 보존 — 빈 줄 추가 금지**
+원문의 줄바꿈 횟수를 그대로 유지한다. 원문이 줄바꿈 한 번으로 단락을 구분하면 번역문도 줄바꿈 한 번만 사용한다. 원문에 없는 빈 줄(줄바꿈 두 번)을 단락 사이에 삽입하지 않는다.
+\`\`\`
+✗ 잘못: 원문 단락이 \\n 하나로 구분 → 번역문에 \\n\\n(빈 줄) 삽입
+✓ 올바름: 원문 단락 구분 방식 그대로 유지
+\`\`\`
+
+**규칙 0-6 의역 허용 범위 — 페스티벌 이벤트 제외**
+시놉시스·프로그램 노트·바이오·섹션 서문·도서 패널에서는 원문의 의미와 강도를 유지하는 범위 내에서 문학적 어휘 선택과 문장 단위 재구성을 허용한다.
+페스티벌 이벤트(→ 섹션 2-5, 규칙 28~31)는 정보 전달이 목적이므로 직역 원칙을 유지한다.
+
+허용:
+- 원문 뉘앙스를 살리는 창의적 동사·어휘 선택
+  \`\`\`
+  ponder → 곱씹다   (더 생생한 표현)
+  whose deaths weigh → 무겁게 쌓이는 죽음   (함축된 뉘앙스를 동사로 구현)
+  precarious → 낡은   (맥락에 맞는 해석적 선택)
+  \`\`\`
+- 한국어 리듬을 위한 문장 단위 재구성·어순 변경
+- 강조·호흡을 위한 파편 문장 사용
+  \`\`\`
+  “They are a group of shepherd siblings, aged eight to twenty.”
+  → 여덟 살부터 스무 살까지, 목동 형제자매들의 무리다.
+  \`\`\`
+
+금지 (의역 허용 범위에서도 적용):
+- 원문에 없는 이미지·개념 추가 (→ 규칙 0-1 유지)
+- 정보 누락 (→ 규칙 0-4 유지)
+- 강도 왜곡·극적 격상 (→ 규칙 0-1 유지)
+
+---
 
 ## 1. 영→한
 
 ### 1-1. 시놉시스
-- 규칙 1: 관계절·분사구 → 앞당긴 관형절. 예) "Emin, in his twilight years" → "황혼기에 접어든 에민"
-- 규칙 2: 영어 단문 나열 → ~고/~며/~지만/~는데/~면서로 연결. 말줄임표: 아래 점 3개(...)만 사용.
-- 규칙 3: 영어 시제 무관, 한국어 현재형 유지.
-- 규칙 4: 한국 캐릭터명 + 배우 실명 패턴에만 적용 — 한글 캐릭터명(배우 실명) 병기. 예) 남상(다야항 라이). 서양 인명 음역 금지(→ notation-rules.md 이름 표기).
-- 규칙 4-1: 영어 콜론(:) 구조 → 한국어 두 문장 분리. 수식절 이중 적층 금지.
-  ✓ "challenge yet: a fast, oxygen-free climb" → "지금껏 가장 야심 찬 도전에 나선다. K2를 무산소로, 빠르게 오르는 것이다."
-  ✗ "K2를 산소 없이 빠르게 오르는, 가장 야심 찬 도전에 나서는 여정" (수식절 중복)
-  등산 전문어 → notation-rules.md 등산·산악 전문 용어 참조.
+
+**규칙 1** 관계절·분사구 → 앞당긴 관형절
+\`\`\`
+EN: Emin, in his twilight years, toils alongside his faithful horse.
+KO: 황혼기에 접어든 에민은 충실한 말과 함께 묵묵히 삶을 이어간다.
+
+EN: The director, herself a climber, sets off to the Himalayas in her footsteps.
+KO: 등반가인 감독은 그녀의 발자취를 따라 히말라야로 향한다.
+\`\`\`
+
+**규칙 2** 영어 단문 나열 → \`~고\`, \`~며\`, \`~지만\`, \`~는데\`, \`~면서\`로 연결 (흐름이 자연스러울 때만, 2~3개까지만; 4개 이상을 한 문장으로 묶지 않는다)
+\`\`\`
+EN: Eventually, Hangma leaves Namsang... She elopes with another man... but eventually returns...
+KO: 결국 항마는 남상을 떠나 부모님의 집으로 돌아가고, 다른 남자 로이딥 슈레스타를 만나 떠나지만,
+    가족이 배상금을 지불하지 못하자 결국 남상에게 돌아오게 되는데...
+\`\`\`
+말줄임표: **아래 점 3개(\`...\`)만** 사용 (중간점 \`···\`·유니코드 \`…\` 불가).
+
+**규칙 3** 영어 시제 무관하게 한국어 **현재형** 유지
+\`\`\`
+EN: “Rupa and Maya (11) are best friends...”
+KO: “11살 루파와 마야는 … 가장 친한 친구다.”
+\`\`\`
+
+**규칙 4** 한국 인물(캐릭터명) + 배우 실명: 한글 캐릭터명(배우 실명) 병기
+이 규칙은 **한국 배역명 + 외국 배우 실명** 패턴에만 적용한다. 서양 인명 음역에 적용하지 않는다(→ notation-rules.md 이름 표기).
+\`\`\`
+EN: “Namsang (Dayahang Rai) and his wife Hangma (Miruna Magar)”
+KO: “남상(다야항 라이)과 그의 아내 항마(미루나 마가르)”
+\`\`\`
+
+**규칙 4-1** 영어 콜론(\`:\`) 구조 → 한국어 두 문장 분리
+콜론이 긴 동격·설명절을 이끄는 경우, 콜론 앞을 첫 문장으로 끊고 콜론 이하를 별도 문장으로 처리한다. 수식절을 겹쳐 쌓지 않는다.
+\`\`\`
+EN: he sets his sights on his most ambitious challenge yet: a fast, oxygen-free climb of K2
+✓ 올바름: 지금껏 가장 야심 찬 도전에 나선다. K2를 무산소로, 빠르게 오르는 것이다.
+✗ 잘못:   K2를 산소 없이 빠르게 오르는, 가장 야심 찬 도전에 나서는 여정을 따라간다.
+          (수식절 이중 적층)
+\`\`\`
+등산 전문 용어(무산소·베이스캠프 등) → notation-rules.md 등산·산악 전문 용어 참조.
+
+---
 
 ### 1-2. 프로그램 노트
-- 규칙 5: 감독 노트(1인칭) → 한국어도 1인칭 유지. 주어 반복 불필요.
-- 규칙 6: 3인칭 노트 — "This film" 등 반복 주어 첫 문장 이후 생략. 단, 노트가 한 문장뿐이면 생략할 "이후 문장"이 없으므로 주어(작품명 등)를 반드시 살린다. 예) "크로노쇼크는 등반의 역사를 새긴 몇몇 등반에서 영감을 얻어..." (주어 누락 금지)
-- 규칙 7: 마지막 문장 명사형 허용. 예) "짜릿한 속도감이 가히 환상적인 영화."
-- 규칙 8 따옴표: 직접 인용·대사→큰따옴표. 의역 인용·강조어·비유 표현→작은따옴표. 국문 작은따옴표→영문도 작은따옴표.
-  예) KO: 낙엽을 '폴란드 망명정부의 지폐'라고 → EN: 'banknotes of the Polish government-in-exile' ✓ / "banknotes of..." ✗
-  예) KO: '영혼의 해방'이자 '고도의 예술' → EN: 'liberation of the soul' and 'the highest art form' ✓
+
+**규칙 5** 감독 노트(1인칭) → 한국어도 1인칭 유지 (주어 반복 불필요)
+\`\`\`
+EN: “I hope the film will be an unshakeable, unforgettable experience for the audience.”
+KO: “이 영화가 관객에게 흔들림 없고 잊히지 않는 경험으로 남기를 바란다.”
+\`\`\`
+
+**규칙 6** 3인칭 노트 — “This film” 등 반복 주어 첫 문장 이후 생략
+\`\`\`
+EN: “This film documents... It is a touching and humane portrait...”
+KO: “핀란드 라플란드의 마지막 전통식 금 채굴자들을 기록한 이 영화는… 감동적이고 인간적으로 담아냈다.”
+\`\`\`
+주의: “생략”은 두 번째 문장부터다. 노트 전체가 한 문장뿐이면 생략할 “이후 문장”이 없으므로 주어(작품명 등)를 반드시 살린다.
+\`\`\`
+✗ 잘못 (노트가 한 문장뿐): “등반의 역사를 새긴 몇몇 등반에서 영감을 얻어, 그 발전 과정을 그려내고자 했다.” (주어 누락)
+✓ 올바름: “크로노쇼크는 등반의 역사를 새긴 몇몇 등반에서 영감을 얻어, 그 발전 과정을 그려내고자 했다.”
+\`\`\`
+
+**규칙 7** 노트 마지막 문장 → 명사형(\`~한 영화.\`, \`~이 돋보이는 애니메이션.\`) 허용 (강제 아님)
+\`\`\`
+EN: “The film’s dynamic and immersive camerawork generates a thrilling sense of velocity...”
+KO: “역동적이고 몰입감 있는 카메라 무빙이 만들어내는 짜릿한 속도감이 가히 환상적인 영화.”
+\`\`\`
+
+**규칙 8** 따옴표 〔v2 수정〕
+> - 직접 인용·대사 → 큰따옴표 \`“ ”\`
+> - 의역 인용·강조어·**비유 표현** → 작은따옴표 \`‘ ’\`
+> - 방향 무관 일관 적용. 국문 작은따옴표 → 영문도 작은따옴표.
+> - “영어 큰따옴표는 무조건 작은따옴표로 변환”은 **틀림**.
+\`\`\`
+EN: The story reveals the “cheap” and “expendable” lives...  → KO: ‘싸구려’에 ‘소모품’이 되어버린...
+EN: “I will climb it no matter what,” he said.              → KO: “무슨 일이 있어도 오르겠다”고 그는 말했다.
+
+KO: 낙엽을 ‘폴란드 망명정부의 지폐’라고 비유하던   (비유 → 작은따옴표)
+EN: fallen leaves were likened to ‘banknotes of the Polish government-in-exile’  ✓
+EN: fallen leaves were likened to “banknotes of...”  ✗  (직접 인용 아님)
+
+KO: 알피니즘을 ‘영혼의 해방’이자 ‘고도의 예술’로   (강조 → 작은따옴표)
+EN: elevated alpinism into ‘liberation of the soul’ and ‘a supreme art’  ✓
+\`\`\`
+
+---
 
 ### 1-3. 바이오
-- 규칙 9: 이름 생략, 국적+직함으로 시작. 예) "덴마크 출신의 영화감독이자 예술가로..." / "[직함] 겸 [직함]"
-- 규칙 10: 현재완료·과거형 → 한국어 현재형.
-- 규칙 11: 국문 작품명 꺾쇠〈〉, 영문 이탤릭. 병기: 〈영원과 하루 Eternity and a Day〉
+
+**규칙 9** 이름 생략, 국적+직함으로 시작
+\`\`\`
+EN: “Robin Petré is a Danish film director and artist. In her work, she explores...”
+KO: “덴마크 출신의 영화감독이자 예술가로 작품을 통해...”
+
+EN: “Valentin Rapp is a filmmaker and photographer based in the Alps...”
+KO: “알프스를 기반으로 활동하는 아웃도어 전문 영화감독 겸 사진작가.”
+\`\`\`
+패턴: \`[국가] 출신의 [직함]\` / \`[국가] 기반의 [직함]\` / \`[직함] 겸 [직함]\`
+
+**규칙 10** 현재완료·과거형 → 한국어 현재형
+\`\`\`
+EN: “He has produced over a hundred works...”
+KO: “전 세계 기관과 방송사, 원정대, 다큐멘터리 작품을 100편 이상 제작해왔다.”
+\`\`\`
+
+**규칙 11** 작품명: 국문 꺾쇠 \`< >\`, 영문 이탤릭 〔v2 수정〕
+> 표기 시트 [4][5] 기준. 국·영문 병기 시 꺾쇠 하나 안에 함께: \`<한글제목 English Title>\`.
+\`\`\`
+KO: “데뷔작 <그리고 저녁이 온다>는 풀프레임다큐멘터리영화제에서...”
+EN: “Her debut, *Then Comes the Evening*, won at Full Frame Documentary Festival...”
+병기: <영원과 하루 Eternity and a Day>
+제목+감독+연도: <화양연화>(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
+\`\`\`
+
+---
 
 ## 2. 한→영
 
 ### 한→영 공통 원칙
 
 **원문 충실도 우선**
-원문에 없는 이미지·수식어·극적 어휘 추가 금지. 원문이 담백하면 번역도 담백하게.
-✗ 경계→"razor's edge" / ✗ 잊힌→"erased" / ✗ 폴란드인들의 대자유→"a great freedom uniquely their own"
-✓ boundary/edge / forgotten / their great freedom
+원문에 없는 이미지·수식어·극적 어휘를 추가하지 않는다. 원문이 담백하면 번역도 담백하게. 문학적 윤색은 원문이 이미 그런 경우에만 따라간다.
+\`\`\`
+✗ 경계       → “razor’s edge”    ✓ → boundary / edge
+✗ 잊힌       → “erased”          ✓ → forgotten
+✗ 폴란드인들의 대자유 → “a great freedom uniquely their own”  ✓ → their great freedom
+\`\`\`
 
 **어휘 등급(register)**
-프로그램북에 맞는 자연스럽고 명확한 어휘 선택. 라틴어 차용어·격식 과잉 표현 지양.
-✗ 역저→magnum opus → ✓ monumental work
-✗ 기록자→chronicler (편년사가 뉘앙스) → ✓ record-keeper
-✗ 끈질긴→tireless (지칠 줄 모르는) → ✓ persistent/relentless
-✗ 사료→historical records (너무 포괄적) → ✓ archival sources/archival research
+프로그램북 독자에게 맞는 자연스럽고 명확한 어휘를 선택한다. 라틴어 차용어 및 과도하게 격식적인 표현을 지양한다.
+
+| 원문 | ✗ 피할 표현 | 이유 | ✓ 권장 |
+|---|---|---|---|
+| 역저(力著) / 역작 | magnum opus | 라틴어 차용어, 격식 과잉 | monumental work / significant work |
+| 기록자 | chronicler | 역사 편찬가(편년사가) 뉘앙스 | record-keeper |
+| 끈질긴 | tireless | ‘지칠 줄 모르는’으로 의미 어긋남 | persistent / relentless |
+| 사료 | historical records | 너무 포괄적 | archival sources / archival research |
 
 **숫자 표기**
 본문 내 숫자는 문자로 풀어 쓴다. 연도·정밀 수치는 예외.
-✗ 60여 년→"60 years" / ✓ "more than sixty years"
-✗ 2백만→"2 million" / ✓ "two million"
-예외: 1947년→1947 / 8,000m / 50+ awards
+\`\`\`
+✗ 60여 년   → ✓ more than sixty years
+✗ 2백만     → ✓ two million
+예외: 1947년 → 1947 / 8,000m → 8,000 m / 97편 목록 등 정밀 수치
+\`\`\`
+
+---
 
 ### 2-1. 시놉시스
-- 규칙 12: 시간·장소 맥락 → 문두 부사구. 예) "6.25 전쟁으로 부모를 잃은" → "During the Korean War, ...lose their parents"
-- 규칙 13: 시간 전환 → Years later / Meanwhile / Eventually / After / Only then
-- 규칙 14: 관형절 → who/which/that 또는 분사구문.
-- 규칙 15: 한국어 현재형 → 영어 현재 시제(historical present) 유지.
-- 규칙 16: 고유어 — 음차(막걸리→makgeolli) 또는 풀어서(외가→maternal relatives).
+
+**규칙 12** 시간·장소 맥락 → 문두 부사구로 명시
+\`\`\`
+KO: “6.25 전쟁으로 부모를 잃은 수지와 오목은...”
+EN: “During the Korean War, Su-ji and Oh-mok lose their parents...”
+\`\`\`
+
+**규칙 13** 시간 전환 → 전환사 명시 (\`Years later\`, \`Meanwhile\`, \`Eventually\`, \`After\`, \`Only then\`)
+\`\`\`
+KO: “세월이 흐른 뒤 상류층이 된 수지는...”   → EN: “Years later, having risen to the upper class, she...”
+KO: “수지는 비로소 진실을 깨닫는다.”         → EN: “Only then does Su-ji finally come to terms with the truth.”
+\`\`\`
+
+**규칙 14** 한국어 관형절 → 영어 관계절(\`who/which/that\`) 또는 분사구문
+\`\`\`
+KO: “고아원 출신 일환과 결혼한 오목은...”
+EN: “Oh-mok, who marries Il-hwan, an orphan, ...”
+\`\`\`
+
+**규칙 15** 한국어 현재형 → 영어 현재 시제(historical present) 유지
+\`\`\`
+KO: “봉수는 가난한 농부로 딸의 혼례도 미룬 채 살아간다.”
+EN: “Bong-su is a poor farmer who keeps putting off his daughter’s wedding.”
+\`\`\`
+
+**규칙 16** 한국 고유 표현
+- 음차 유지: \`막걸리 → makgeolli\`, \`달밧 → dal bhat\`
+- 풀어서 설명: \`6.25 전쟁 → the Korean War\`, \`외가 → maternal relatives\`, \`성인식 → a coming-of-age ritual\`
+
+---
 
 ### 2-2. 프로그램 노트
-- 규칙 17: 3인칭 노트 → 원문 주어에 맞게 시작.
-  영화: "This film..." / "The film..."
-  도서·전시 패널 등 비영화 텍스트: 제목 이탤릭으로 시작. "This film" / "This book" 모두 금지. 문장 구조를 바꾸더라도 제목 유지.
-  ✓ "*WINTER 8000* explores …"
-  ✗ "This film explores …" (도서를 film으로)
-  ✗ "This book covers …" (제목→This book 대체 금지)
-  ✗ "This film is based on *Art of Freedom*" (책 자체가 주어인데 film 삽입 금지)
-- 규칙 18: 1인칭(나/우리) → I/we 유지. 필자의 1인칭 회상·논평도 동일 인칭 유지.
-  ✓ "I could not help but think of Korea's own mountaineering world."
-  ✗ "one cannot help but think of..."
-- 규칙 19: 긴 복문 → 2~3문장으로 분리.
+
+**규칙 17** 3인칭 노트 → 원문 주어에 맞는 표현으로 시작
+- 주어가 **영화**인 경우: \`“This film...”\` / \`“The film...”\`
+- 주어가 **도서·전시 패널** 등 비영화 텍스트인 경우: 제목 이탤릭으로 시작. **“This film” / “This book” 모두 금지. 문장 구조를 바꾸더라도 제목 유지.**
+\`\`\`
+KO: “<걸 클라이머>는 에밀리 해링턴의 24시간 엘 캐피탄 등반을 따라가는 작품이다.”
+EN: “*Girl Climber* follows Emily Harrington’s bold 24-hour ascent of El Capitan...”
+
+KO: “『WINTER 8000』은 … 책으로 …”
+EN: “*WINTER 8000* explores …”           ✓
+EN: “This film explores …”               ✗  (도서를 film으로)
+EN: “This book covers …”                 ✗  (제목 → This book 대체 금지)
+\`\`\`
+
+**규칙 18** 1인칭 노트 → \`나/우리 → I/we\` 유지, 생략 주어도 명시. **필자의 1인칭 회상·논평도 동일 인칭 유지.**
+\`\`\`
+KO: “이런 부정적인 생각의 굴레에서 벗어나기 위해 다큐를 찍기 시작했다.”
+EN: “I started filming this documentary to escape the cycle of negative thoughts.”
+
+KO: “한국의 산악계를 떠올리지 않을 수 없었다.”  (필자 1인칭 회상)
+EN: “I could not help but think of Korea’s own mountaineering world.”  ✓
+EN: “one cannot help but think of...”  ✗  (비인칭 변환 금지)
+\`\`\`
+
+**규칙 19** 한국어 긴 복문 → 영어 2~3문장으로 분리
+\`\`\`
+KO: “핀란드 라플란드의 … 이들의 이야기를 감동적이고 인간적으로 담아냈다. 정말 아이러니한 것은…”
+EN: “This film documents… It is a touching and humane portrait… The great irony is that…”
+\`\`\`
+
+---
 
 ### 2-3. 바이오
-- 규칙 20: 감독 이름을 주어로 시작. 예) "Bae Chang-ho made his directorial debut..."
-- 규칙 21: 완료 사실 → 현재완료 (has won / has directed).
-- 규칙 22: 한국 영화 제목 → 꺾쇠 없이 이탤릭. 예) *People in the Slum*
+
+**규칙 20** 이름을 주어로 시작 (영→한 규칙 9와 반대)
+\`\`\`
+KO: “1982년 <꼬방동네 사람들>로 데뷔해...”
+EN: “Bae Chang-ho made his directorial debut with *People in the Slum* in 1982...”
+\`\`\`
+
+**규칙 21** 한국어 완료 사실 → 영어 현재완료 (\`“has won”\`, \`“has appeared”\`)
+\`\`\`
+KO: “데뷔작 <그리고 저녁이 온다>는 … 50여 개의 상을 받았다.”
+EN: “Her debut, *Then Comes the Evening*, won at Full Frame, earning OSCAR® qualification and 50+ awards.”
+\`\`\`
+
+**규칙 22** 한국 영화 제목 → 꺾쇠 없이 영문 번역 제목(이탤릭) 〔v2 수정〕
+> 공식 영문 제목 있으면 그것을, 없으면 직역.
+\`\`\`
+<꼬방동네 사람들> → *People in the Slum*
+<고래사냥>        → *Whale Hunting*
+\`\`\`
+
+---
 
 ### 2-4. 섹션 서문
-- 규칙 23: 섹션명 → 영문 큰따옴표. '자연'→"Nature". 도입 동사: presents/features/is composed of.
-- 규칙 24: 비슷한 작품 주제별 단락. 세미콜론·연결사(while/also/in addition) 허용.
-- 규칙 25: 귀속 표시 — ― 이정진 → ― Jinna Lee, Programmer
-- 규칙 26: * 각주 포함 전문 번역.
-- 규칙 27: 길이 제한 없음. 작품명·감독명·정보 누락 불가.
+
+**규칙 23** 섹션명 → 영문 큰따옴표
+\`\`\`
+KO: ‘자연’ 섹션에서는 …  →  EN: The “Nature” section presents …
+\`\`\`
+도입 동사: \`presents\` / \`features\` / \`is composed of\`
+
+**규칙 24** 성격 비슷한 작품 → 주제별 단락, 세미콜론·연결사(\`while\`, \`also\`, \`in addition\`) 허용
+
+**규칙 25** 귀속 표시: \`― 프로그래머 이름 → ― Jinna Lee, Programmer\` / \`― 트렌토영화제 로잔나 스테딜레 → ― Rosanna Stedile, Trento Film Festival\`
+
+**규칙 26** \`*\` 각주 포함 전문 번역. 기관명·영화제명은 글로서리 확정 표기 사용.
+
+**규칙 27** 길이 제한 없음. 작품명·감독명·정보 누락 불가.
+
+---
 
 ### 2-5. 페스티벌 프로그램
-- 규칙 28: 청유·권유 → 영어 명령형. 예) "초대합니다"→"invites you"
-- 규칙 29: 불릿 구조 유지. 준비물→Items to Bring / 유의 사항→Notes
-- 규칙 30: 공연·행사 — 아티스트 이름 생략 금지.
-- 규칙 31: 길이 제한 없음. 내용 누락 불가.
+
+> **직역 원칙 적용** — 이 섹션은 일정·안내·행사 정보 전달이 목적이므로 규칙 0-6의 의역 허용 범위가 적용되지 않는다. 내용·수치·일정을 있는 그대로 옮긴다.
+
+**규칙 28** 청유·권유 → 영어 명령형·청유형
+\`\`\`
+KO: 영남알프스에서 활력을 되찾아 보세요.  →  EN: Recharge with activities everyone can enjoy in the Yeongnam Alps.
+KO: UMFF가 어린이 여러분을 초대합니다.   →  EN: UMFF invites young audiences into a world of dreams and wonder!
+\`\`\`
+
+**규칙 29** 불릿 구조 그대로 유지
+
+| 국문 | 영문 |
+|---|---|
+| 준비물 | Items to Bring |
+| 유의 사항 | Notes |
+| 프로그램 | Program |
+
+**규칙 30** 공연·행사 소개 — 아티스트 이름 생략 금지 (규칙 9와 다름)
+\`\`\`
+KO: 인순이는 세대를 초월하는 폭발적인 가창력으로...
+EN: Insooni is a beloved diva whose powerful vocals...
+\`\`\`
+
+**규칙 31** 길이 제한 없음. 내용 누락 불가.
+
+---
 
 ### 2-6. 도서·전시 패널
-도서 소개, 기관·단체 소개, 사진·작품 설명 등 전시 성격 텍스트.
-- 규칙 32: 도서명 이탤릭 시작. "This book/This film" 대체 금지. 예) *Alpine Rising* summons …  ✓ / This book summons … ✗
-- 규칙 32-1: 원문에 도서명 주어 없으면 추론 추가 금지. "~을 다룬 책이다" 구조는 도서명 없이 그대로 번역. 예) "A book covering the life of …"  ✓ / "Keeper of the Mountains traces …"  ✗
-- 규칙 33: 필자 1인칭(큐레이터·프로그래머) → I/we 유지. 비인칭 변환 금지.
-- 규칙 34: 역사 사실·창립연도·인명·기관명 정확히 보존.
-- 규칙 35: 길이 제한 없음. 제목·저자·연도·기관명 누락 불가.
+
+도서 소개 패널, 기관·단체 소개 패널, 사진·작품 설명 패널 등 전시 성격의 텍스트.
+
+**규칙 32** 도서명 이탤릭으로 시작. “This book” / “This film” 대체 금지 (→ 규칙 17과 동일 원칙).
+\`\`\`
+KO: 『Alpine Rising』은 한 세기 동안 … 이름들을 불러내는 책이다.
+EN: *Alpine Rising* summons the names …   ✓
+EN: This book summons the names …         ✗  (제목 → This book 대체 금지)
+\`\`\`
+
+**규칙 32-1** 원문에 도서명 주어 없으면 추론 추가 금지
+원문 문단이 도서명 없이 서술만 있는 경우(“~을 다룬 책이다” 등), 문맥으로 어느 책인지 유추되더라도 도서명을 주어로 삽입하지 않는다. 원문 구조 그대로 옮긴다.
+\`\`\`
+KO: “히말라야 등반 기록의 권위자로 알려진 엘리자베스 홀리의 삶을 다룬 책이다.”
+✓ EN: “A book covering the life of Elizabeth Hawley, widely recognized as the foremost authority on Himalayan climbing records.”
+✗ EN: “Keeper of the Mountains traces the life of Elizabeth Hawley…”  (도서명 추론 삽입 금지)
+\`\`\`
+
+**규칙 33** 필자 1인칭(큐레이터·프로그래머 목소리) 유지 (→ 규칙 18과 동일 원칙, 예시도 동일).
+
+**규칙 34** 역사 사실·창립연도·인명·기관명 정확히 보존. 글로서리 확정 표기 우선.
+\`\`\`
+KO: 1945년 조국 광복과 더불어 … 두 번째로 설립된 사회단체
+EN: the second social organization founded after Korea’s liberation in 1945   ✓
+\`\`\`
+
+**규칙 35** 길이 제한 없음. 제목·저자·연도·기관명 누락 불가.
+
+---
 
 ## 3. 길이 기준
+
 | 콘텐츠 | 국문 | 영문 글자 | 영문 단어 |
 |---|---|---|---|
 | 시놉시스 | 215자 | 390자 | 70단어 |
@@ -1089,185 +1401,244 @@ c) aims to / seeks to / attempts to / hopes to 등 의도·목적 조동사를 �
 | 바이오 | 110자 | 260자 | 50단어 |
 | 섹션 서문 | — | — | — |
 | 도서·전시 패널 | — | — | — |
-내용 누락보다 한도 초과를 우선 허용. 짧은 원문을 한도까지 늘리지 말 것.
 
-## 4. 소스 텍스트 정규화
-도서=『』/ 영화=〈〉/ 전시=《》/ 강조·비유=' '/ 직접인용=" "
-소스에 《》·〈〉로 쓰인 도서명은 번역 시 『』로 정규화. 영문 도서명은 항상 이탤릭.
+원문 정보량이 많아 한도를 넘기면 **내용 누락보다 한도 초과를 우선 허용**. 짧은 원문을 한도까지 늘리지 말 것.
+
+---
+
+## 4. 소스 텍스트 정규화 (번역 전 확인)
+
+괄호·따옴표·제목 표기는 \`notation-rules.md\` 기준을 따른다. 핵심만 요약:
+- 도서 \`『 』\` / 영화 \`< >\` / 전시 \`《 》\` / 강조·비유 \`‘ ’\` / 직접 인용 \`“ ”\`
+- 소스에서 도서를 \`《 》\`·\`〈 〉\`로 쓴 경우 번역 시 \`『 』\`로 정규화.
+- 영문 도서명은 항상 이탤릭.
 
 ## 5. 고유명사 표기
-인명·지명·산악 전문 용어 표기는 notation-rules.md 이름 표기 / 등산·산악 전문 용어 섹션 참조.`;
+
+인명·지명·산악 전문 용어 표기 규칙은 \`notation-rules.md\` 이름 표기 / 등산·산악 전문 용어 섹션 참조.`;
 
 const EMBEDDED_NOTATION = `# 표기 규칙 (Notation Rules)
 
 ## 영화 제목 표기
-- 영화 제목은 꺾쇠 〈 〉를 사용하고, 영문 제목은 이탤릭체로 쓴다. (예: 〈화양연화〉 / *In the Mood for Love*)
-- 국영문 병기 시에는 꺾쇠 하나 안에 한글·영문을 함께 넣는다. (예: 〈영원과 하루 Eternity and a Day〉)
-- 제목+감독+연도 병기 시: 〈화양연화〉(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
+- 영화 제목은 꺾쇠 \`< >\`를 사용하고, 영문 제목은 이탤릭체로 쓴다. (예: <화양연화> / *In the Mood for Love*)
+- 국영문 병기 시에는 꺾쇠만 사용한다. (예: <영원과 하루 Eternity and a Day>)
+- 저작권자의 별도 제목표기 요청이 있을 경우 요청에 따라 표기한다.
+- 제목·제작연도·감독을 함께 표기할 경우:
+  - <화양연화>(왕가위, 2000) / In the Mood for Love(Wang Karwai, 2000)
+  - <영원과 하루 Eternity and a Day>(테오 앙겔로풀로스 Theo Angelopoulos, 1998)
+  - Eternity and a Day(Theo Angelopoulos 1998), In the Mood for Love(Wang Karwai, 2000)
 
 ## 작품 정보 표기
-- 표기 순서: 제작국가 | 제작연도 | 러닝타임 | 색채 | 카테고리 | 관람 등급
-- 예: Korea | 2015 | 114min | Color | Documentary | G
-- 제작연도는 최종 완료 시점만. (2002-2003 X / 2003 O)
-- 러닝타임: 올림 후 분 단위, 숫자 바로 뒤에 min(마침표 없음). 예: 53min
-- 색채: Color / B&W. 프리미어: World / International / Asian / Korean Premiere
+- 표기 순서: 제작국가, 제작연도, 러닝타임, 색채, 카테고리, 관람 등급. (책자의 경우 해당, 홈페이지는 자동)
+- 예: \`Korea | 2015 | 114min | Color | Documentary | G\`
+
+## 기타 영화 관련
+- 제작연도는 마지막 최종 작업(제작)이 완료된 시점만 표기한다. (2002-2003 → X, 2003 → O)
+- 러닝타임은 분·초 단위 모두 올림하여 분 단위로만 표기한다. 숫자 바로 뒤에 \`min\`, 마침표 없음. (예: 53min)
+- 색채 표기: 컬러는 \`Color\`, 흑백은 \`B&W\`.
+- 프리미어 표기: World Premiere / International Premiere / Asian Premiere / Korean Premiere 중 해당 사항 표기.
+
+## 서적 표기
+- 도서 제목은 겹낫표 『 』, 영문은 이탤릭, 저자명은 ( ) 안에 표기한다.
+- 예: 『도전』 (크리스 보닝턴) / *Cahier du Cinema* (Chris Bonington)
+
+## 기타 표기 (논문·정기간행물·TV·전시·음반·공연 등)
+- 논문·정기간행물·TV 프로그램의 국문 제목은 낫표 「 」, 영문은 이탤릭, 저자명은 ( ).
+- 전시는 《 》 사용, 국영문 동일. (예: 《모니카와 떠나는 세계명화 여행전》)
+- 음반의 한글·영문 표기는 낫표 「 」 안에, 노래 제목은 작은따옴표 ‘ ’. (예: 「애비 로드」에 수록된 ‘Come Together’)
+- **[한→영 번역 시]** 음반명은 「 」, 노래·곡 제목은 ‘ ’. 노래·곡 제목은 원문 언어 그대로 유지하고 번역하지 않는다. 큰따옴표 “ ” 사용 금지.
+  - 예: 미니앨범 「The First Lumos」/ 싱글 ‘너에게로, 이별’, ‘For Sentimental Reasons’, ‘실연’
+  - ✗ 잘못: “Heartbreak” (실연 번역 금지) / “For Sentimental Reasons” (큰따옴표 금지)
+- 학교·단체·회사 명칭의 한글 표기는 띄어쓰기 없음. (예: 울주세계산악영화제조직위원회)
+- 산악코스, 암벽등반루트 등 특정 지명을 표기한다.
+- 공연: 국문은 작은따옴표 ‘ ’ (예: ‘양의 침묵’, ‘사적인 극장’) / 영문은 따옴표 없이 앞 글자만 대문자, 이탤릭 (예: *The Silence of the Sheep*, *Private Theatre*)
 
 ## 이름 표기
 
 ### 외국 인명 한글 표기 (영→한)
-- 글로서리 등재 인명: 글로서리 표기를 절대 우선한다.
-  예) 보이테크 쿠르티카 → Wojciech Kurtyka (비공식 표기 사용 금지)
+- **글로서리 등재 인명**: 학습 데이터 표기와 달라도 글로서리 표기를 절대 우선한다.
+  - 예) 보이테크 쿠르티카 → Wojciech Kurtyka (Voytek 등 비공식 표기 사용 금지)
 - **글로서리 미등재 인명: 원문 그대로 유지. 음역하지 않는다.**
-  예) Benjamin Védrines → Benjamin Védrines (✗ 벤자맹 베드린으로 음역 금지)
-- 등재 인명 음역 기준: 원어 발음 기준, 현행 외래어 표기법 준수.
-  예) Wanda Rutkiewicz → 반다 루트키에비츠
+  - 예) Benjamin Védrines → Benjamin Védrines (✗ 벤자맹 베드린으로 음역 금지)
+- 글로서리 등재 인명 음역 기준: 원어 발음 기준, 현행 외래어 표기법 준수. 국내 관례 표기 우선.
+  - 예) Wanda Rutkiewicz → 반다 루트키에비츠 / Reinhold Messner → 라인홀트 메스너
 
 ### 한국 인명 영문 로마자 (한→영)
-- 성 + 공백 + 이름, 이름 음절 사이 하이픈. 본인 영문명 있으면 우선.
-  예) 배창호 → Bae Chang-ho / 엄홍길 → Um Hong-gil
-- 한자식: 성 앞. 영문식: 성 뒤.
-- 별명·애칭: 첫 언급 시 작은따옴표 ' ', 이후 부호 없음. 예) Francisco Marín 'Novato'
+- \`성 + 공백 + 이름\`, 이름 음절 사이 하이픈. 본인 영문명 있으면 우선.
+  - 예) 이정진 → Jinna Lee / 배창호 → Bae Chang-ho / 엄홍길 → Um Hong-gil
+- 한·중·일 한자식 이름: 성을 앞에 표기하고 성은 대문자로. 영문식 이름: 성을 뒤에 표기.
+- 한국·중국 이름은 성과 이름을 붙여서 명기한다. 작품 속 캐릭터 이름도 동일.
+- 본문 텍스트에서는 성과 이름의 첫 글자만 대문자로 표기한다.
+- 별명·애칭은 첫 번째 언급 시 작은따옴표 \`’ ‘\` 안에 표기하고, 이후에는 부호 없음.
+  (예: Francisco Marín ‘Novato’)
 
 ### 산 이름·지명
-- proper-nouns.csv 우선, 없으면 외래어 표기법.
-  예) Denali→드날리 / Chamonix→샤모니
+- proper-nouns.csv(TM·시트) 우선, 없으면 외래어 표기법.
+  - 예) Denali → 드날리 / Chamonix → 샤모니 / Patagonia → 파타고니아
 
-## 서적·기타 매체 표기
-- 도서: 겹낫표 『 』(국문), 이탤릭(영문), 저자명 ( ) 안에.
-- 논문·정기간행물·TV: 낫표 「 」(국문), 이탤릭(영문).
-- 전시: 《 》(국영문 동일). 음반: 낫표 「 」, 곡명은 작은따옴표 ' '.
-- 공연: 국문 작은따옴표 ' ', 영문 이탤릭(따옴표 없이 첫 글자 대문자).
-- [한→영 번역 시] 음반명은 「 」, 노래·곡 제목은 ' '. 곡 제목은 원문 언어 그대로 유지하고 번역 금지. 큰따옴표 " " 사용 금지. 예: 「The First Lumos」 / '너에게로, 이별', '실연' (✗ "Heartbreak" 번역 금지)
-- 소스에서 도서를 《 》·〈 〉로 쓴 경우 번역 시 『 』로 정규화.
-
-## 문장부호
-- 대화·정확 인용: 큰따옴표 " ". 의역·강조어: 작은따옴표 ' '.
-- 말줄임표: 아래 점 3개(...)만. 중간점 ···, 유니코드 … 금지.
-- 콜론·세미콜론: 앞 글자에 붙이고 뒤는 한 칸 띄운다.
-
-## 날짜·시간·통화
-- 날짜: 9. 26.(금) 19:00 (국문) / Sep. 26(Fri) 19:00 (영문)
-- 기간: - 앞뒤 한 칸. 예) 09:00 - 20:00, Sep. 26(Fri) - 30(Tue)
-- 24시간 4자리(04:00 / 16:00), AM/PM 불가.
-- n번째·n주년: 표지에서 th 윗첨자, 본문에서는 윗첨자 X. (월 약어는 proper-nouns.csv '월' 항목 참조)
+## 일반 콘텐츠 (문장부호) — 국영문 동일
+- 대화 문구, 인용 구문은 큰따옴표 “ ” 를 사용한다.
+- 인용구를 문장 그대로 사용하지 않을 경우 작은따옴표 ‘ ’ 를 사용한다.
+- 말줄임표는 아래 점 3개만 사용한다.
+- 콜론(:), 세미콜론(;)은 앞 글자와 붙여 쓰고 뒤에 오는 글자와는 한 칸 띄운다.
+## 날짜 / 시간 / 통화 표기
+- 날짜·시간: 9. 26.(금) 19:00 / Sep. 26(Fri) 19:00
+- 기간: Sep. 26(Fri) - 30(Tue) 09:00 - 20:00
+- 24시간 4자리 표기(04:00 / 16:00). AM/PM 불가. 시간 범위는 \`-\` 앞뒤로 한 칸씩 띄움.
+- n번째·n주년: 표지에서 th 윗첨자, 본문에서는 윗첨자 X. (월 약어는 proper-nouns.csv ‘월’ 항목 참조)
 - 통화: 15,000원 → 15,000 KRW
 
-## 학교·단체·회사
-- 한글 표기는 띄어쓰기 없이 붙여 쓴다. 예) 울산울주세계산악영화제조직위원회
-- 회사 공식 표기: Co. / Inc. / Ltd. / Co.,Ltd.
+## 회사 표기
+- 회사 공식 표기를 따른다: Co. / Inc. / Ltd. / Co.,Ltd.
 
 ## 등산·산악 전문 용어 (영→한)
 일반 표현 대신 한국 등산계 표준어를 사용한다.
-oxygen-free / without oxygen → 무산소 (✗ 산소 없이)
-speed ascent → 속도 등반 / summit push → 정상 공략
-alpine style → 알파인 스타일 / base camp → 베이스캠프
-fixed rope → 고정 로프 / technical climbing → 기술 등반`;
 
-const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시
+| 영어 | ✓ 표준어 | ✗ 피할 표현 |
+|------|----------|------------|
+| oxygen-free / without oxygen | 무산소 | 산소 없이 |
+| speed ascent / speed climbing | 속도 등반 | — |
+| summit push | 정상 공략 | — |
+| alpine style | 알파인 스타일 | — |
+| fixed rope | 고정 로프 | — |
+| base camp | 베이스캠프 | — |
+| technical climbing | 기술 등반 | — |`;
 
-2025년 확정 원고 문체·길이 참고용. 표기 규칙의 최종 권위는 notation-rules.md.
+const EMBEDDED_EXAMPLES = `# 번역 few-shot 예시 (tm-examples.md)
 
-## 시놉시스 · 영→한
+2025년 확정 원고에서 선별한 한↔영 대조 예시. **문장 구조·문체·길이 감각의 참고용**이며,
+내용을 베끼기 위한 것이 아니다. 표기 규칙의 최종 권위는 \`notation-rules.md\`다.
 
-**예시 (K2 – Chasing Shadows)** ← 제목 보존 / yet→지금껏 / 콜론→두 문장 / 무산소 / 미등재 인명 원문 유지 / 명사 적층 없음
-- EN: K2 – Chasing Shadows follows alpinist Benjamin Védrines, a rising star known for his technical prowess and record-breaking speed ascents, as he sets his sights on his most ambitious challenge yet: a fast, oxygen-free climb of K2, one of the world's deadliest peaks. But beyond the summit lies a more personal, intimate quest for meaning — an inner mountain that tests him far beyond the limits of physical endurance.
-- KO: 〈K2 – Chasing Shadows〉는 탁월한 기술력과 기록적인 속도 등반으로 주목받는 신예 알피니스트 Benjamin Védrines가 지금껏 가장 야심 찬 도전에 나서는 여정을 따라간다. 세계에서 가장 위험한 봉우리 중 하나인 K2를 무산소로, 빠르게 오르는 것이다. 그러나 정상 너머에는 더 개인적이고 내밀한 의미의 탐구가 기다린다. 신체적 한계를 훨씬 뛰어넘어 그를 시험하는, 내면의 산이다.
+> 예시의 따옴표·문장부호는 출판물 실제 표기를 그대로 옮긴 것이다. 곡선/직선 등 세부는 \`notation-rules.md\`를 따른다.
+
+
+## 시놉시스 · 영 → 한
+
+**예시 (K2 Chasing Shadows)** ← 제목 보존 / “yet”→지금껏 / 콜론→두 문장 / 무산소 / 미등재 인명 원문 유지 / 명사 적층 없음
+
+- EN: K2 Chasing Shadows follows alpinist Benjamin Védrines, a rising star known for his technical prowess and record-breaking speed ascents, as he sets his sights on his most ambitious challenge yet: a fast, oxygen-free climb of K2, one of the world’s deadliest peaks. But beyond the summit lies a more personal, intimate quest for meaning — an inner mountain that tests him far beyond the limits of physical endurance.
+- KO: <K2: 그림자를 따라서>는 탁월한 기술력과 기록적인 속도 등반으로 주목받는 신예 알피니스트 Benjamin Védrines가 지금껏 가장 야심 찬 도전에 나서는 여정을 따라간다. 세계에서 가장 위험한 봉우리 중 하나인 K2를 무산소로, 빠르게 오르는 것이다. 그러나 정상 너머에는 더 개인적이고 내밀한 의미의 탐구가 기다린다. 신체적 한계를 훨씬 뛰어넘어 그를 시험하는, 내면의 산이다.
 
 **예시 (SHAMBHALA)**
-- EN: In a Himalayan polyandrous village in Nepal, newly married and pregnant Pema tries to make the best of her new life. But soon, her first husband Tashi vanishes on the trade route to Lhasa. Accompanied by her monk de facto husband, Karma, she embarks on a journey into the unforgiving wilderness to find him, evolving into a quest of self-discovery and liberation.
+
 - KO: 네팔 히말라야의 일처다부제 마을. 결혼한 지 얼마 되지 않은 임산부 페마는 새로운 삶에 적응하려 애쓴다. 그러나 곧 그녀의 첫 번째 남편 타시가 라싸로 향하는 교역로에서 실종되고 만다. 페마는 자신의 또 다른 남편인 카르마와 함께 타시를 찾아 험난한 길을 떠나고, 점차 이 여정은 자아 발견과 해방의 여정으로 이어진다.
+- EN: In a Himalayan polyandrous village in Nepal, newly married and pregnant Pema tries to make the best of her new life. But soon, her first husband Tashi vanishes on the trade route to Lhasa. Accompanied by her monk de facto husband, Karma, she embarks on a journey into the unforgiving wilderness to find him, evolving into a quest of self-discovery and liberation.
 
 **예시 (The Woolen Sweater)**
-- EN: Based in the multi-cultural settings of Eastern hills of Nepal, film takes us on a journey filled with the warmth of love and human connections. The film follows Dharanidhar Kafle, a skilled mason who has inherited his craft from his father. Dharani frequently visits his father's soul friend in the highlands where he reconnects with his childhood crush, Phool Gurung.
+
 - KO: 네팔 동부 구릉지대의 다문화적 배경 속에서 펼쳐지는 이 영화는, 사랑과 사람이 주는 따스함이 가득 찬 여정으로 우리를 초대한다. 아버지로부터 기술을 물려받은 숙련된 석공 다라니다르 카플레. 그는 종종 아버지의 절친한 친구를 찾아 구릉지대로 향하고, 그곳에서 어린 시절 짝사랑했던 풀 구룽과 재회하게 된다.
+- EN: Based in the multi-cultural settings of Eastern hills of Nepal, film takes us on a journey filled with the warmth of love and human connections. The film follows Dharanidhar Kafle, a skilled mason who has inherited his craft from his father. Dharani frequently visits his father’s soul friend in the highlands where he reconnects with his childhood crush, Phool Gurung.
 
 **예시 (볼리비아 최고 고도 광산)** ← 관형절→파편 명사구 / 동사 이미지화(쌓이다) / 단문 분리
+
 - EN: A visual look at the world of the inhabitants of the highest mine in Bolivia, whose deaths weigh as much as the mined silver, exploring the limits of human endurance, spirituality, and the cost of human labor.
 - KO: 볼리비아 최고(最高) 고도의 광산에서 살아가는 사람들의 세계를 시각적으로 담아낸 작품. 채굴된 은만큼이나 무겁게 쌓이는 죽음, 인간 인내의 한계, 영성, 그리고 인간 노동의 대가를 탐구한다.
 
 **예시 (북마케도니아 목동 형제자매)** ← 파편 문장 활용(여덟 살~무리다) / 어휘 격상(곱씹다) / 완전 문장→명사형 단문
-- EN: In the heart of the mountains of North Macedonia, surrounded by a flock of six hundred sheep guarded by imposing Charplanina dogs, stands a shelter. Children's laughter echoes from the precarious shelter. They are a group of shepherd siblings, aged eight to twenty. When they are not working, they play and ponder the meaning of life. Is their future really here?
+
+- EN: In the heart of the mountains of North Macedonia, surrounded by a flock of six hundred sheep guarded by imposing Charplanina dogs, stands a shelter. Children’s laughter echoes from the precarious shelter. They are a group of shepherd siblings, aged eight to twenty. When they are not working, they play and ponder the meaning of life. Is their future really here?
 - KO: 북마케도니아의 험준한 산 속, 위풍당당한 샤르플라니나 개들이 지키는 600마리의 양 떼 사이로 하나의 대피소가 서 있다. 그 낡은 대피소에서 아이들의 웃음소리가 울려 퍼진다. 여덟 살부터 스무 살까지, 목동 형제자매들의 무리다. 일을 하지 않을 때면 이들은 함께 뛰놀고 삶의 의미를 곱씹는다. 그들의 미래는 정말 이곳에 있는 걸까?
 
-## 시놉시스 · 한→영
+
+## 시놉시스 · 한 → 영
 
 **예시 (Mind Over Matter)**
+
 - KO: 매사에 최선을 다하며 열정적으로 살아온 주인공 정민. 하지만 점점 자신의 이러한 모습에 의구심을 품게 된다. 이렇게 사는 것이 맞는 것일까 고민하며 방황하던 정민은 자신처럼 그리고 자신보다 열심히 하루하루를 살아가는 친구들과 가족들의 모습을 보게 되고 다시 한번 자신감을 갖게 된다.
 - EN: Jung-min has always lived passionately, giving his best in everything he does. However, he gradually begins to question this way of life. Is this really the right path? As he struggles with doubt and uncertainty, he encounters friends and family who, like him, or even more so, live each day with dedication.
 
 **예시 (End of Bardo)**
-- KO: 이유를 모른 채 갯벌에서 눈을 뜬 남자는 집으로 향하는 과정에서 자신이 망자임을 알게 된다. 그러나 죽음을 깨달은 뒤에도 고독과 혼란은 끝나지 않는다. 갯벌에서 시작한 '바르도'는, 도심을 지나 산에서 끝난다. 이 영화는 바다에서 산 정상까지, 죽음을 받아들이는 긴 모험을 떠나는 한 사람의 이야기이다.
-- EN: The man stands on the mudflat. On his way home, he realizes that he is dead. Lost in enduring solitude and confusion, he encounters a psychopomp. "Bardo" begins on the mudflat, passes through the city, and ends at the mountain ridge. This film follows the man's story from the shore to the mountaintop, a long journey toward embracing one being's death.
 
-## 프로그램 노트 · 영→한
+- KO: 이유를 모른 채 갯벌에서 눈을 뜬 남자는 집으로 향하는 과정에서 자신이 망자임을 알게 된다. 그러나 죽음을 깨달은 뒤에도 고독과 혼란은 끝나지 않는다. 갯벌에서 시작한 ‘바르도’는, 도심을 지나 산에서 끝난다. 이 영화는 바다에서 산 정상까지, 죽음을 받아들이는 긴 모험을 떠나는 한 사람의 이야기이다.
+- EN: The man stands on the mudflat. On his way home, he realizes that he is dead. Lost in enduring solitude and confusion, he encounters a psychopomp. “Bardo” begins on the mudflat, passes through the city, and ends at the mountain ridge. This film follows the man’s story from the shore to the mountaintop, a long journey toward embracing one being’s death.
 
-**예시 (K2 – Chasing Shadows, 감독 노트)** ← 1인칭 복수 유지 / raw→날것의 / often→때로 / reckoning→자기 직면 / ~에 의해 수동태 금지 / 단문 분리
-- EN: When we first heard of Benjamin Védrines and looked him up online, all we saw were headlines: broken speed records, bold solo ascents, raw physical achievement. He was clearly an extraordinary athlete. But the somehow blunt question quickly arose — he's fast, he's strong, but does that alone justify making a film about him? Then we met in person. And in that first conversation, layers began to peel away, revealing more than the stereotyped persona of a record-breaking machine. The contradictions, the questioning, the vulnerability, the quiet unease that often drives people to extremes. Everything an online list of accomplishments can't capture was right there, revealed with unexpected honesty and clarity by Benjamin himself. Benjamin's story goes well beyond performance. This is a story of inner struggle, of reckoning — one that came into sharper focus with each step he took toward K2.
+
+## 프로그램 노트 · 영 → 한
+
+**예시 (K2 Chasing Shadows, 감독 노트)** ← 1인칭 복수 유지 / raw→날것의 / often→때로 / reckoning→자기 직면 / ~에 의해 수동태 금지 / 단문 분리
+
+- EN: When we first heard of Benjamin Védrines and looked him up online, all we saw were headlines: broken speed records, bold solo ascents, raw physical achievement. He was clearly an extraordinary athlete. But the somehow blunt question quickly arose — he’s fast, he’s strong, but does that alone justify making a film about him? Then we met in person. And in that first conversation, layers began to peel away, revealing more than the stereotyped persona of a record-breaking machine. The contradictions, the questioning, the vulnerability, the quiet unease that often drives people to extremes. Everything an online list of accomplishments can’t capture was right there, revealed with unexpected honesty and clarity by Benjamin himself. Benjamin’s story goes well beyond performance. This is a story of inner struggle, of reckoning — one that came into sharper focus with each step he took toward K2.
 - KO: Benjamin Védrines를 처음 알게 됐을 때, 온라인 검색에서 돌아오는 건 헤드라인뿐이었다. 속도 신기록, 대담한 단독 등반, 날것의 신체 성취. 비범한 운동선수라는 건 분명했다. 하지만 다소 날 선 의문도 따라왔다. 빠르고 강하다는 것, 그것만으로 영화를 만들 이유가 될 수 있을까? 그러다 직접 만났다. 첫 대화에서 켜켜이 쌓인 막이 하나씩 벗겨지기 시작했고, 신기록 경신 기계라는 상투적인 이미지 너머의 무언가가 드러났다. 모순, 회의, 연약함 — 그리고 때로 사람을 극단으로 내모는 조용한 불안. 그 어떤 성취 목록에도 담기지 않을 것들이 거기 있었다. Benjamin 스스로가, 예상치 못한 솔직함과 명료함으로 꺼내 보이면서. Benjamin의 이야기는 성과를 훌쩍 넘어선다. 내면의 투쟁이자 자기 직면의 이야기 — K2를 향해 내딛는 걸음마다 더욱 선명해진.
 
 **예시 (Placekeepers)**
-- EN: In remote Tusheti, Georgia, a dwindling highland community grapples with rural depopulation, intergenerational change, and Soviet memory—offering a rare glimpse into alternative ways of living, collective resilience, and an uncertain path into the future.
+
 - KO: 조지아의 투셰티, 쇠퇴하고 있는 고산지대 공동체는 농촌 인구 감소, 세대 간 변화, 소련 체제의 잔재라는 어려움을 겪고 있다. 동시에 대안적 생활 방식과 집단 회복력, 미래로 이어지는 불확실한 길을 엿볼 수 있는 기회를 제공한다.
+- EN: In remote Tusheti, Georgia, a dwindling highland community grapples with rural depopulation, intergenerational change, and Soviet memory—offering a rare glimpse into alternative ways of living, collective resilience, and an uncertain path into the future.
 
 **예시 (Savanna and the Mountain)**
-- EN: Exploring cinema as a gesture of resistance, a village's fictional daily struggle against big capital, a mirror of our collective fight against deep political impotence. Perhaps cinema returns to people through nature. Perhaps not.
-- KO: 저항의 몸짓을 탐구하는 영화. 거대 자본에 맞선 어느 마을의 허구적인 일상이자 정치적 무능에 맞선 집단적 투쟁의 반영. 어쩌면 영화는 자연을 통해 인간에게 돌아갈지도 모른다. 어쩌면 아닐 수도 있고.
 
-## 프로그램 노트 · 한→영
+- KO: 저항의 몸짓을 탐구하는 영화. 거대 자본에 맞선 어느 마을의 허구적인 일상이자 정치적 무능에 맞선 집단적 투쟁의 반영. 어쩌면 영화는 자연을 통해 인간에게 돌아갈지도 모른다. 어쩌면 아닐 수도 있고.
+- EN: Exploring cinema as a gesture of resistance, a village’s fictional daily struggle against big capital, a mirror of our collective fight against deep political impotence. Perhaps cinema returns to people through nature. Perhaps not.
+
+
+## 프로그램 노트 · 한 → 영
 
 **예시 (The Wishes)**
+
 - KO: 우리는 꽤 자주 서로를 오해한다. 하지만 그런 실수도 바로잡을 기회를 주는 게 확실한 사랑의 방법이 아닐까 하는 생각에서 이야기를 만들었다.
 - EN: We often misunderstand each other. However, I created this story believing that giving each other the opportunity to correct even those misunderstandings could be a true act of love.
 
-## 바이오 · 영→한
+
+## 바이오 · 영 → 한
 
 **예시 (Far Enough)**
-- EN: Julien Carot is an independent filmmaker based in Paris. He has directed several music videos and experimental short films, while also contributing to a wide range of projects through various post-production roles. Far Enough is his first documentary film.
+
 - KO: 파리를 중심으로 활동하는 독립 영화감독. 여러 뮤직비디오와 단편 실험 영화를 연출했으며, 다양한 프로젝트의 후반 작업에 참여했다. <충분해>는 그의 첫 번째 다큐멘터리 영화다.
+- EN: Julien Carot is an independent filmmaker based in Paris. He has directed several music videos and experimental short films, while also contributing to a wide range of projects through various post-production roles. Far Enough is his first documentary film.
 
 **예시 (Writing Home)**
-- EN: Eva Matejovičová is a Slovak filmmaker living in Prague and studying at Film and TV School of Academy of Performing Arts. As a big animal lover, her films revolve around animals, starting with her short film Sanctuary.
+
 - KO: 프라하에 거주하는 슬로바키아 출신 영화감독으로 프라하공연예술아카데미 영화TV학부(FAMU)에 재학 중이다. 동물 애호가인 그녀는 단편 <생크추어리>를 비롯해 동물을 중심으로 한 작품을 만들어 왔다.
+- EN: Eva Matejovičová is a Slovak filmmaker living in Prague and studying at Film and TV School of Academy of Performing Arts. As a big animal lover, her films revolve around animals, starting with her short film Sanctuary.
 
-## 바이오 · 한→영
 
-**예시 (What You are Touching Now)**
+## 바이오 · 한 → 영
+
+**예시 (What You are Touching Now - Insubong Peak)**
+
 - KO: 조각을 전공한 시각예술가 홍이현숙은 인간 중심의 주류에서 벗어나고자 한다. 일상의 수행을 통해 길어 올린 신체의 잠재력으로 닫힌 것을 뚫고 들어가는 퍼포먼스를 선보이며, 그 과정을 기록한다.
-- EN: Visual artist Hong Lee Hyun-sook, who majored in sculpture, seeks to move beyond human-centered paradigms. Through daily practices that cultivate the body's latent potential, she stages and documents performances that break into what is closed.
+- EN: Visual artist Hong Lee Hyun-sook, who majored in sculpture, seeks to move beyond human-centered paradigms. Through daily practices that cultivate the body’s latent potential, she stages and documents performances that break into what is closed.
 
 **예시 (The House Beyond the Stairs)**
+
 - KO: 임왕태 감독의 장편영화 <이별식당>의 각본을 맡아 인도 차트라파티쉬바지영화제에서 최우수로맨스상을 수상했다. 이후 직접 각본과 감독을 맡은 영화 <시인들의 창>은 부산국제영화제에서 상영했다.
-- EN: He wrote the screenplay for the feature film Farewell Restaurant(Lim Wang-tae), which won the Best Romance Film award at the 2019 Chhatrapati Shivaji IFF. Subsequently, he wrote and directed the film Poets' Window, which was screened at the 2021 Busan IFF.
+- EN: He wrote the screenplay for the feature film Farewell Restaurant(Lim Wang-tae), which won the Best Romance Film award at the 2019 Chhatrapati Shivaji IFF. Subsequently, he wrote and directed the film Poets’ Window, which was screened at the 2021 Busan IFF.
 
-## 섹션 서문 · 한→영
 
-길이 제한 없음. 수록 작품·감독명 전부 유지. 섹션명 큰따옴표. 귀속: ― 이름, Programmer.
+## 섹션 서문 · 한 → 영
+
+길이 제한 없음. 수록 작품·감독명 정보를 모두 유지하면서 단락별로 번역한다.
+섹션명은 영문 큰따옴표: \`‘자연’\` → \`“Nature”\`. 귀속은 \`― 이름, Programmer\`.
 
 **예시 (자연 Nature)**
-- KO: '자연' 섹션에서는 산골 마을과 시골 등 자연 속에서 공동체, 환경, 전통, 그리고 변화에 대한 이야기를 담은 여섯 편의 영화가 상영됩니다.
+
+- KO: ‘자연’ 섹션에서는 산골 마을과 시골 등 자연 속에서 공동체, 환경, 전통, 그리고 변화에 대한 이야기를 담은 여섯 편의 영화가 상영됩니다.
 중국 후난성 시골 아이들이 직접 쓴 시를 통해 그들의 순수한 시선을 보여주는 다큐멘터리 <시인의 마음>, 튀르키예 시골을 배경으로 사냥당하는 토끼를 구하며 어른의 세계에 저항하는 소년 무사의 이야기 <토끼 제국>은 어린이의 눈을 통해 사회와 현실을 비춥니다.
 전통과 현대의 충돌을 대만 소수민족 사냥꾼 형제의 이야기로 풀어낸 <헌터 브라더스>, 전통 목축 환경이 현대화의 영향으로 변화하는 과정을 담은 <브레니의 목축 일기>는 정체성과 삶의 방식에 대해 다시금 생각하게 만듭니다. 나무에 깃발을 다는 전통으로 인해 위험에 처한 나무를 구하려는 부탄의 불교 신자 소남 푼초의 이야기를 그린 <버터플라이 부탄>, 기후 변화로 인한 빙하 감소와 그로인한 수질 오염 문제에 맞서 싸우는 사람들의 모습을 그린 <맑은 물을 찾아서!>는 우리가 살아가는 환경과 생존 그리고 지속가능성에 대한 깊은 고민을 던지는 영화들입니다.
 ― 프로그래머 이정진
-- EN: The "Nature" section presents six films that explore themes of community, environment, tradition, and change in natural settings such as mountain villages and rural areas. Always is a documentary capturing the pure perspective of children from Hunan, China through poems they've written themselves. Empire of the Rabbits, set in the Turkish countryside, tells the story of Musa, a young boy who rescues a hunted rabbit and challenges the adult world, offering a child's view on society and reality.
+- EN: The “Nature” section presents six films that explore themes of community, environment, tradition, and change in natural settings such as mountain villages and rural areas. Always is a documentary capturing the pure perspective of children from Hunan, China through poems they’ve written themselves. Empire of the Rabbits, set in the Turkish countryside, tells the story of Musa, a young boy who rescues a hunted rabbit and challenges the adult world, offering a child’s view on society and reality.
 Hunter Brothers depicts the clash between tradition and modernity through the story of two indigenous hunter brothers in Taiwan, while How to Lease a Cow captures the transformation of traditional herding practices under the pressure of modernization. Both films prompt reflections on identity and ways of life.
 Butterfly Bhutan follows Sonam Phuntsho, who tries to protect a tree threatened by the Bhutanese tradition of tying prayer flags, while Dream to Cure Water addresses the issue of glacier melt caused by climate change and the resulting water pollution, showing the efforts of people working to fix the crisis. These films offer a deep meditation on the environment, survival, and sustainability.
 ― Jinna Lee, Programmer
 
 **예시 (투게더 Together)**
-- KO: 다양한 세대가 함께 즐기는 '투게더' 섹션은 오늘날 우리가 마주한 복잡한 질문에 색다른 해답을 제시하는 15편의 영화와 함께합니다.
+
+- KO: 다양한 세대가 함께 즐기는 ‘투게더’ 섹션은 오늘날 우리가 마주한 복잡한 질문에 색다른 해답을 제시하는 15편의 영화와 함께합니다.
 산과 자연을 중심으로 풀어내는 도전과 스포츠 정신, 자연과 놀이, 동물권과 생태적 윤리, 환경과 기후 위기 소재들은 인간과 자연의 관계를 다층적으로 비추고, 존재를 향한 따뜻한 시선을 보여줍니다. 이는 산의 이야기가 이들 영화 속에서 단순한 배경이 아니라 관계가 형성되고 감정이 발화되는, 사유가 시작되는 공간으로 작용하고 있기 때문일 것입니다.
 울산광역시교육청 및 울산 울주 지역 학교가 함께하는 영화 읽기 프로그램은 올해도 계속됩니다. 어린이·청소년들이 각자의 시선으로 영화를 해석하고, 자신만의 언어로 세상과 소통할 수 있는 소중한 경험이 될 것입니다. 9월, 영남알프스에서 자연과 영화, 사람과 사람이 만나는 뜻깊은 자리에 함께해 주시길 기대합니다.
 ― 프로그래머 장다나
-- EN: The "Together" section presents 15 films offering fresh perspectives on the complex questions we face today.
+- EN: The “Together” section presents 15 films offering fresh perspectives on the complex questions we face today.
 Centered on themes of mountains and nature, these films explore the topics of challenge and sportsmanship, animal rights and ecological ethics, and environmental and climate crises to explore the relationship between humans and nature in deeply layered yet warm perspectives. This is probably possible because the mountains are not simple backdrops in these stories, but a space where relationships form, emotions are stirred, and reflection begins.
 The collaborative film reading program with the Ulsan Metropolitan Office of Education and local Ulju schools also returns this year. It will be a valuable opportunity for children and teens to interpret films from their own perspectives and connect with the world in their own voices. This September, we invite you to the Yeongnam Alps for a meaningful gathering where nature and film, people and people come together.
 ― Jang Da-na, Programmer
+
 
 ## 페스티벌 프로그램 · 한 → 영
 
 길이 제한 없음. 문체·구조·불릿 형식 참고용.
 
 **예시 (자연에서 채우다 — 프로그램 섹션 소개)**
+
 - KO: 자연을 닮은 쉼, 일상 속 활력을 채우는 시간
 누구나 언제든 자연을 느끼고 웃을 수 있는 공간입니다.
 특별한 준비없이 그저 잠시 머물러 주시면 됩니다.
@@ -1278,12 +1649,51 @@ No special preparation needed – just pause and stay a moment.
 Your nature awaits.
 
 **예시 (자연에서 노래하다 — 아티스트 소개)**
-- KO: 인순이는 세대를 초월하는 폭발적인 가창력과 무대 장악력으로 오랜 시간 세대를 아우르며 사랑받아온 디바입니다. 1978년 그룹 '희자매'로 데뷔한 인순이는 '밤이면 밤마다', '거위의 꿈', '아버지' 등 수많은 명곡을 남기며 독보적인 존재감을 쌓아왔습니다.
-- EN: Insooni is a beloved diva whose powerful vocals and commanding stage presence have transcended generations. She made her debut in 1978 as a member of the group Hee Sisters, and has since built a remarkable career with timeless hits such as At Night Every Night, A Goose's Dream, and Father.
+
+- KO: 인순이는 세대를 초월하는 폭발적인 가창력과 무대 장악력으로 오랜 시간 세대를 아우르며 사랑받아온 디바입니다.
+1978년 그룹 ‘희자매’로 데뷔한 인순이는 ‘밤이면 밤마다’, ‘거위의 꿈’, ‘아버지’ 등 수많은 명곡을 남기며 가수로서 독보적인 존재감을 쌓아왔습니다.
+진심 어린 노래와 깊이 있는 메시지는 공연장을 찾은 관객들에게 뜨거운 울림을 전하며, 지금도 음악, 방송, 사회공헌 등 다방면에서 왕성한 활동을 이어가고 있습니다.
+- EN: Insooni is a beloved diva whose powerful vocals and commanding stage presence have transcended generations.
+She made her debut in 1978 as a member of the group Hee Sisters, and has since built a remarkable career with timeless hits such as At Night, Every Night, A Goose’s Dream, and Father.
+Her heartfelt performances and deeply resonant messages continue to move audiences, and she remains a dynamic presence in music, television, and public service.
+
+**예시 (공연 제목 이탤릭)** ← 공연명은 반드시 이탤릭 / 꺾쇠·따옴표 사용 금지
+
+공연 제목(국문 \`< >\` 또는 \`‘ ’\`)은 영문에서 이탤릭으로만 표기한다. 따옴표(“”, ‘’) 불가.
+
+- KO: 스튜디오 감탄호는 참여형 거리 탈인형극 <알안>을 선보입니다. <알안>은 한국의 난생설화 ‘줄탁동기’의 의미를 바탕으로 합니다.
+- EN: Studio Gamtanho presents *Egg ALAN*, a participatory street puppet show. *Egg ALAN* is inspired by the Korean creation myth ‘jultak donggi.’
+
+- KO: 창작국악그룹 모린은 <행복풍류(幸福風流)>를 통해 전통 민요와 현대적 감성이 어우러진 무대를 선보입니다.
+- EN: Creative gugak group MORE-IN presents *Haengbok Pungnyū*, a performance that weaves traditional folk songs with contemporary sensibility.
+
+✗ 잘못: \`“Egg ALAN”\` / \`‘Egg ALAN’\` / \`Egg ALAN\` (이탤릭 없음)
+✓ 올바름: \`*Egg ALAN*\`
 
 **예시 (자연에서 채우다 — 안내문 불릿 구조)**
-- KO: 준비물 / - 신체활동에 적합한 복장(운동화 착용 권장) / 유의 사항 / - 전 연령 누구나 참여 가능하나, 미성년자의 경우 보호자 동반 또는 동의 필요 / - 프로그램 시작 20분 전에 도착해 주시기 바랍니다.
-- EN: Items to Bring / - Clothing suitable for physical activity (sneakers recommended) / Notes / - Open to all ages. Minors must be accompanied by a guardian or have guardian consent. / - Please arrive 20 minutes before the program starts.`;
+
+- KO:
+준비물
+- 신체활동에 적합한 복장(운동화 착용 권장)
+
+유의 사항
+- 전 연령 누구나 참여 가능하나, 미성년자의 경우 보호자 동반 또는 동의 필요
+- 원활한 입장 및 예매 내역 확인을 위해 프로그램 시작 20분 전에 도착해 주시기 바랍니다.
+
+프로그램
+- 입장 및 준비
+- 오프닝 인사 및 강사진 소개
+- EN:
+Items to Bring
+- Clothing suitable for physical activity (sneakers recommended)
+
+Notes
+- Open to all ages. Minors must be accompanied by a guardian or have guardian consent.
+- Please arrive 20 minutes before the program starts to ensure smooth entry and ticket confirmation.
+
+Program
+- Entry and preparation
+- Opening remarks and instructor introductions`;
 
 // ═══════════════════════════════════════════════
 //  State
